@@ -262,3 +262,41 @@
   +
     If there exists a $c in RR$ satisfying $a < c < b$ for all $a in A$ and $b in B$, then $sup A < inf B$.
 ]
+
+== Consequences of Completeness
+
+#exercise[1.4.1][
+  Recall that $II$ stands for the set of irrational numbers.
+  +
+    Show that if $a, b in QQ$, then $a b$ and $a + b$ are elements of $QQ$ as well.
+  +
+    Show that if $a in QQ$ and $t in II$, then $a + t in II$ and $a t in II$ as long as $a != 0$.
+  +
+    Part (a) can be summarized by saying that $QQ$ is closed under addition and multiplication.
+    Is $II$ closed under addition and multiplication?
+    Given two irrational numbers $s$ and $t$, what can we say about $s + t$ and $s t$?
+]
+
+#exercise[1.4.2][
+  Let $A subset.eq RR$ be nonempty and bounded above, and let $s in RR$ have the property that for all $n in NN$, $s + 1/n$ is an upper bound for $A$ and $s - 1/n$ is not an upper bound for $A$.
+  Show $s = sup A$.
+]
+
+#exercise[1.4.3][
+  Prove that $inter.big_(n=1)^oo (0, 1 slash n) = emptyset$.
+  Notice that this demonstrates that the intervals in the Nested Interval Property must be closed for the conclusion of the theorem to hold.
+]
+
+#exercise[1.4.4][
+  Let $a < b$ be real numbers #TODO[finish this]
+]
+
+== Cardinality
+
+== Cantor's Theorem
+
+= Sequences and Series
+
+== Discussion: Rearrangements of Infinite Series
+
+== The Limit of a Sequence
