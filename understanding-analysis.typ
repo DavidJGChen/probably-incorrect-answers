@@ -470,6 +470,87 @@
 
 == Cantor's Theorem
 
+#exercise[1.6.1][
+  Show that $(0,1)$ is uncountable if and only if $RR$ is uncountable.
+  This shows that Theorem 1.6.1 is equivalent to Theorem 1.5.6.
+]
+
+#exercise[1.6.2][
+  +
+    Explain why the real number $x = .b_1 b_2 b_3 b_4 dots$ cannot be $f(1)$.
+  +
+    Now, explain why $x != f(2)$, and in general why $x != f(n)$ for any $n in NN$.
+  +
+    Point out the contradiction that arises from these observations and conclude that $(0,1)$ is uncountable.
+]
+
+#exercise[1.6.3][
+  Supply rebuttals to the following complaints about the proof of Theorem 1.6.1
+  +
+    Every rational number has a decimal expansion, so we could apply this same argument to show that the set of rational numbers between 0 and 1 is uncountable.
+    However, because we know that any subset of $QQ$ must be countable, the proof of Theorem 1.6.1 must be flawed.
+  +
+    Some numbers have _two_ different decimal representations.
+    Specifically, any decimal expansion that terminates can also be written with repeating 9's.
+    For instance, $1 slash 2$ can be written as $0.5$ or as $.4999 dots$.
+    Doesn't this cause some problems?
+]
+
+#exercise[1.6.4][
+  Let $S$ be the set consisting of all sequences of 0's and 1's.
+  Observe that $S$ is not a particular sequence, but rather a large set whose elements are sequences; namely,
+  $
+    S = {(a_1, a_2, a_3, dots) : a_n = 0 "or" 1}.
+  $
+  As an example, the sequence $(1,0,1,0,1,0,1,0,dots)$ is an element of $S$, as is the sequence $(1,1,1,1,1,1,dots)$.
+
+  Give a rigorous argument showing that $S$ is uncountable.
+]
+
+#exercise[1.6.5][
+  +
+    Let $A = {a,b,c}$. List the eight elements of $cal(P)(A)$.
+    (Do not forget that $emptyset$ is considered to be a subset of every set.)
+  +
+    If $A$ is finite with $n$ elements, show that $cal(P)(A)$ has $2^n$ elements.
+]
+
+#exercise[1.6.6][
+  +
+    Using the particular set $A = {a,b,c}$, exhibit two different 1--1 mappings from $A$ into $cal(P)(A)$.
+  +
+    Letting $C = {1,2,3,4}$, produce an example of a 1--1 map $g : C -> cal(P)(C)$.
+  +
+    Explain why, in parts (a) and (b), it is impossible to construct mappings that are _onto_.
+]
+
+#exercise[1.6.7][
+  Return to the particular functions constructed in Exercise 1.6.6 and construct the subset $B$ that results using the preceding rule.
+  In each case, note that $B$ is not in the range of the function used.
+]
+
+#exercise[1.6.8][
+  +
+    First, show that the case $a' in B$ leads to a contradiction.
+  +
+    Now, finish the argument by showing that the case $a' in.not B$ is equally unacceptable.
+]
+
+#exercise[1.6.9][
+  Using the various tools and techniques developed in the last two sections (including the exercises from Section 1.5), give a compelling argument showing that $cal(P)(NN) ~ RR$.
+]
+
+#exercise[1.6.10][
+  As a final exercise, answer each of the following by establishing a 1--1 correspondence with a set of known cardinality.
+  +
+    Is the set of all functions from ${0,1}$ to $NN$ countable or uncountable?
+  +
+    Is the set of all functions from $NN$ to ${0,1}$ countable or uncountable?
+  +
+    Given a set $B$, a subset $cal(A)$ of $cal(P)(B)$ is called an _antichain_ if no element of $cal(A)$ is a subset of any other element of $cal(A)$.
+    Does $cal(P)(NN)$ contain an uncountable antichain?
+]
+
 = Sequences and Series
 
 == Discussion: Rearrangements of Infinite Series
