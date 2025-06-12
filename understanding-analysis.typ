@@ -86,13 +86,13 @@
 
 #exercise[1.2.8][
   Here are two important definitions related to a function $f: A -> B$.
-  The function $f$ is _one-to-one_ (1-1) if $a_1 != a_2$ in $A$ implies that $f(a_1) != f(a_2)$ in $B$.
+  The function $f$ is _one-to-one_ (1--1) if $a_1 != a_2$ in $A$ implies that $f(a_1) != f(a_2)$ in $B$.
   The function $f$ is _onto_ if, given any $b in B$, it is possible to find an element $a in A$ for which $f(a) = b$.
 
   Give an example of each or state that the request is impossible:
-  + $f: NN -> NN$ that is 1-1 but not onto.
-  + $f: NN -> NN$ that is onto but not 1-1.
-  + $f: NN -> ZZ$ that is 1-1 and onto.
+  + $f: NN -> NN$ that is 1--1 but not onto.
+  + $f: NN -> NN$ that is onto but not 1--1.
+  + $f: NN -> ZZ$ that is 1--1 and onto.
 ]
 
 #exercise[1.2.9][
@@ -288,10 +288,185 @@
 ]
 
 #exercise[1.4.4][
-  Let $a < b$ be real numbers #TODO[finish this]
+  Let $a < b$ be real numbers and consider the set $T = QQ inter [a,b]$.
+  Show $sup T = b$.
+]
+
+#exercise[1.4.5][
+  Using Exercise 1.4.1, supply a proof for Corollary 1.4.4 by considering the real $a - sqrt(2)$ and $b - sqrt(2)$.
+]
+
+#exercise[1.4.6][
+  Recall that a set $B$ is _dense_ in $RR$ if an element of $B$ can be found between any two real numbers $a < b$.
+  Which of the following sets are dense in $RR$?
+  Take $p in ZZ$ and $q in NN$ in every case.
+  + The set of all rational numbers $p slash q$ with $q <= 10$.
+  + The set of all rational numbers $p slash q$ with $q$ a power of $2$.
+  + The set of all rational numbers $p slash q$ with $10 abs(p) >= q$.
+]
+
+#exercise[1.4.7][
+  Finish the proof of Theorem 1.4.5 by showing that the assumption $alpha^2 > 2$ leads to a contradiction of the fact that $alpha = sup T$.
+]
+
+#exercise[1.4.8][
+  Give an example of each or state that the request is impossible.
+  When a request is impossible, provide a compelling argument for why this is the case.
+  +
+    Two sets $A$ and $B$ with $A inter B = emptyset$, $sup A = sup B$, $sup A in.not A$ and $sup B in.not B$.
+  +
+    A sequence of nested open intervals $J_1 supset.eq J_2 supset.eq J_3 supset.eq dots.c$ with $inter.big_(n=1)^oo J_n$ nonempty but containing only a finite number of elements.
+  +
+    A sequence of nested unbounded closed intervals $L_1 supset.eq L_2 supset.eq L_3 supset.eq dots.c$ with $inter.big_(n=1)^oo L_n = emptyset$.
+    (An unbounded closed interval has the form $[a, oo) = {x in RR : x >= a}$.)
+  +
+    A sequence of closed bounded (not necessarily nested) intervals $I_1, I_2, I_3, dots$ with the property that $inter.big_(n=1)^N I_n != emptyset$ for all $N in NN$, but $inter.big_(n=1)^oo I_n = emptyset$.
 ]
 
 == Cardinality
+
+#exercise[1.5.1][
+  Finish the following proof for Theorem 1.5.7.
+  
+  Assume $B$ is a countable set.
+  Thus, there exists $f : NN -> B$, which is 1--1 and onto.
+  Let $A subset.eq B$ be an infinite subset of $B$.
+  We must show that $A$ is countable.
+
+  Let $n_1 = min{n in NN : f(n) in A}$.
+  As a start to a definition of $g : NN -> A$, set $g(1) = f(n_1)$.
+  Show how to inductively continue this process to produce a 1--1 function $g$ form $NN$ onto $A$.
+]
+
+#exercise[1.5.2][
+  Review the proof of Theorem $1.5.6$, part (ii) showing that $RR$ is uncountable, and then find the flaw in the following erroneous proof that $QQ$ is uncountable:
+
+  Assume, for contradiction, that $QQ$ is countable.
+  Thus we can write $QQ = {r_1, r_2, r_3, dots}$ and, as before, construct a nested sequence of closed intervals with $r_n in.not I_n$.
+  Our construction implies $inter.big_(n=1)^oo I_n$ while NIP implies $inter.big_(n=1)^oo I_n != emptyset$.
+  This contradiction implies $QQ$ must therefore be uncountable.
+]
+
+#exercise[1.5.3][
+  Use the following outline to supply proofs for the statements in Theorem 1.5.8.
+  +
+    First, prove statement (i) for two countable sets, $A_1$ and $A_2$.
+    Example 1.5.3 (ii) may be a useful reference.
+    Some technicalities can be avoided by first replacing $A_2$ with the set $B_2 = A_2 setdiff A_1 = {x in A_2 : x in.not A_1}$.
+    The point of this s that the union $A_1 union B_2$ is equal to $A_1 union A_2$ and the sets $A_1$ and $B_2$ are disjoint.
+    (What happens if $B_2$ is finite?)
+
+    Now, explain how the more general statement in (i) follows.
+  +
+    Explain why induction _cannot_ be used to prove part (ii) of Theorem 1.5.8 from part (i).
+  +
+    Show how arranging $NN$ into the two-dimensional array
+    $
+      mat(
+        delim: #none,
+        column-gap: #1em,
+        1, 3, 6, 10, 15, dots.c;
+        2, 5, 9, 14, dots.c;
+        4, 8, 13, dots.c;
+        7, 12, dots.c;
+        11, dots.c;
+        dots.v
+      )
+    $
+    leads to a proof of Theorem 1.5.8 (ii).
+]
+
+#exercise[1.5.4][
+  + Show $(a,b) ~ RR$ for any interval $(a,b)$.
+  +
+    Show that an unbounded interval like $(a, oo) = {x : x > a}$ has the same cardinality as $RR$ as well.
+  +
+    Using open intervals makes it more convenient to produce the required 1--1, onto functions, but it is not really necesssary.
+    Show that $[0,1) ~ (0,1)$ by exhibiting a 1--1 onto function between the two sets.
+]
+
+#exercise[1.5.5][
+  + Why is $A ~ A$ for every set $A$?
+  +
+    Given sets $A$ and $B$, explain why $A ~ B$ is equivalent to asserting $B ~ A$.
+  +
+    For three sets $A$, $B$, and $C$, show that $A ~ B$ and $B ~ C$ implies $A ~ C$.
+    These three properties are what is meant by saying that $~$ is an _equivalence relation_.
+]
+
+#exercise[1.5.6][
+  +
+    Give an example of a countable collection of disjoint open intervals.
+  +
+    Give an example of an uncountable collection of disjoint open intervals, or argue that no such collection exists.
+]
+
+#exercise[1.5.7][
+  Consider the open interval $(0,1)$, and let $S$ be the set of points in the open unit square; that is, $S = {(x,y) : 0 < x, y < 1}$.
+  +
+    Find a 1--1 function that maps $(0,1)$ into, but not necessarily onto, $S$.
+    (This is easy.)
+  +
+    Use the fact that every real number has a decimal expansion to produce a 1--1 function that maps $S$ into $(0,1)$.
+    Discuss whether the formulated function is onto.
+    (Keep in mind that any terminating decimal expansion such as $.235$ represents the same real number as $.234999 dots$.)
+  The Schröder--Bernstein Theorem discussed in Exercise 1.5.11 can now be applied to conclude that $(0,1) ~ S$.
+]
+
+#exercise[1.5.8][
+  Let $B$ be a set of positive real numbers with the property that adding together any finite subset of elements from $B$ always gives a sum of $2$ or less.
+  Show $B$ must be finite or countable.
+]
+
+#exercise[1.5.9][
+  A real number $x in RR$ is called _algebraic_ if there exist integers $a_0, a_1, a_2, dots, a_n in ZZ$, not all zero, such that
+  $
+    a_n x^n + a_(n-1) x^(n-1) + dots.c + a_1 x + a_0 = 0.
+  $
+  Said another way, a real number is algebraic if it is the root of a polynomial with integer coefficients.
+  Real numbers that are not algebraic are called _transcendental_ numbers. Reread the last paragraph of Section 1.1.
+  The final question posed here is closely related to the question of whether or not transcendental numbers exist.
+  + Show that $sqrt(2)$, $root(3, 2)$, and $sqrt(3) + sqrt(2)$ are algebraic.
+  +
+    Fix $n in NN$, and let $A_n$ be the algebraic numbers obtained as roots of polynomials with integer coefficients that have degree $n$.
+    Using the fact that every polynomial has a finite number of roots, show that $A_n$ is countable.
+  +
+    Now, argue that the set of all algebraic numbers is countable.
+    What may we conclude about the set of transcendental numbers?
+]
+
+#exercise[1.5.10][
+  +
+    Let $C subset.eq [0,1]$ be uncountable.
+    Show that there exists $a in (0,1)$ such that $C inter [a,1]$ is uncountable.
+  +
+    Now let $A$ be the set of all $a in (0,1)$ such that $C inter [a,1]$ is uncountable, and set $alpha = sup A$.
+    Is $C inter [alpha, 1]$ an uncountable set?
+  +
+    Does the statement in (a) remain true if "uncountable" is replaced by "infinite"?
+]
+
+#exercise[1.5.11 (Schröder--Bernstein Theorem)][
+  Assume there exists a 1--1 function $f : X -> Y$ and another 1--1 function $g : Y -> X$.
+  Follow the steps to show that there exists a 1--1, onto function $h : X -> Y$ and hence $X ~ Y$.
+
+  The strategy is to partition $X$ and $Y$ into components
+  $
+    X = A union A' wide "and" wide Y = B union B'
+  $
+  with $A inter A' = emptyset$ and $B inter B' = emptyset$, in such a way that $f$ maps $A$ onto $B$, and $g$ maps $B'$ onto $A'$.
+  +
+    Explain how achieving this would lead to a proof that $X ~ Y$.
+  +
+    Set $A_1 = X setdiff g(Y) = {x in X : x in.not g(Y)}$ (what happens if $A_1 = emptyset$?) and inductively define a sequence of sets by letting $A_(n+1) = g(f(A_n))$.
+    Show that ${A_n : n in NN}$ is a pairwise disjoint collection of subsets of $X$, while ${f(A_n) : n in NN}$ is a similar collection in $Y$.
+  +
+    Let $A = union.big_(n=1)^oo A_n$ and $B = union.big_(n=1)^oo f(A_n)$.
+    Show that $f$ maps $A$ onto $B$.
+  +
+    Let $A' = X setdiff A$ and $B' = Y setdiff B$.
+    Show $g$ maps $B'$ onto $A'$.
+]
 
 == Cantor's Theorem
 
