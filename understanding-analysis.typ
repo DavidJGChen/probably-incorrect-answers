@@ -1,7 +1,7 @@
 #import "@local/david:1.0.1": *
 
 #show: david.with(
-  class: "Self-study",
+  class: "Summer 2025",
   title: [Understanding Analysis Solutions],
   student: "David J Chen",
   date: datetime.today(),
@@ -24,10 +24,33 @@
     Where does the proof of Theorem 1.1.1 break down if we try to use it to prove $sqrt(4)$ is irrational?
 ]
 #solution[
+  +
+    Assume for sake of contradiction (AFSOC) that $sqrt(3) in QQ$.
+    This implies that $sqrt(3) = p/q$, where $p in ZZ$ and $q in NN$, and $gcd(p, q) = 1$.
+
+    Therefore, $p^2 = 3 q^2$, which means that $3$ divides $p^2$.
+
+    Since $3$ is prime, $p$ must be divisible by $3$. Therefore for some $k in ZZ$,
+    $
+      p = 3k => 9k^2 = 3q^2 => 3k^2 = q^2.
+    $
+    This implies that $q^2$ and thus $q$ is also divisible by $3$, which is a contradiction.
+
+    A similar proof does not quite work for $sqrt(6)$ and needs to be adjusted, since $6$ is not prime and thus we cannot directly say that $6$ divides $p^2$ implies $6$ divides $p$.
+  +
+    It is exactly the step where we try to show that $4$ divides $q^2$ implies that $4$ divides $q$.
+    In fact, if we have just that $2$ (and not $4$) divides $q$, then clearly $4$ still divides $q^2$.
 ]
 
 #exercise[1.2.2][
   Show that there is no rational number $r$ satisfying $2^r = 3$.
+]
+
+#solution[
+  AFSOC that there does exist $r = p/q$, with coprime $p in ZZ$ and $q in NN$.
+
+  Then $2^r = 2^(p slash q) = 3$, which implies that $2^p = 3^q$.
+  This is false.
 ]
 
 #exercise[1.2.3][
@@ -45,8 +68,30 @@
     $A inter (B union C) = (A inter B) union (A inter C)$.
 ]
 
+#solution[
+  #TODO[Skipped]
+]
+
 #exercise[1.2.4][
   Produce an infinite collection of sets $A_1, A_2, A_3, dots$ with the property that every $A_i$ has an infinite number of elements, $A_i inter A_j = emptyset$ for all $i != j$, and $union.big_(i=1)^oo A_i = NN$.
+]
+
+#solution[
+  Assume we have infinite primes. Since they are a subset of $NN$, they are enumerable ($p_1 = 2, p_2 = 3, p_3 = 5, p_4 = 7, dots$).
+
+  Also assume we have unique prime decomposition.
+
+  Now let
+  $
+    A_i = {n in NN mid(|) p_i "is the smallest prime in the decomposition of" n },
+  $
+  with the additional modification that $A_1$ includes $1$.
+
+  They are all disjoint, since there can only be one smallest prime factor of each number.
+
+  Their union forms the natural numbers, since every natural number $n$ has a unique finite prime factor decomposition, and by the the fact that every non-empty subset of the natural numbers will have a smallest element, $n$ must be an element of some $A_i$.
+
+  Clearly, every set is also infinite, since we can consider that each $A_i$ contains the powers of $p_i$.
 ]
 
 #exercise[1.2.5 (De Morgan's Laws)][
@@ -60,6 +105,10 @@
     Show $(A union B)^complement = A^complement union B^complement$ by demonstrating inclusion both ways.
 ]
 
+#solution[
+  #TODO[Skipped]
+]
+
 #exercise[1.2.6][
   +
     Verify the triangle inequality in the special case where $a$ and $b$ have the same sign.
@@ -69,6 +118,25 @@
     Prove $abs(a - b) <= abs(a - c) + abs(c - d) + abs(d - b)$ for all $a$, $b$, $c$, and $d$.
   +
     Prove $abs(abs(a) - abs(b)) <= abs(a - b)$. (The unremarkable identity $a = a - b + b$ may be useful.)
+]
+
+#solution[
+  + #TODO[skipped]
+  + #TODO[skipped]
+  + #TODO[skipped]
+  +
+    Using the "unremarkable identity", for any $a$ and $b$,
+    $
+      abs(a) &= abs(a - b + b)\
+      &<= abs(a-b) + abs(b).
+    $
+    So first we have $abs(a) - abs(b) <= abs(a-b)$.
+    Next, we proceed the same exact way using $abs(b)$, and we get that $abs(b) - abs(a) <= abs(b-a)$.
+
+    Since $abs(a-b) = abs(b-a)$, we can combine the above two facts and get that
+    $
+      abs(abs(a) - abs(b)) <= abs(a - b).
+    $
 ]
 
 #exercise[1.2.7][
