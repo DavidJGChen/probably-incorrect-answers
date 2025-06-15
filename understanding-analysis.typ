@@ -69,7 +69,7 @@
 ]
 
 #solution[
-  #TODO[Skipped]
+  #TODO[skipped]
 ]
 
 #exercise[1.2.4][
@@ -106,7 +106,7 @@
 ]
 
 #solution[
-  #TODO[Skipped]
+  #TODO[skipped]
 ]
 
 #exercise[1.2.6][
@@ -152,6 +152,51 @@
     Form and prove a conjecture about the relationship between $g(A union B)$ and $g(A) union g(B)$ for an arbitrary function $g$.
 ]
 
+#solution[
+  +
+    $A inter B = [1,2]$. $f(A) = [0, 4]$, and $f(B) = [1, 16]$.
+    So therefore, $f(A) inter f(B) = [1, 4]$.
+
+    $f(A inter B) = [1,4]$ as well.
+    So equality holds.
+
+    $A union B = [0, 4]$, so $f(A union B) = [0, 16] = f(A) union f(B)$. 
+    
+    Therefore equality holds in both cases.
+  +
+    Let $A = {1}$, and $B = {-1}$.
+
+    Then $A inter B = emptyset$, but $f(A) = {1} = f(B)$, so $f(A) inter f(B) = {1} != emptyset$.
+  +
+    For arbitrary $y in g(A inter B)$, we have that $y = g(x)$, where $x in A inter B$.
+
+    Therefore, $x in A$ and $x in B$, which implies that $g(x) in g(A)$ and $g(x) in g(B)$.
+
+    This further implies that $y = g(x) in g(A) inter g(B)$.
+
+    Thus we have that $g(A inter B) subset.eq g(A) inter g(B)$.
+
+    This doesn't work the other way around, since we could have some $y = g(x) = g(z)$, where $x != z$, and $x in A$ and $z in B$, and neither exists in the other set.
+  +
+    My conjecture is that
+    $
+      g(A inter B) = g(A) union g(B).
+    $
+    To show this, I first prove that $g(A union B) subset.eq g(A) union g(B)$, then the other way around.
+
+    *$g(A union B) subset.eq g(A) union g(B)$:*
+
+    For arbitrary $y in g(A union B)$, we have that $y = g(x)$ such that $x$ in $A$ or $B$.
+    In either case, it must be such that $y$ is in  $g(A)$ or $g(B)$ and thus be in $g(A) union g(B)$.
+
+    *$g(A) union g(B) subset.eq g(A union B)$:*
+
+    If $y in g(A)$, then we have that $y = g(x)$ where $x in A$, and therefore $x in A union B ==> y = g(x) in g(A union B)$.
+    Same for $y in g(B)$.
+
+    Thus we have proved both directions and shown set equality.
+]
+
 #exercise[1.2.8][
   Here are two important definitions related to a function $f: A -> B$.
   The function $f$ is _one-to-one_ (1--1) if $a_1 != a_2$ in $A$ implies that $f(a_1) != f(a_2)$ in $B$.
@@ -161,6 +206,10 @@
   + $f: NN -> NN$ that is 1--1 but not onto.
   + $f: NN -> NN$ that is onto but not 1--1.
   + $f: NN -> ZZ$ that is 1--1 and onto.
+]
+
+#solution[
+  #TODO[skipped]
 ]
 
 #exercise[1.2.9][
@@ -173,6 +222,22 @@
   +
     The good behavior of preimages demonstrated in (a) is completely general.
     Show that for an arbitrary function $g: RR -> RR$, it is always true that $g^(-1)(A inter B) = g^(-1)(A) inter g^(-1)(B)$ and $g^(-1)(A union B) = g^(-1)(A) union g^(-1)(B)$ for all sets $A, B subset.eq RR$.
+]
+
+#solution[
+  + #TODO[skipped]
+  +
+    Let $x in g^(-1)(A inter B)$.
+    This implies that $g(x) in A inter B$, which implies that $x in g^(-1)(A)$ and $x in g^(-1)(B)$.
+
+    From this we can conclude that $x in g^(-1)(A) inter g^(-1)(B)$.
+
+    Going backwards, we see that if $x in g^(-1)(A) inter g^(-1)(B)$, then it must be the case that $g(x) in A$ and $g(x) in B$, which leads us to conclude that $x in g^(-1)(A inter B)$.
+
+    For union, we have if $x in g^(-1)(A union B)$, then $g(x) in A union B$.
+    From the two cases, we will have that either $x in g^(-1)(A)$ or $x in g^(-1)(B)$, which lets us conclude that $x in g^(-1)(A) union g^(-1)(B)$.
+
+    Backwards, we have that either $g(x) in A$ or $g(x) in B$ depending on the cases, so therefore $g(x) in A union B$ and thus $x in g^(-1)(A union B)$.
 ]
 
 #exercise[1.2.10][
@@ -197,12 +262,20 @@
     Between every two distinct real numbers there is a rational number.
 ]
 
+#solution[
+  #TODO[skipped]
+]
+
 #exercise[1.2.12][
   Let $y_1 = 6$, and for each $n in NN$ define $y_(n+1) = (2y_n - 6) slash 3$.
   +
     Use induction to prove that the sequence satisfies $y_n > -6$ for all $n in NN$.
   +
     Use another induction argument to show the sequence $(y_1, y_2, y_3,dots)$ is decreasing.
+]
+
+#solution[
+  #TODO[skipped]
 ]
 
 #exercise[1.2.13][
@@ -225,6 +298,21 @@
     Nevertheless, the infinite version of De Morgan's Law stated in (b) is a valid statement. Provide a proof that does not use induction.
 ]
 
+#solution[
+  + #TODO[skipped]
+  +
+    Let $B_i = NN setdiff {i}$.
+    Any finite intersection will still have infinitely many elements, but the entire infinite intersection cannot have any elements.
+  +
+    Let $x in (union.big_(i=1)^oo A_i)^complement$.
+    Then we know that for all $i$, $x != A_i$.
+    (Otherwise, we would have that $x in union.big_(i=1)^oo A_i$.)
+
+    Therefore, for all $i$, $x in  A_i^complement$, which lets us conclude that $x in inter.big_(i=1)^oo A_i^complement$.
+
+    For the other direction, we just proceed from each step backwards and see that it works fine.
+]
+
 == The Axiom of Completeness
 
 #exercise[1.3.1][
@@ -232,6 +320,10 @@
     Write a formal definition in the style of Definition 1.3.2 or the _infimum_ or _greatest lower bound_ of a set.
   +
     Now, state and prove a version of Lemma 1.3.8 for greatest lower bounds.
+]
+
+#solution[
+  #TODO[skipped]
 ]
 
 #exercise[1.3.2][
@@ -244,11 +336,39 @@
     A bounded subset of $QQ$ that contains its supremum but not its infimum.
 ]
 
+#solution[
+  + Let $B = {1}$, hmm...
+  +
+    This cannot be possible.
+    Since there are finite elements, there is necessarily a maximum and minimum, so the set must contain both of them.
+  +
+    Let $A = {1/n : n in NN}$.
+    The supremum is $1$, which is contained.
+    The infimum is clearly $0$, which is not contained.
+]
+
 #exercise[1.3.3][
   +
     Let $A$ be nonempty and bounded below, and define $B = {b in RR : b "is a lower bound for" A}$. Show that $sup B = inf A$.
   +
     Use (a) to explain why there is no need to assert that greatest lower bounds exist as part of the Axiom of Completeness.
+]
+
+#solution[
+  +
+    First, we know that the supremum of $B$ must exist, since it is bounded above by any element of $A$.
+
+    So let $b' = sup B$, and $a' = inf A$.
+
+    AFSOC that there exists some $a in A$ such that $a < b'$.
+    Let $epsilon.alt = b' - a > 0$, and then we know that there must be some $b in B$ such that $b > b' - epsilon.alt = a$, so we have $b > a$.
+    This is a contradiction, since we assumed that $b$ is a lower bound for all elements in $A$.
+
+    Therefore, we have shown that $b'$ is a lower bound for $A$, and since it is a supremum of $B$, it must be the greatest such lower bound.
+    This is exactly the definition of infimum of $A$.
+  +
+    Since the Axiom of Completeness gives us that smallest upper bounds exist, we can use part $(a)$ to show that greatest lower bounds also exist.
+    Man this is not a satisfying answer.
 ]
 
 #exercise[1.3.4][
