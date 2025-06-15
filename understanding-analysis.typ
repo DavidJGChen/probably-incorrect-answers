@@ -367,8 +367,7 @@
     Therefore, we have shown that $b'$ is a lower bound for $A$, and since it is a supremum of $B$, it must be the greatest such lower bound.
     This is exactly the definition of infimum of $A$.
   +
-    Since the Axiom of Completeness gives us that smallest upper bounds exist, we can use part $(a)$ to show that greatest lower bounds also exist.
-    Man this is not a satisfying answer.
+    For any set bounded from below, we can take the set of all lower bounds, and use part (a) to show that the greatest lower bound is the smallest upper bound of the set of lower bounds.
 ]
 
 #exercise[1.3.4][
