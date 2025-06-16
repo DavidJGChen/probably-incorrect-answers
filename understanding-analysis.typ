@@ -121,9 +121,9 @@
 ]
 
 #solution[
-  + #TODO[skipped]
-  + #TODO[skipped]
-  + #TODO[skipped]
+  + #TODO[part skipped]
+  + #TODO[part skipped]
+  + #TODO[part skipped]
   +
     Using the "unremarkable identity", for any $a$ and $b$,
     $
@@ -225,7 +225,7 @@
 ]
 
 #solution[
-  + #TODO[skipped]
+  + #TODO[part skipped]
   +
     Let $x in g^(-1)(A inter B)$.
     This implies that $g(x) in A inter B$, which implies that $x in g^(-1)(A)$ and $x in g^(-1)(B)$.
@@ -299,7 +299,7 @@
 ]
 
 #solution[
-  + #TODO[skipped]
+  + #TODO[part skipped]
   +
     Let $B_i = NN setdiff {i}$.
     Any finite intersection will still have infinitely many elements, but the entire infinite intersection cannot have any elements.
@@ -378,6 +378,18 @@
     Consider $sup(union.big_(k=1)^oo A_k)$. Does the formula in (a) extend to the infinite case?
 ]
 
+#solution[
+  +
+    $sup(A_1 union A_2) = max(sup A_1, sup A_2)$.
+
+    Extended to $n in NN$, we have
+    $
+      sup(union.big_(k=1)^n A_k) = max_(k in [n]) (sup A_k).
+    $
+  +
+    This does not extend to infinite max, since it may be possible for the infinite max to exist. For example, if we have each $A_k$ simply consist of the natural number $k$, then there is no supremum and no max.
+]
+
 #exercise[1.3.5][
   As in Example 1.3.7, let $A in RR$ be nonempty and bounded above, and let $c in RR$.
   This time define the set $c A = {c a : a in A}$.
@@ -385,6 +397,12 @@
     If $c >= 0$, show that $sup(c A) = c sup A$.
   +
     Postulate a similar type of statement for $sup(c A)$ for the case $c < 0$.
+]
+
+#solution[
+  #TODO[
+    skipped
+  ]
 ]
 
 #exercise[1.3.6][
@@ -400,8 +418,40 @@
     Construct another proof of this same fact using Lemma 1.3.8.
 ]
 
+#solution[
+  +
+    Let $c in A + B$.
+    Then $c = a + b$, with $a in A$, and $b in B$.
+
+    Now, we have that $a <= s$ and $b <= t$, so therefore, $c <= s + t$.
+  +
+    For all $b in B$, we have that $a + b <= u$.
+    Thus, $u - a >= b$, so $u - a$ is an upper bound for $B$.
+
+    Since $t$ is the least upper bound for $B$, we now have that $t <= u - a$.
+  +
+    Let $u$ be an arbitrary upper bound for $A + B$.
+    By (b), we have that for all $a in A$, $t <= u - a$.
+
+    Therefore we also have that $a <= u - t$, showing that $u - t$ is an upper bound on $A$.
+    Since $s$ is the least upper bound on $A$, we have $s <= u - t$, and thus have $s + t <= u$.
+    This shows that $s + t$ must be the least upper bound and therefore is the supremum of $A + B$.
+  +
+    Choose arbitrary $epsilon.alt > 0$.
+    For $epsilon.alt / 2$, there must exist $a in A$ and $b in B$ such that $a >= s - epsilon.alt / 2$ and $b >= t - epsilon.alt / 2$.
+
+    Therefore, $s + t - epsilon.alt <= a + b$ for some $a + b$ in $A + B$.
+
+    But from part (a), we know that $s + t$ itself is an upper bound of $A + B$.
+    Therefore, it must be that $s + t$ is the supremum of $A + B$.
+]
+
 #exercise[1.3.7][
   Prove that if $a$ is an upper bound for $A$, and if $a$ is also an element of $A$, then it must be that $a = sup(A)$.
+]
+
+#solution[
+  #TODO[skipped]
 ]
 
 #exercise[1.3.8][
@@ -416,11 +466,22 @@
     ${m slash (m + n) : m, n in NN}$.
 ]
 
+#solution[
+  + supremum is $1$, infimum is $0$.
+  + supremum is $1$, infimum is $-1$.
+  + supremum is $1/3$, infimum is $1/4$.
+  + supremum is $1$, infimum is $0$.
+]
+
 #exercise[1.3.9][
   +
     If $sup A < sup B$, show that there exists an element $b in B$ that is an upper bound for $A$.
   +
     Give an example to show that this is not always the case if we only assume $sup A <= sup B$.
+]
+
+#solution[
+  #TODO[skipped]
 ]
 
 #exercise[1.3.10 (Cut Property)][
@@ -438,6 +499,44 @@
     To drive this point home, give a concrete example showing that the Cut Property is not a valid statement when $RR$ is replaced by $QQ$.
 ]
 
+#solution[
+  +
+    $A$ is clearly bounded by above, just pick any element in $B$.
+
+    Using the Axiom of Completeness, there must exist some $c = sup A$.
+    By definition, $c >= x$ for all $x in A$.
+
+    By 1.3.3, $c$ is the infimum of $B$, so for all $x in B$, we have that $b >= c$.
+  +
+    Assume the Cut Property.
+
+    Let $B$ be the set of upper bounds of $E$.
+    Now let $A = RR setdiff B$.
+
+    Now note that for any $a in A$ and $b in B$, we have that $a < b$.
+    This is because if we assume otherwise, then we see that $a$ is an upper bound for $E$ and should have been an element of $B$ in the first place.
+
+    Now, from the Cut Property, we have that there exists a $c$ such that $a <= c <= b$.
+
+    Now, I show that $c$ is an upper bound for $e$.
+
+    AFSOC that there exists some $e in E$ such that $e > c$.
+    Examine $epsilon.alt = e - c > 0$.
+
+    Since $epsilon.alt/2 + c > c$, it must be a member of $B$ and thus be an upper bound for $E$.
+
+    However, we also have that $epsilon.alt / 2 + c < e$, so it cannot be an upper bound for $E$.
+    Contradiction!
+
+    Thus, since $c$ is an upper bound and is less than or equal to all upper bounds of $E$, we have that $c$ exists and is the supremum of $E$.
+  +
+    Let $A$ be ${x in QQ : x^2 <= 2}$, and $B := {x in QQ : x^2 > 2}$.
+
+    They clearly are disjoint sets that form the rationals.
+
+    But we have proven that there cannot be such a $c in QQ$ such that it exists in the middle of these two sets.
+]
+
 #exercise[1.3.11][
   Decide if the following statements about suprema and infima are true or false.
   Give a short proof for those that are true.
@@ -448,6 +547,19 @@
     If $sup A < inf B$ for sets $A$ and $B$, then there exists a $c in RR$ satisfying $a < c < b$ for all $a in A$ and $b in B$.
   +
     If there exists a $c in RR$ satisfying $a < c < b$ for all $a in A$ and $b in B$, then $sup A < inf B$.
+]
+
+#solution[
+  +
+    This is true.
+    AFSOC false.
+    Then there must exist some $a in A$ such that it is greater than $sup B$ but less than or equal to $sup A$.
+
+    But since $A subset.eq B$, it must be an element of $B$ as well, which leads us to a contradiction since we assumed it would be greater than $sup B$.
+  +
+    True. #TODO[skipped]
+  +
+    False. #TODO[skipped]
 ]
 
 == Consequences of Completeness
@@ -464,9 +576,33 @@
     Given two irrational numbers $s$ and $t$, what can we say about $s + t$ and $s t$?
 ]
 
+#solution[
+  +
+    Let $a = m / n$, $b = p / q$.
+    Then $m p in ZZ$, and $n q in NN$.
+
+    Therefore $a b = (m p) / (n q) in QQ$.
+
+    $m q in ZZ$, and $n p in ZZ$, so therefore $a + b = (m q + n p) / (n q) in QQ$.
+  + #TODO[skipped]
+  + #TODO[skipped]
+]
+
 #exercise[1.4.2][
   Let $A subset.eq RR$ be nonempty and bounded above, and let $s in RR$ have the property that for all $n in NN$, $s + 1/n$ is an upper bound for $A$ and $s - 1/n$ is not an upper bound for $A$.
   Show $s = sup A$.
+]
+
+#solution[
+  AFSOC $s > sup A$.
+  
+  Then there must exist some $n in NN$ such that $1 / n < s - sup A$.
+
+  So then, $s - 1/n > sup A$, which is a contradiction with the condition that $s - 1 / n$ cannot be an upper bound.
+
+  The other direction $s < sup A$ works the same way.
+
+  Therefore it must be that $s = sup A$.
 ]
 
 #exercise[1.4.3][
@@ -474,13 +610,37 @@
   Notice that this demonstrates that the intervals in the Nested Interval Property must be closed for the conclusion of the theorem to hold.
 ]
 
+#solution[
+  AFSOC there exists some $x in inter.big_(n=1)^oo (0, 1 slash n)$.
+
+  It must be that $x > 0$, and therefore, there exists some $n in NN$ such that $1 / n  < x$.
+
+  However, $x$ would then be excluded from the interval $(0, 1 / n)$, which is a contradiction.
+]
+
 #exercise[1.4.4][
   Let $a < b$ be real numbers and consider the set $T = QQ inter [a,b]$.
   Show $sup T = b$.
 ]
 
+#solution[
+  $b$ is clearly an upper bound.
+
+  Let $epsilon.alt > 0$, and also choose $epsilon.alt < b - a$.
+
+  There must exist $r in QQ$ such that $b - epsilon < r < b$.
+  Therefore $r in T$, which shows that $sup T = b$.
+]
+
 #exercise[1.4.5][
   Using Exercise 1.4.1, supply a proof for Corollary 1.4.4 by considering the real $a - sqrt(2)$ and $b - sqrt(2)$.
+]
+
+#solution[
+  First, choose a rational $y$ such that $a - sqrt(2) < y < b - sqrt(2)$.
+  Next, we see clearly that $y + sqrt(2) in II$.
+
+  Now, we can see that $a < y + sqrt(2) < b$.
 ]
 
 #exercise[1.4.6][
@@ -492,8 +652,16 @@
   + The set of all rational numbers $p slash q$ with $10 abs(p) >= q$.
 ]
 
+#solution[
+  #TODO[skipped]
+]
+
 #exercise[1.4.7][
   Finish the proof of Theorem 1.4.5 by showing that the assumption $alpha^2 > 2$ leads to a contradiction of the fact that $alpha = sup T$.
+]
+
+#solution[
+
 ]
 
 #exercise[1.4.8][
@@ -743,3 +911,95 @@
 == Discussion: Rearrangements of Infinite Series
 
 == The Limit of a Sequence
+
+#exercise[2.2.1][
+  What happens if we reverse the order of the quantifiers in Definition 2.2.3?
+
+  _Definition:_ A sequence $(x_n)$ _verconges_ to $x$ if _there exists_ an $epsilon.alt > 0$ such that _for all_ $N in NN$ it is true that $n >= N$ implies $abs(x_n - n) < epsilon.alt$.
+
+  Give an example of a vercongent sequence.
+  Is there an example of a vercongent sequence that is divergent?
+  Con a sequence verconge to two different values?
+  What exactly is being described in this strange definition?
+]
+
+#exercise[2.2.2][
+  Verify, using the definition of convergence of a sequence, that the following sequences converge to the proposed limit.
+  + $lim (2n+1)/(5n+4) = 2/5$.
+  + $lim (2n^2)/(n^3+3) = 0$.
+  + $lim (sin(n^2))/(root(3, n))$.
+]
+
+#exercise[2.2.3][
+  Describe what we would have to demonstrate in order to disprove each of the following statements.
+  +
+    At every college in the United States, there is a student who is at least seven feet tall.
+  +
+    For all colleges in the United States, there exists a professor who gives every student a grade of either A or B.
+  +
+    There exists a college in the United States where every student is at least six feet tall.
+]
+
+#exercise[2.2.4][
+  Give an example of each or state that the request is impossible.
+  For any that are impossible, give a compelling argument for why that is the case.
+  +
+    A sequence with an infinite number of ones that does not converge to one.
+  +
+    A sequence with an infinite number of ones that converges to a limit not equal to one.
+  +
+    A divergent sequence such that for every $n in NN$ it is possible to find $n$ consecutive ones somewhere in the sequence.
+]
+
+#exercise[2.2.5][
+  Let $[[x]]$ be the greatest integer less than or equal to $x$.
+  For example, $[[pi]] = 3$ and $[[3]] = 3$.
+  For each sequence, find $lim a_n$ and verify it with the definition of convergence.
+  + $a_n = [[5 slash n]]$,
+  + $a_n = [[(12 + 4 n) slash 3n]]$.
+  Reflecting on these examples, comment on the statement following Definition 2.2.3 that "the smaller the $epsilon.alt$-neighborhood, the larger $N$ may have to be."
+]
+
+#exercise[2.2.6][
+  Prove Theorem 2.2.7.
+  To get started, assume $(a_n) -> a$ and also that $(a_n) -> b$.
+  Now argue $a = b$.
+]
+
+#exercise[2.2.7][
+  Here are two useful definitions:
+  #enum(numbering: "(ia)")[
+    A sequence $(a_n)$ is _eventually_ in a set $A subset.eq RR$ if there exists an $N in NN$ such that $a_n in A$ for all $n >= N$.
+  ][
+    A sequence $(a_n)$ is _frequently_ in a set $A subset.eq RR$ if, for every $N in NN$, there exists an $n >= N$ such that $a_n in A$.
+    #enum(numbering: "(a)")[
+      Is the sequence $(-1)^n$ eventually or frequently in the set ${1}$?
+    ][
+      Which definition is stronger?
+      Does frequently imply eventually or dos eventually imply frequently?
+    ][
+      Give an alternate rephrasing of Definition 2.2.3B using either frequently or eventually.
+      Which is the term we want?
+    ][
+      Suppose an infinite number of terms of a sequence $(x_n)$ are equal to $2$.
+      Is $(x_n)$ necessarily eventually in the interval $(1.9, 2.1)$?
+      Is it frequently in $(1.9, 2.1)$?
+    ]
+  ]
+]
+
+#exercise[
+  For some additional practice with nested quantifiers, consider the following invented definition:
+
+  Let's call a sequence $(x_n)$ _zero-heavy_ if there exists $M in NN$ such that for all $N in NN$ there exists $n$ satisfying $N <= b <= N + M$ where $x_n = 0$.
+  + Is the sequence $(0, 1, 0, 0, 1, dots)$ zero heavy?
+  +
+    If a sequence is zero-heavy does it necessarily contain an infinite number of zeros?
+    If not, provide a counterexample.
+  +
+    If a sequence contains an infinite number of zeros, is it necessarily zero-heavy?
+    If not, provide a counter example.
+  +
+    Form the logical negation of the above definition.
+    That is, complete the sentence: A sequence is _not_ zero-heavy if....
+]
