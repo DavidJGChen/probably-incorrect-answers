@@ -906,6 +906,24 @@
     Does $cal(P)(NN)$ contain an uncountable antichain?
 ]
 
+#solution[
+  +
+    This is countable, since there only needs to be two natural numbers to specify the function fully.
+    This essentially reduces to the set with $(n,m) in NN^2$.
+  +
+    This is uncountable.
+    This is equivalent to the set of infinite sequences of $0$'s and $1$'s, which is shown to be uncountable due to a diagonalization argument.
+  +
+    There exists an uncountable antichain.
+    Consider the following bijection between an infinite binary sequence and a subset of the natural numbers:
+    $
+      f((b_n)) = {n : n = 2i + b_i}.
+    $
+    If a binary sequence is distinct from another binary sequence, then transformed into subset world, each subset will have an element that is not included in the other.
+    
+    Considering this bijection, this antichain must be uncountable.
+]
+
 = Sequences and Series
 
 == Discussion: Rearrangements of Infinite Series
