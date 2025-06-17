@@ -661,7 +661,11 @@
 ]
 
 #solution[
+  *Claim:* If we choose $1/(n_0) < (alpha^2 - 2)/(2 alpha)$, then we can show that $alpha - 1/n_0$ is still an upper bound for $T = {t in RR : t^2 < 2}$.
 
+  #proof[
+    Consider
+  ]
 ]
 
 #exercise[1.4.8][
