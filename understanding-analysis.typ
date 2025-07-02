@@ -975,8 +975,9 @@ No exercises in this section.
     There exists an uncountable antichain.
     Consider the following bijection between an infinite binary sequence and a subset of the natural numbers:
     $
-      f((b_n)) = {n : n = 2i + b_i}.
+      f((b_n)) = {n : n = 2i + b_i, i in NN}.
     $
+    In plain English, for every distinct pair of adjacent natural numbers, we select only one of them based off of the $i$th value of the binary sequence.
     If a binary sequence is distinct from another binary sequence, then transformed into subset world, each subset will have an element that is not included in the other.
     
     Considering this bijection, this antichain must be uncountable.
