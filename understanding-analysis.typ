@@ -14,6 +14,8 @@
 
 == Discussion: The Irrationality of $sqrt(2)$
 
+No exercises in this section.
+
 == Some Preliminaries
 
 #exercise[1.2.1][
@@ -664,7 +666,15 @@
   *Claim:* If we choose $1/(n_0) < (alpha^2 - 2)/(2 alpha)$, then we can show that $alpha - 1/n_0$ is still an upper bound for $T = {t in RR : t^2 < 2}$.
 
   #proof[
-    Consider
+    Consider the following:
+    $
+      (alpha - 1/n)^2 &= alpha^2 - (2 alpha) / n + 1 / n^2\
+      &> alpha^2 - (2 alpha) / n.
+    $
+    We want to choose an $n$ such that $alpha^2 - (2 alpha) / n > 2$.
+    Note that if we choose $n_0$ as in the claim, we get that the inequality holds.
+
+    Thus, $alpha - 1/n_0$ is actually an upper bound on $T$ that is smaller than $alpha$, contradicting the assumption that $alpha = sup T$.
   ]
 ]
 
@@ -681,6 +691,34 @@
   +
     A sequence of closed bounded (not necessarily nested) intervals $I_1, I_2, I_3, dots$ with the property that $inter.big_(n=1)^N I_n != emptyset$ for all $N in NN$, but $inter.big_(n=1)^oo I_n = emptyset$.
 ]
+#solution[
+  +
+    Let $A = {q in QQ mid(bar) q < 0}$, and $B = {r in RR setdiff QQ mid(bar) r < 0}$.
+  +
+    Let $J_n = (-1/n, 1/n)$.
+    Then the only element in the intersection can be $0$.
+  +
+    Let $L_n = [n, oo)$.
+    This cannot have any element.
+  +
+    This is *impossible*, and we can prove it using the nested interval property.
+
+    #proof[
+      First, we use the fact that a non-empty intersection of two closed, bounded intervals must itself be a closed bounded interval.
+
+      Now, let
+      $
+        I'_n = inter.big_(m=1)^(n) I_m
+      $
+      define a new sequence of closed bounded intervals, which are nested by construction.
+
+      By the assumption that every finite intersection is non-empty, every $I'_n$ must also be a non-empty closed, bounded, interval.
+
+      It is also important to note that the finite and infinite intersection of this sequence is exactly equal to the finite and infinite intersection of the original sequence.
+
+      Now, we can apply the NIP to deduce that the infinite intersection must be non-empty, which disproves the original claim.
+    ]
+]
 
 == Cardinality
 
@@ -694,7 +732,15 @@
 
   Let $n_1 = min{n in NN : f(n) in A}$.
   As a start to a definition of $g : NN -> A$, set $g(1) = f(n_1)$.
-  Show how to inductively continue this process to produce a 1--1 function $g$ form $NN$ onto $A$.
+  Show how to inductively continue this process to produce a 1--1 function $g$ from $NN$ onto $A$.
+]
+
+#solution[
+  For $i > 1$, let $n_i = min{n in NN mid(:) f(n) in A, n > n_(i-1)}$.
+  This must exist since $A$ is an infinite set, thus there cannot be an upper bound on $n$ such that $f(n) in A$.
+
+  Now, just let $g(i) = f(n_i)$.
+  This is an injective function, since each $n_i$ is distinct and $f$ is an injective function.
 ]
 
 #exercise[1.5.2][
@@ -704,6 +750,10 @@
   Thus we can write $QQ = {r_1, r_2, r_3, dots}$ and, as before, construct a nested sequence of closed intervals with $r_n in.not I_n$.
   Our construction implies $inter.big_(n=1)^oo I_n$ while NIP implies $inter.big_(n=1)^oo I_n != emptyset$.
   This contradiction implies $QQ$ must therefore be uncountable.
+]
+
+#solution[
+  NIP is not true in general over the rationals, since the element could be an irrational.
 ]
 
 #exercise[1.5.3][
@@ -733,6 +783,10 @@
       )
     $
     leads to a proof of Theorem 1.5.8 (ii).
+]
+
+#solution[
+  #TODO[July 2]
 ]
 
 #exercise[1.5.4][
