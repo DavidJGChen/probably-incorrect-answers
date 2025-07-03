@@ -10,12 +10,21 @@ No exercises in this section.
 #exercise[2.2.1][
   What happens if we reverse the order of the quantifiers in Definition 2.2.3?
 
-  _Definition:_ A sequence $(x_n)$ _verconges_ to $x$ if _there exists_ an $epsilon.alt > 0$ such that _for all_ $N in NN$ it is true that $n >= N$ implies $abs(x_n - n) < epsilon.alt$.
+  _Definition:_ A sequence $(x_n)$ _verconges_ to $x$ if _there exists_ an $epsilon.alt > 0$ such that _for all_ $N in NN$ it is true that $n >= N$ implies $abs(x_n - x) < epsilon.alt$.
 
   Give an example of a vercongent sequence.
   Is there an example of a vercongent sequence that is divergent?
-  Con a sequence verconge to two different values?
+  Can a sequence verconge to two different values?
   What exactly is being described in this strange definition?
+]
+
+#solution[
+  An example is the sequence of alternating $0$'s and $1$'s.
+
+  This is vercongent to any real number.
+  We can just select large enough $epsilon.alt$ and it will work out.
+
+  I believe that this is actually describing bounded sequences.
 ]
 
 #exercise[2.2.2][
@@ -23,6 +32,10 @@ No exercises in this section.
   + $lim (2n+1)/(5n+4) = 2/5$.
   + $lim (2n^2)/(n^3+3) = 0$.
   + $lim (sin(n^2))/(root(3, n))$.
+]
+
+#solution[
+  #TODO[July 3]
 ]
 
 #exercise[2.2.3][
@@ -33,6 +46,15 @@ No exercises in this section.
     For all colleges in the United States, there exists a professor who gives every student a grade of either A or B.
   +
     There exists a college in the United States where every student is at least six feet tall.
+]
+
+#solution[
+  +
+    Find a college in the US where all students are below 7 feet tall.
+  +
+    Find a college in the US where all professors give out grades other than A or B.
+  +
+    Show that all colleges have a student under 6 feet tall.
 ]
 
 #exercise[2.2.4][
@@ -46,6 +68,18 @@ No exercises in this section.
     A divergent sequence such that for every $n in NN$ it is possible to find $n$ consecutive ones somewhere in the sequence.
 ]
 
+#solution[
+  + Alternating $0$'s and $1$'s.
+  +
+    Not possible.
+    If we select $epsilon.alt < abs(x - 1)$, where $x$ is the "limit", then we can see that there can never be a $N$ such that every element in the sequence after that is within that $epsilon.alt$-neighborhood.
+    This is because there must be infinite ones, which cannot all be in the first $N$ elements.
+  +
+    Yes, just do $1, 0, 1, 1, 0, 1, 1, 1, 0, dots$.
+    This can never converge due to a similar argument to part (b).
+    But by construction, we can always find $n$ consecutive ones.
+]
+
 #exercise[2.2.5][
   Let $[[x]]$ be the greatest integer less than or equal to $x$.
   For example, $[[pi]] = 3$ and $[[3]] = 3$.
@@ -55,10 +89,31 @@ No exercises in this section.
   Reflecting on these examples, comment on the statement following Definition 2.2.3 that "the smaller the $epsilon.alt$-neighborhood, the larger $N$ may have to be."
 ]
 
+#solution[
+  #TODO[July 3]
+]
+
 #exercise[2.2.6][
   Prove Theorem 2.2.7.
   To get started, assume $(a_n) -> a$ and also that $(a_n) -> b$.
   Now argue $a = b$.
+]
+
+#solution[
+  We start with the stated assumptions.
+
+  AFSOC $a != b$, then we could choose $epsilon.alt < abs(a - b) / 2$.
+
+  By the definition of limits, there would exist $N$ and $N'$ such that any $n >= max(N, N')$ satisfies $abs(x_n - a) < epsilon.alt$ and $abs(x_n - b) < epsilon.alt$.
+
+  Using the triangle inequality, we know that
+  $
+    abs(a - b) = abs(a - x_n + x_n - b) <= abs(x_n - a) + abs(x_n - b) < 2 epsilon.alt < abs(a - b).
+  $
+  In other words, we have shown that $abs(a - b) < abs(a - b)$.
+  This is a *contradiction*.
+
+  Therefore, it must be the case that $a = b$.
 ]
 
 #exercise[2.2.7][
@@ -67,20 +122,34 @@ No exercises in this section.
     A sequence $(a_n)$ is _eventually_ in a set $A subset.eq RR$ if there exists an $N in NN$ such that $a_n in A$ for all $n >= N$.
   ][
     A sequence $(a_n)$ is _frequently_ in a set $A subset.eq RR$ if, for every $N in NN$, there exists an $n >= N$ such that $a_n in A$.
-    #enum(numbering: "(a)")[
-      Is the sequence $(-1)^n$ eventually or frequently in the set ${1}$?
-    ][
-      Which definition is stronger?
-      Does frequently imply eventually or dos eventually imply frequently?
-    ][
-      Give an alternate rephrasing of Definition 2.2.3B using either frequently or eventually.
-      Which is the term we want?
-    ][
-      Suppose an infinite number of terms of a sequence $(x_n)$ are equal to $2$.
-      Is $(x_n)$ necessarily eventually in the interval $(1.9, 2.1)$?
-      Is it frequently in $(1.9, 2.1)$?
-    ]
   ]
+  #enum(numbering: "(a)")[
+      Is the sequence $(-1)^n$ eventually or frequently in the set ${1}$?
+  ][
+    Which definition is stronger?
+    Does frequently imply eventually or does eventually imply frequently?
+  ][
+    Give an alternate rephrasing of Definition 2.2.3B using either frequently or eventually.
+    Which is the term we want?
+  ][
+    Suppose an infinite number of terms of a sequence $(x_n)$ are equal to $2$.
+    Is $(x_n)$ necessarily eventually in the interval $(1.9, 2.1)$?
+    Is it frequently in $(1.9, 2.1)$?
+  ]
+]
+
+#solution[
+  + Frequently.
+  +
+    Eventually implies frequently.
+    To see this, notice that for any natural number, if it is less than or equal to $N$, then we can just use any number after $N$ as our $n$, and if it is greater than $N$, then any number greater than our current number should work.
+  +
+    A sequence $(a_n)$ converges to $a$ if for any $epsilon.alt$-neighborhood of $a$, the sequence is eventually in it.
+  +
+    $(x_n)$ is not necessarily eventually in it, as we could have also an infinite number of terms that are $2.2$ for example.
+
+    However, it is definitely the case that $(x_n)$ is frequently within those bounds.
+
 ]
 
 #exercise[2.2.8][
@@ -97,6 +166,10 @@ No exercises in this section.
   +
     Form the logical negation of the above definition.
     That is, complete the sentence: A sequence is _not_ zero-heavy if....
+]
+
+#solution[
+
 ]
 
 == The Algebraic and Order Limit Theorems
