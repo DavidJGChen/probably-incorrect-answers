@@ -873,12 +873,44 @@ No exercises in this section.
 ]
 
 #solution[
-  
+  +
+    Consider $f(x) = (x/2, x)$.
+  +
+    For $(x,y) in S$, consider the (potentially countable) decimal expansion of each.
+    Let's label the expansion of $x$ as $0.d_1 d_2 d_3 d_4 dots$, and the second as $0.d'_1 d'_2 d'_3 d'_4 dots$.
+    We consider the terminating decimal expansion representations, rather than one with inifinite $9$s.
+
+    Now we simply map $(x,y)$ to the following real number:
+    $
+      f((x,y)) = 0.d_1 d'_1 d_2 d'_2 d_3 d'_3 dots.
+    $
+    To see that this is injective, note that if two intervals differ from each other, that at least one of the left or right endpoints must differ.
+    Since they differ, they must have a different decimal expansion, and thus the resulting real number will also have a different digit and be a different real number.
+
+    This logic only fails if we somehow produce a real number that ends in repeating $9$s, which is impossible since it would imply that both of our original expansions were of that form.
+
+    However, this function is not surjective.
+
+    Consider a real number that, for example, ends in alternating $1$s and $9$s.
+    This itself is a unique real number with no other decimal representation, but the only way to construct it would be with a decimal with repeating $9$s.
+    This representation is not in our domain, so there is no way to output this real number.
 ]
 
 #exercise[1.5.8][
   Let $B$ be a set of positive real numbers with the property that adding together any finite subset of elements from $B$ always gives a sum of $2$ or less.
   Show $B$ must be finite or countable.
+]
+
+#solution[
+  First, note that $B subset.eq (0, 2]$.
+
+  For arbitrary $n in NN$, consider the subset $(1/n, 2] inter B$.
+  This can only have finite elements, since otherwise, we could choose $2n$ elements from the subset to sum to greater than $2$.
+
+  Note that this holds true for all $n$.
+
+  Now also note that $B = union.big_(n=1)^oo [(1/n, 2] inter B]$.
+  This is a countable union of finite sets, which is countable.
 ]
 
 #exercise[1.5.9][
@@ -898,6 +930,26 @@ No exercises in this section.
     What may we conclude about the set of transcendental numbers?
 ]
 
+#solution[
+  +
+    Consider the following:
+    $
+      #box(width: 100%)[
+        $x^2 - 2 = 0, quad x^3 - 2 = 0, quad x^4 - 10 x^2 + 1 = 0.$
+      ]
+    $
+  +
+    There are a countable number of integer polynomials of degree $n$, since it can be defined uniquely with a finite product of countable sets.
+
+    Since each has finite solutions, the total number of solutions and thus elements of $A_n$ is a countable union of finite sets and is countable.
+  +
+    We simply take the countable union of all $A_n$ for all $n$.
+    
+    Again, a countable union of countable sets is countable.
+
+    Since the algebraic numbers are countable, the rest of the reals (transcendental) must be uncountable.
+]
+
 #exercise[1.5.10][
   +
     Let $C subset.eq [0,1]$ be uncountable.
@@ -907,6 +959,32 @@ No exercises in this section.
     Is $C inter [alpha, 1]$ an uncountable set?
   +
     Does the statement in (a) remain true if "uncountable" is replaced by "infinite"?
+]
+
+#solution[
+  +
+    AFSOC that there does not exist such an $a$.
+
+    Then for all $a in (0,1)$, $C inter [a,1]$ is countable.
+
+    Examine the sequence $(a_n)_(n in NN)$ where $a_n = 1/(n+1)$.
+
+    Clearly, we have that $C = (union.big_(n=1)^oo C inter [1/(n+1), 1]) union (C inter {0})$.
+
+    This is simply a countable union of countable sets, which implies that $C$ is countable.
+    
+    *Contradiction!*
+
+    Therefore there must exist some $a in (0,1)$ such that $C inter [a,1]$ is uncountable.
+  +
+    Not necessarily.
+    Consider if $C = [0,1]$.
+    Then any $a in (0,1)$ will produce an uncountable set $[a,1]$.
+    The supremum of $A$ is $1$. But $C inter [1,1] = {1}$, which is finite.
+  +
+    No.
+    Let $C = {1/n mid(bar) n in NN}$.
+    All choices of $a$ lead to a finite intersection.
 ]
 
 #exercise[1.5.11 (Schröder--Bernstein Theorem)][
@@ -931,11 +1009,65 @@ No exercises in this section.
     Show $g$ maps $B'$ onto $A'$.
 ]
 
+#solution[
+  +
+    If we restrict the domain of $f$ to $A$, then it is a bijection between $A$ and $B$.
+
+    Similarly, if we restrict $g$ to $B'$, then $g$ is a bijection between $B'$ and $A'$.
+
+    Now, we can just define $h: X -> Y$ the following way:
+    $
+      h(x) = cases(
+        f(x) &quad"if" x in A,
+        g^(-1)(x) &quad"else".
+      )
+    $
+    This is clearly a bijection.
+  +
+    First, if $A_1 = emptyset$, then we are done. This is because $g(Y) = X$, which implies that $g$ is a bijection and we are done.
+
+    Assuming that $A_1$ is non-empty, we can proceed by induction.
+
+    #proof[
+      *Base case:* Notice that $f(A_1) subset.eq Y$.
+      Thus $g(f(A_1)) subset.eq g(Y)$, so $(X setdiff g(Y)) inter (g(f(A_1))) = emptyset$.
+
+      *Inductive hypothesis:* Assume for some $n$ that $A_1, dots, A_n$ are pairwise disjoint.
+      Thus, $f(A_n)$ is also disjoint from all $f(A_1), dots, f(A_(n-1))$, since $f$ is injective.
+      By the same logic, $g(f(A_1)), dots, g(f(A_n))$ are all also disjoint.
+
+      Since $g(f(A_(i))) = A_(i+1)$, we have that $A_(n+1)$ is disjoint from all $A_2, dots, A_n$.
+
+      It is also disjoint with $A_1$ by similar logic from the base case.
+
+      Note for completeness, if at any point any $A_i$ is empty, then we can just stop with finite $A_i$ that are all pairwise disjoint.
+    ]
+    Also note that this implies that all ${f(A_n) mid(:) n in NN}$ are pairwise disjoint since $f$ is injective. 
+  +
+    If $b in B$, then it must exist in exactly one $f(A_i)$. This means that there must be some $a in A_i$ such that $f(a) = b$, which shows that $f$ is surjective.
+  +
+    First, let's note that $X setdiff A$ is a subset of $g(Y)$.
+    This is because if $a in X setdiff A$, then $a in X setdiff A_1 = X setdiff (X setdiff g(Y)) = g(Y)$.
+
+    So we know there must *exist* some $b in Y$ such that $g(b) = a$.
+
+    We should also argue that this $b$ cannot be in $B$.
+
+    AFSOC that $b in B$. Then $b in f(A_n)$ for some $n$, and thus $g(b) in g(f(A_n)) = A_(n+1)$.
+    However, this is clearly disjoint with $X setdiff A$, so it must be the case that $b in.not B ==> b in Y setdiff B$.
+]
+
 == Cantor's Theorem
 
 #exercise[1.6.1][
   Show that $(0,1)$ is uncountable if and only if $RR$ is uncountable.
   This shows that Theorem 1.6.1 is equivalent to Theorem 1.5.6.
+]
+
+#solution[
+  ($=>$) This direction is easy, since if $(0,1)$ is uncountable, then clearly since $(0,1) subset.eq RR$, the real numbers must also be uncountable.
+
+  ($arrow.double.l$) If $(0,1)$ is countable, then $RR$ must be countable, since we can construct $RR$ from $(0,1)$ using a countable union of the integers plus $(0,1)$.
 ]
 
 #exercise[1.6.2][
@@ -945,6 +1077,17 @@ No exercises in this section.
     Now, explain why $x != f(2)$, and in general why $x != f(n)$ for any $n in NN$.
   +
     Point out the contradiction that arises from these observations and conclude that $(0,1)$ is uncountable.
+]
+
+#solution[
+  +
+    It must differ from $f(1)$ at the first digit by construction.
+  +
+    It must differ from the $n$th digit of $f(n)$ by construction.
+  +
+    This shows that there must be a real number that is not in our enumeration.
+    But we assumed we could enumerate them.
+    This is the contradiction, and thus $(0,1)$ is uncountable.
 ]
 
 #exercise[1.6.3][
@@ -959,6 +1102,14 @@ No exercises in this section.
     Doesn't this cause some problems?
 ]
 
+#solution[
+  +
+    In general, the number that is produced may not be a rational.
+  +
+    No, this is fine.
+    Let's just only consider non-repeating 9's representation, and note that with our construction, we will never produce a number that runs into this issue.
+]
+
 #exercise[1.6.4][
   Let $S$ be the set consisting of all sequences of 0's and 1's.
   Observe that $S$ is not a particular sequence, but rather a large set whose elements are sequences; namely,
@@ -970,12 +1121,25 @@ No exercises in this section.
   Give a rigorous argument showing that $S$ is uncountable.
 ]
 
+#solution[
+  Cantor's diagonalization argument.
+
+  Produce a new binary sequence that differs from all other sequences at the $n$th element.
+]
+
 #exercise[1.6.5][
   +
     Let $A = {a,b,c}$. List the eight elements of $cal(P)(A)$.
     (Do not forget that $emptyset$ is considered to be a subset of every set.)
   +
     If $A$ is finite with $n$ elements, show that $cal(P)(A)$ has $2^n$ elements.
+]
+
+#solution[
+  + $emptyset, {a}, {a,b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c}$.
+  +
+    An element can either be in or out of a subset, which gives us two choices per element.
+    Thus there are $2^n$ distinct subsets.
 ]
 
 #exercise[1.6.6][
@@ -987,9 +1151,31 @@ No exercises in this section.
     Explain why, in parts (a) and (b), it is impossible to construct mappings that are _onto_.
 ]
 
+#solution[
+  +
+    One mapping:
+    $
+      a -> {a}, quad b -> {b}, quad c -> {c}.
+    $
+    Another mapping:
+    $
+      a -> {a,b}, quad b -> {b}, quad c -> {c}.
+    $
+  +
+    $
+      1 -> {1}, quad 2 -> {2}, quad 3 -> {3}, quad 4 -> {4}.
+    $
+  +
+    There are strictly more elements in the range than the domain.
+]
+
 #exercise[1.6.7][
   Return to the particular functions constructed in Exercise 1.6.6 and construct the subset $B$ that results using the preceding rule.
   In each case, note that $B$ is not in the range of the function used.
+]
+
+#solution[
+  #TODO[skipped]
 ]
 
 #exercise[1.6.8][
@@ -999,8 +1185,33 @@ No exercises in this section.
     Now, finish the argument by showing that the case $a' in.not B$ is equally unacceptable.
 ]
 
+#solution[
+  +
+    If $a' in B$, then it must be that $a' in.not f(a')$ by definition of $B$.
+
+    However, $f(a') = B$ by assumption, so we have shown that $a' in B$ and $a' in.not B$ which is a contradiction.
+  +
+    If $a' in.not B$, then it must be that $a' in.not f(a')$.
+    This implies that it must be in $B$ which is again a contradiction.
+]
+
 #exercise[1.6.9][
   Using the various tools and techniques developed in the last two sections (including the exercises from Section 1.5), give a compelling argument showing that $cal(P)(NN) ~ RR$.
+]
+
+#solution[
+  First, we construct an injection from $(0,1)$ to the set of infinite binary sequences.
+  We do this by considering the decimal expansion.
+
+  Next, we construct an injection from the set of infinite binary sequences to $(0,1)$.
+
+  This is a little trickier, as a direct conversion would result in some numbers that are actually the same real number. (For example, $0.0111dots$ and $0.1$).
+
+  We can first consider all sequences that do not end in repeating $1$'s. This will map into $[0,1)$, which we know has a bijection with $(0,1)$. We can divide the result by $3$ to get an injection into $(0,1/3)$.
+
+  Next, we map the sequences that end in infinite $1$'s to their representative real number, divide by 3, and then add $1/3$ to get an injection into $(1/3, 2/3]$.
+
+  This completes the injection into $(0,1)$, so using Schröder--Bernstein we can conclude that the set of infinite binary sequences has the same cardinality as $(0,1)$, and we can use transitivity of this equivalence relation to deduce that $cal(P)(NN) ~ RR$.
 ]
 
 #exercise[1.6.10][

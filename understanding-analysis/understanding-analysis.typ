@@ -12,10 +12,8 @@
 
 = The Real Numbers
 #include "the-real-numbers.typ"
-
 #pagebreak()
 
 = Sequences and Series
 #include "sequences-and-series.typ"
-
 #pagebreak()
