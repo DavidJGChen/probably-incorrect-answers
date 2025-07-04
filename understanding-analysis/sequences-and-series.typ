@@ -30,12 +30,57 @@ No exercises in this section.
 #exercise[2.2.2][
   Verify, using the definition of convergence of a sequence, that the following sequences converge to the proposed limit.
   + $lim (2n+1)/(5n+4) = 2/5$.
+
   + $lim (2n^2)/(n^3+3) = 0$.
-  + $lim (sin(n^2))/(root(3, n))$.
+
+  + $lim (sin(n^2))/(root(3, n)) = 0$.
 ]
 
 #solution[
-  #TODO[July 3]
+  +
+    I claim we need to choose $N > 3/(25 epsilon.alt) - 4/5$.
+    #proof[
+      Let $epsilon.alt > 0$.
+      Choose $N > 3/(25 epsilon.alt) - 4/5$.
+      Now for $n >= N$, we can verify that:
+      $
+        abs((2n+1)/(5n+4) - 2/5) &= abs((3 slash 5)/(5n+4))\
+        &= (3 slash 5)/(5n+4)\
+        &< (3 slash 5)/(5(3/(25 epsilon.alt) - 4/5)+4)\
+        &= epsilon.alt
+      $
+      as desired.
+    ]
+
+  +
+    I claim we choose $N > 2/epsilon.alt$.
+    #proof[
+      Let $epsilon.alt > 0$.
+      Choose $N > 2/epsilon.alt$.
+      Notice that $abs((2n^2)/(n^3+3))$ is always positive if $n > 0$.
+      For $n >= N$, we have that:
+      $
+        abs((2n^2)/(n^3+3)) = (2n^2)/(n^3+3) < (2n^2)/n^3 = 2 / n < epsilon.alt
+      $
+      as desired.
+    ]
+  
+  +
+    I claim we choose $N > 1 / epsilon^3$.
+    #proof[
+      Let $epsilon.alt > 0$.
+      Choose $N > 1 / epsilon.alt^3$.
+      Notice that $abs(sin(n^2)) <= 1$ always.
+
+      If $n >= N$, we can see that $n > 1/epsilon.alt^3$ or alternatively $root(3, n) > 1/epsilon.alt$.
+
+      Therefore, we have that:
+      $
+        abs((sin(n^2))/(root(3, n))) &= abs(sin(n^2))/(root(3, n))\
+        &<= 1 / root(3, n) < epsilon.alt.
+      $
+      as desired.
+    ]    
 ]
 
 #exercise[2.2.3][
