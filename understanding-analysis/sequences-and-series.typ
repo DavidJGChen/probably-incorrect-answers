@@ -507,40 +507,96 @@ No exercises in this section.
 
 == Subsequences and the Bolzano--Weierstrass Theorem
 
-#exercise[2.5.x][
+#exercise[2.5.1][
+  Give an example of each of the following, or argue that such a request is impossible.
   
+  +
+    A sequence that has a subsequence that is bounded but contains no subsequence that converges.
+  
+  +
+    A sequence that does not contain $0$ or $1$ as a term but contains subsequences converging to each of these values.
+
+  +
+    A sequence that contains subsequences converging to every point in the infinite set ${1, 1 slash 2, 1 slash 3, 1 slash 4, 1 slash 5, dots}$.
+  
+  +
+    A sequence that contains subsequences converging to every point in the infinite set ${1, 1 slash 2, 1 slash 3, 1 slash 4, 1 slash 5, dots}$, and no subsequences converging to points outside of this set.
 ]
 
-#exercise[2.5.x][
-  
+#exercise[2.5.2][
+  Decide whether the following propositions are true or false, providing a short justification for each conclusion.
+
+  +
+    If every proper subsequence of $(x_n)$ converges, then $(x_n)$ converges as well.
+
+  +
+    If $(x_n)$ contains a divergent subsequence, then $(x_n)$ diverges.
+
+  +
+    If $(x_n)$ is bounded and diverges, then there exist two subsequences of $(x_n)$ that converge to different limits.
+
+  +
+    If $(x_n)$ is monotone and contains a convergent subsequence, then $(x_n)$ converges.
 ]
 
-#exercise[2.5.x][
+#exercise[2.5.3][
+  +
+    Prove that if an infinite series converges, then the associative property holds.
+    Assume $a_1 + a_2 + a_3 + a_4 + a_5 + dots$ converges to a limit $L$ (i.e., the sequence of partial sums $(s_n) -> L$).
+    Show that any regrouping of the terms
+    $
+      (a_1 + a_2 + dots + a_(n_1)) + (a_(n_1 + 1) + dots + a_(n_2)) + (a_(n_2 + 1) + dots + a_(n_3)) + dots
+    $
+    leads to a series that also converges to $L$.
   
+  +
+    Compare this result to the example discussed at the end of Section 2.1 where infinite addition was shown not to be associative.
+    Why doesn't our proof in (a) apply to this example?
 ]
 
-#exercise[2.5.x][
-  
+#exercise[2.5.4][
+  The Bolzano--Weirstrass Theorem is extremely important, and so is the strategy employed in the proof.
+  To gain some more experience with this technique, assume the Nested Interval Property is true and use it to provide a proof of the Axiom of Completeness.
+  To prevent the argument from being circular, assume also that $(1 slash 2^n) -> 0$.
+  (Why precisely is this last assumption needed to avoid circularity?)
 ]
 
-#exercise[2.5.x][
-  
+#exercise[2.5.5][
+  Assume $(a_n)$ is a bounded sequence with the property that every convergent subsequence of $(a_n)$ converges to the same limit $a in RR$.
+  Show that $(a_n)$ must converge to $a$.
 ]
 
-#exercise[2.5.x][
-  
+#exercise[2.5.6][
+  Use a similar strategy to the one in Example 2.5.3 to show $lim b^(1 slash n)$ exists for all $b >= 0$ and find the value of the limit.
+  (The results in Exercise 2.3.1 may be assumed.)
 ]
 
-#exercise[2.5.x][
-  
+#exercise[2.5.7][
+  Extend the result proved in Example 2.5.3 to the case $abs(b) < 1$;
+  that is, show $lim (b^n) = 0$ if and only if $-1 < b < 1$.
 ]
 
-#exercise[2.5.x][
+#exercise[2.5.8][
+  Another way to prove the Bolzano--Weierstrass Theorem is to show that every sequence contains a monotone subsequence.
+  A useful device in this endeavor is the notion of a _peak term_.
+  Given a sequence $(x_n)$, a particular term $x_m$ is a peak term if no later term in the sequence exceeds it;
+  i.e., if $x_m >= x_n$ for all $n >= m$.
+
+  +
+    Find examples of sequences with zero, one, and two peak terms.
+    Find an example of a sequnce with infinitely many peak terms that is not monotone.
   
+  +
+    Show that every sequence contains a monotone subsequence and explain how this furnishes a new proof of the Bolzano--Weierstrass Theorem.
 ]
 
-#exercise[2.5.x][
-  
+#exercise[2.5.9][
+  Let $(a_n)$ be a bounded sequence, and define the set
+  $
+    S = {x in RR mid(:) x < a_n "for infinitely many terms" a_n}.
+  $
+  Show that there exists a subsequence $(a_(n_k))$ converging to $s = sup S$.
+  (This is a direct proof of the Bolzano--Weierstrass Theorem using the Axiom of Completeness).
 ]
 
 == The Cauchy Criterion
