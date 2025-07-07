@@ -135,7 +135,21 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 3]
+  +
+    Claim: $lim a_n = 0$.
+
+    #proof[
+      After $N > 5$, all $n >= N$ will be such that $a_n = 0$.
+    ]
+
+  +
+    Claim: $lim a_n = 1$.
+
+    #proof[
+      After $N > 6$, for $n >= N$, the inner part of $a_n$ will be less than $2$.
+      In addition, the inner part will always be greater than $4 slash 3$.
+      Therefore after $N > 6$ every element in the sequence will equal $1$ exactly.
+    ]
 ]
 
 #exercise[2.2.6][
