@@ -217,29 +217,55 @@ No exercises in this section.
 #exercise[2.2.8][
   For some additional practice with nested quantifiers, consider the following invented definition:
 
-  Let's call a sequence $(x_n)$ _zero-heavy_ if there exists $M in NN$ such that for all $N in NN$ there exists $n$ satisfying $N <= b <= N + M$ where $x_n = 0$.
-  + Is the sequence $(0, 1, 0, 0, 1, dots)$ zero heavy?
+  Let's call a sequence $(x_n)$ _zero-heavy_ if there exists $M in NN$ such that for all $N in NN$ there exists $n$ satisfying $N <= n <= N + M$ where $x_n = 0$.
+
+  + Is the sequence $(0, 1, 0, 0, 1, dots)$ zero-heavy?
+  
   +
     If a sequence is zero-heavy does it necessarily contain an infinite number of zeros?
     If not, provide a counterexample.
+  
   +
     If a sequence contains an infinite number of zeros, is it necessarily zero-heavy?
     If not, provide a counter example.
+  
   +
     Form the logical negation of the above definition.
     That is, complete the sentence: A sequence is _not_ zero-heavy if....
 ]
 
 #solution[
+  +
+    The given sequence is zero-heavy.
+    Consider $M = 1$.
+    Since there are never two $1$'s in a row, this is a valid $M$.
+  
+  +
+    A zero-heavy sequence must contain an infinite amount of $0$'s.
+    Otherwise, we could consider the first index $N$ after which there are no more $0$'s, and see that no value of $M$ will produce an interval that contains a $0$.
+  
+  +
+    No.
+    Consider the sequence $(0, 1, 0, 1, 1, 0, 1, 1, 1, 0, dots)$.
+    Given any $M$, once we are far enough in the sequence, we will always be able to find a string of $1$'s that is longer than $M$.
 
+  +
+    A sequence is not zero-heavy if for all $M in NN$, there exists a $N in NN$ such that for all $n$ satisfying $N <= n <= N + M$, $x_n != 0$.
 ]
 
 == The Algebraic and Order Limit Theorems
 
 #exercise[2.3.1][
   Let $x_n >= 0$ for all $n in NN$.
+
   + If $(x_n) -> 0$, show that $(sqrt(x_n)) -> 0$.
+  
   + If $(x_n) -> x$, show that $(sqrt(x_n)) -> sqrt(x)$.
+]
+
+#solution[
+  +
+    
 ]
 
 #exercise[2.3.2][
