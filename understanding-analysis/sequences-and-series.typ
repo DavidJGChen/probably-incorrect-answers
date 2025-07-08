@@ -526,7 +526,29 @@ No exercises in this section.
 ]
 
 #solution[
-  
+  +
+    Assume $(x_n) -> x$.
+
+    Let $epsilon.alt > 0$ be arbitrary.
+
+    Past some $N_1 in NN$ we have that $abs(x_n - x) < epsilon.alt / 2$.
+
+    For all $x_i$ for $i < N_1$, let $M = max{abs(x_i - x)}$.
+
+    Let $N_2 in NN$ be such that for $n >= N_2$, we have $1 / n < epsilon.alt / (2N_1 M)$.
+
+    Now for $N = max{N_1, N_2}$, we have for $n >= N$
+    $
+      abs((x_1 + x_2 + dots + x_n) / n - x) &= 1/n abs(x_1 + x_2 + dots + x_n - n x)\
+      &<= 1 / n (abs(x_1 - x + x_2 - x + dots + x_i - x) + abs(x_(i+1) - x + dots + x_n - x))\
+      &< 1/n (N_1 M + (n - N_1) epsilon.alt/2)\
+      &<= 1/n (N_1 M) + epsilon.alt/2\
+      &< epsilon.alt/2 + epsilon.alt/2 = epsilon.alt.
+    $
+
+  +
+    The alternating sequence of $0$'s and $1$'s does not converge.
+    However, the sequence of averages will converge to $1 slash 2$.
 ]
 
 #exercise[2.3.12][
@@ -539,6 +561,20 @@ No exercises in this section.
     If every $a_n$ is in the complement of the interval $(0,1)$, then $a$ is also in the complement of $(0,1)$.
   +
     If every $a_n$ is rational, then $a$ is rational.
+]
+
+#solution[
+  +
+    AFSOC that $a$ is not an upper bound for the set $B$.
+    Then there is some $b in B$ such that $b > a$. Let $epsilon.alt = b - a$.
+    Then there is some $N in NN$ such that for all $n >= N$ we have $abs(a_n - a) < epsilon.alt$.
+    Clearly all $a_n$ must be larger than $a$, so we have that $a_n - a < b - a$, so then $a_n < b$, and we have shown our contradiction since we assumed that all $a_n$ would also be upper bounds.
+
+  +
+    #TODO[July 8]
+  
+  +
+    False, consider the sequence defined by the decimal approximation of $pi$.
 ]
 
 #exercise[2.3.13 (Iterated Limits)][
