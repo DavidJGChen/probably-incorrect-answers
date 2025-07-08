@@ -265,18 +265,71 @@ No exercises in this section.
 
 #solution[
   +
-    
+    Let arbitrary $epsilon.alt > 0$.
+    Choose $N in NN$ such that for all $n >= N$, we have $abs(x_n) < epsilon.alt^2$.
+    Thus we can reuse the same $N$ for $abs(sqrt(x_n)) < epsilon.alt$.
+
+  +
+    Assume $x > 0$.
+    (This is valid due to Order Limit Theorem).
+    Let arbitrary $epsilon.alt > 0$.
+    Now observe the following:
+    $
+      abs(sqrt(x_n) - sqrt(x)) &= abs(x_n - x) / abs(sqrt(x_n) + sqrt(x))\
+      &= abs(x_n - x) / (sqrt(x_n) + sqrt(x))\
+      &<= abs(x_n - x) / (sqrt(x))\
+      &< epsilon.alt' / sqrt(x) "for" n "larger than some" N in NN.
+    $
+    If we choose $epsilon.alt' = epsilon.alt sqrt(x)$, then we get that for $n >=$ some $N in NN$ that
+    $
+      abs(sqrt(x_n) - sqrt(x)) < epsilon.alt.
+    $
 ]
 
 #exercise[2.3.2][
   Using only Definition 2.2.3, prove that if $(x_n) -> 2$, then
+  
   + $((2 x_n - 1) / 3) -> 1$;
+
   + $(1 slash x_n) -> 1 slash 2$.
+  
   (For this exercise the Algebraic Limit Theorem is off-limits, so to speak.)
+]
+
+#solution[
+  +
+    $
+      abs((2x_n - 1) / 3 - 1) = abs((2x_n - 4) / 3) = 2/3 abs(x_n - 2) < 2/3 epsilon.alt'.
+    $
+    Choose $epsilon.alt' = 3/2 epsilon.alt$.
+
+  +
+    $
+      abs(1/x_n - 1/2) = abs(x_n - 2) / (2 abs(x_n))
+    $
+    Choose $N_1$ such that we get $abs(x_n) > abs(x) / 2$.
+    Now choose $epsilon.alt' = abs(x)epsilon.alt$.
+    So for $max(N_1, N_2)$ we have
+    $
+      abs(1/x_n - 1/2) < abs(x_n - 2) / abs(x) < epsilon.alt' / abs(x) = epsilon.alt.
+    $
 ]
 
 #exercise[2.3.3 (Squeeze Theorem)][
   Show that if $x_n <= y_n <= z_n$ for all $n in NN$, and if $lim x_n = lim z_n = l$, then $lim y_n = l$ as well.
+]
+
+#solution[
+  Since $x_n <= y_n <= z_n$, we also get that
+  $
+    x_n - l <= y_n - l <= z_n - l.
+  $
+  Choose large enough $N$ such that for $n >= N$ we get that $z_n - l <= abs(z_n) - l < epsilon.alt$, as well as $x_n - l > -abs(x_n - l) > epsilon.alt$.
+  This leaves us with:
+  $
+    -epsilon.alt < y_n - l < epsilon.alt, quad ==> quad abs(y_n - l) < epsilon.alt.
+  $
+  Thus $y_n$ converges and it must converge to $l$.
 ]
 
 #exercise[2.3.4][
@@ -288,9 +341,36 @@ No exercises in this section.
   + $lim ((2/a_n + 3)/(1/a_n + 5))$
 ]
 
+#solution[
+  + $1$.
+
+  +
+    $
+      lim (((a_n+2)^2 - 4)/(a_n)) = lim ((a_n^2+4 a_n)/(a_n)) = lim (a_n+4) = 4.
+    $
+  
+  +
+    $
+      lim ((2/a_n + 3)/(1/a_n + 5)) = lim ((2 + 3 a_n)/(1 + 5 a_n)) = 2.
+    $
+]
+
 #exercise[2.3.5][
-  Let $(x_n)$ and $(y_n)$ be given, and define $(x_n)$ to be the "shuffled" sequence $(x_1, y_1, x_2, y_2, x_3, y_3, dots, x_n, y_n, dots)$.
+  Let $(x_n)$ and $(y_n)$ be given, and define $(z_n)$ to be the "shuffled" sequence $(x_1, y_1, x_2, y_2, x_3, y_3, dots, x_n, y_n, dots)$.
   Prove that $(z_n)$ is convergent if and only if $(x_n)$ and $(y_n)$ are both convergent with $lim x_n = lim y_n$.
+]
+
+#solution[
+  ($=>$)
+  Assume that $(z_n)$ is convergent.
+  Then after some $N in NN$, for $n >= N$ we have that all $abs(z_n - z) < epsilon.alt$ for some $z in RR$ and arbitrary $epsilon.alt$.
+  
+  Then we also get that for $n > N / 2$, both $abs(x_n - z) < epsilon.alt$ and $abs(y_n - z) < epsilon.alt$, which shows they both converge to $z$.
+
+  ($arrow.double.l$)
+  Assume that $x_n$ and $y_n$ both converge to $z$. For arbitrary $epsilon.alt > 0$, pick $N = max{N_1, N_2}$ such that for $n >= N$, we have $abs(x_n - z) < epsilon.alt$ and $abs(y_n - z) < epsilon.alt$.
+
+  Therefore for $n >= 2N$, we have that $z_n = x_(floor(n/2))$ or $y_(floor(n/2))$ is such that $abs(z_n - z) < epsilon.alt$, and we have shown that $(z_n)$ converges to $z$.
 ]
 
 #exercise[2.3.6][
@@ -298,18 +378,61 @@ No exercises in this section.
   Taking $(1 slash n) -> 0$ as given, and using both the Algebraic Limit Theorem and the result in Exercise 2.3.1, show $lim b_n$ exists and find the value of the limit.
 ]
 
+#solution[
+  Multiply top and bottom by the conjugate:
+  $
+    n - sqrt(n^2 + 2 n) &= (n^2 - n^2 - 2n) / (n + sqrt(n^2 + 2 n))\
+    &= (-2 n) / (n + sqrt(n^2 + 2 n))\
+    &= (-2) / (1 + sqrt(1 + 2/n)).
+  $
+  The sequence defined by $1 + 2/n$ is positive and approaches the limit $1$, so therefore the square root of the sequence does as well.
+
+  Thus, the original sequence for the entire expression approaches $-1$ by the ALT.
+]
+
 #exercise[2.3.7][
   Give and example of each of the following, or state the such a request is impossible by referencing the proper theorems(s):
+
   +
     sequences $(x_n)$ and $(y_n)$, which both diverge, but whose sum $(x_n + y_n)$ converges;
+  
   +
     sequences $(x_n)$ and $(y_n)$, where $(x_n)$ converges, $(y_n)$ diverges, and $(x_n + y_n)$ converges;
+  
   +
     a convergent sequence $(b_n)$ with $b_n != 0$ for all $n$ such that $(1 slash b_n)$ diverges;
+  
   +
     an unbounded sequence $(a_n)$ and a convergent sequence $(b_n)$ with $(a_n - b_n)$ bounded;
+  
   +
     two sequences $(a_n)$ and $(b_n)$, where $(a_n b_n)$ and $(a_n)$ converge but $(b_n)$ does not.
+]
+
+#solution[
+  +
+    Yes, consider $x_n = (-1)^n$, and $y_n = (-1)^(n + 1)$.
+    Their sum is simply $0$.
+  
+  +
+    No, by ALT we would have that $(x_n + y_n - x_n)$ converges.
+
+  +
+    Consider $b_n = 1/n$. Then $1 / b_n = n$ which clearly diverges.
+  
+  +
+    Since every convergent sequence is bounded, we know that $abs(b_n) <= M$, where $M$ is the bound on $b_n$ and $N$ is the bound on $a_n - b_n$.
+
+    So therefore
+    $
+      abs(a_n) = abs(a_n - b_n + b_n) <= abs(a_n - b_n) + abs(b_n) <= M + N,
+    $
+    and $(a_n)$ must be bounded as well.
+  
+  +
+    Let $a_n = 0$ for all $n$, and let $b_n = n$.
+
+    Clearly their product is $0$ for all $n$.
 ]
 
 #exercise[2.3.8][
@@ -319,15 +442,52 @@ No exercises in this section.
     Find an example of a function $f(x)$ and a convergent sequence $(x_n) -> x$ where the sequence $f(x_n)$ converges, but not to $f(x)$.
 ]
 
+#solution[
+  +
+    Follows directly from ALT, since a polynomial is simply a combination of multiplications and additions.
+  
+  +
+    Let $f(x)$ be the following:
+    $
+      f(x) = cases(
+        5 "if" x = 0,
+        x "else"
+      ).
+    $
+    Now, $f(0) = 5$, but any sequence that approaches $0$ but never reaches it will instead approach the limit value $0$.
+]
+
 #exercise[2.3.9][
   +
     Let $(a_n)$ be a bounded (not necessarily convergent) sequence, and assume $lim b_n = 0$.
-    Show that $lim (a_n, b_n) = 0$.
+    Show that $lim (a_n b_n) = 0$.
     Why are we not allowed to use the Algebraic Limit Theorem to prove this?
   +
     Can we conclude anything about the convergence of $(a_n b_n)$ if we assume that $(b_n)$ converges to some nonzero limit $b$?
   +
     Use (a) to prove Theorem 2.3.3, part (iii), for the case when $a = 0$.
+]
+
+#solution[
+  + 
+    Since $a_n$ is bounded, we have that $abs(a_n) <= M$ for all $n$.
+
+    Now for arbitrary $epsilon.alt' > 0$, there is some $N$ such that $n >= N$ implies
+    $
+      abs(a_n b_n) = abs(a_n) abs(b_n) <= M abs(b_n) < M epsilon.alt'.
+    $
+    Choose $epsilon.alt' = epsilon.alt / M$, and we have that $(a_n b_n)$ converges to $0$.
+
+    We can't use ALT since $(a_n)$ is not necessarily convergent, just bounded.
+  
+  +
+    No.
+    Consider the constant sequence $b_n = 1$, which is clearly convergent.
+    However, given any bounded and not convergent sequence $(a_n)$, we have that $(a_n b_n) = (a_n)$.
+    However I do believe that the product sequence is still bounded... I won't prove this.
+  
+  +
+    Since all convergent sequences are bounded, we can just use our result from (a) directly.
 ]
 
 #exercise[2.3.10][
@@ -339,6 +499,21 @@ No exercises in this section.
   + If $(a_n) -> 0$ and $abs(b_n - b) <= a_n$ for all $n in NN$, then $(b_n) -> b$.
 ]
 
+#solution[
+  +
+    False, consider $a_n = n$, $b_n = n$.
+    They have no limit, but their difference is simply $0$.
+
+  + $abs(abs(b_n) - abs(b)) <= abs(b_n - b)$ by reverse triangle inequality.
+
+  +
+    Directly follows from ALT.
+
+  +
+    Yes, because $abs(b_n - b) <= a_n <= abs(a_n) < epsilon.alt$ for all $n >= N in NN$ for any arbitrary $epsilon.alt$.
+
+]
+
 #exercise[2.3.11 (Cesaro Means)][
   +
     Show that if $(x_n)$ is a convergent sequence, then the sequence given by the averages
@@ -348,6 +523,10 @@ No exercises in this section.
     also converges to the same limit.
   +
     Give an example to show that it is possible for the sequence $(y_n)$ of averages to converge even if $(x_n)$ does not.
+]
+
+#solution[
+  
 ]
 
 #exercise[2.3.12][
