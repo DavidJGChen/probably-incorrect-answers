@@ -177,24 +177,27 @@ No exercises in this section.
 
 #exercise[2.2.7][
   Here are two useful definitions:
-  #enum(numbering: "(ia)")[
+  #enum(numbering: "(i)", tight: false)[
     A sequence $(a_n)$ is _eventually_ in a set $A subset.eq RR$ if there exists an $N in NN$ such that $a_n in A$ for all $n >= N$.
   ][
     A sequence $(a_n)$ is _frequently_ in a set $A subset.eq RR$ if, for every $N in NN$, there exists an $n >= N$ such that $a_n in A$.
   ]
-  #enum(numbering: "(a)")[
-      Is the sequence $(-1)^n$ eventually or frequently in the set ${1}$?
-  ][
+
+  +
+    Is the sequence $(-1)^n$ eventually or frequently in the set ${1}$?
+  
+  +
     Which definition is stronger?
     Does frequently imply eventually or does eventually imply frequently?
-  ][
+  
+  +
     Give an alternate rephrasing of Definition 2.2.3B using either frequently or eventually.
     Which is the term we want?
-  ][
+  
+  +
     Suppose an infinite number of terms of a sequence $(x_n)$ are equal to $2$.
     Is $(x_n)$ necessarily eventually in the interval $(1.9, 2.1)$?
     Is it frequently in $(1.9, 2.1)$?
-  ]
 ]
 
 #solution[
@@ -601,114 +604,331 @@ No exercises in this section.
 
 == The Cauchy Criterion
 
-#exercise[2.6.x][
-  
+#exercise[2.6.1][
+  Supply a proof for Theorem 2.6.2.
 ]
 
-#exercise[2.6.x][
+#exercise[2.6.2][
+  Give an example of each of the following, or argue that such a request is impossible.
+
+  + A Cauchy sequence that is not monotone.
   
+  + A Cauchy sequence with an unbounded subsequence.
+
+  + A divergent monotone sequence with a Cauchy subsequence.
+
+  + An unbounded sequence containing a subsequence that is Cauchy.
 ]
 
-#exercise[2.6.x][
-  
+#exercise[2.6.3][
+  If $(x_n)$ and $(y_n)$ are Cauchy sequences, then one easy way to prove that $(x_n + y_n)$ is Cauchy is to use the Cauchy Criterion.
+  By Theorem 2.6.4, $(x_n)$ and $(y_n)$ must be convergent, and the Algebraic Limit Theorem then implies $(x_n + y_n)$ is convergent and hence Cauchy.
+
+  +
+    Give a direct argument that $(x_n + y_n)$ is a Cauchy sequence that does not use the Cauchy Criterion or the Algebraic Limit Theorem.
+
+  + Do the same for the product $(x_n y_n)$.
 ]
 
-#exercise[2.6.x][
-  
+#exercise[2.6.4][
+  Let $(a_n)$ and $(b_n)$ be Cauchy sequences.
+  Decide whether each of the following sequences is a Cauchy sequence, justifying each conclusion.
+
+  + $c_n = abs(a_n - b_n)$
+
+  + $c_n = (-1)^n a_n$
+
+  + 
+    $c_n = [[a_n]]$, where $[[x]]$ refers to the greatest integer less than or equal to $x$.
 ]
 
-#exercise[2.6.x][
-  
+#exercise[2.6.5][
+  Consider the following (invented) definition:
+  A sequence $(s_n)$ is _pseudo-Cauchy_ if, for all $epsilon.alt > 0$, there exists an N such that if $n >= N$, then $abs(s_(n+1) - s_n) < epsilon.alt$.
+
+  Decide which one of the following two propositions is actually true.
+  Supply a proof for the valid statement and a counterexample for the other.
+  #enum(numbering: "(i)", tight: false)[
+    Pseudo-Cauchy sequences are bounded.
+  ][
+    If $(x_n)$ and $(y_n)$ are pseudo-Cauchy, then $(x_n + y_n)$ is pseudo-Cauchy as well.
+  ]
 ]
 
-#exercise[2.6.x][
+#exercise[2.6.6][
+  Let's call a sequence $(a_n)$ _quasi-increasing_ if for all $epsilon.alt > 0$ there exists an $N$ such that whenever $n > m >= N$ it follows that $a_n > a_m - epsilon.alt$.
+
+  +
+    Give an example of a sequence that is quasi-increasing but not monotone or eventually monotone.
   
+  +
+    Give an example of a quasi-increasing sequence that is dvergent and not monotone oreventually monotone.
+
+  +
+    Is there an analogue of the Monotone Convergence Theorem for quasi-increasing sequences?
+    give an example of a bounded, quasi-increasing sequence that doesn't converge, or prove that no such sequence exists.
 ]
 
-#exercise[2.6.x][
-  
+#exercise[2.6.7][
+  Exercises $2.4.4$ and $2.5.4$ establish the equivalence of the Axiom of Completeness and the Monotone Convergence Theorem.
+  They also show the Nested Interval Property is equivalent to these other two in the presence of the Archimedean Property.
+
+  +
+    Assume the Bolzano--Weierstrass Theorem is true and use it to construct a proof of the Monotone Convergence Theorem without making any appeal to the Archimedean Property.
+    This shows that BW, AoC, and MCT are all equivalent.
+
+  +
+    Use the Cauchy Criterion to prove the Bolzano-Weierstrass Theorem, and find the point in the argument where the Archimedean Property is implicitly required.
+    This establishes the final link in the equivalence of the five characterizations of the completeness discussed at the end of Section 2.6.
+
+  +
+    How do we know it is impossible to prove the Axiom of Completeness starting from the Archimedean Property?
 ]
 
 == Properties of Infinite Series
 
-#exercise[2.7.x][
+#exercise[2.7.1][
+  Proving the Alternating Series Test (Theorem 2.7.7) amounts to showing that the sequence of partial sums
+  $
+    s_n = a_1 - a_2 + a_3 - dots.c plus.minus a_n
+  $
+  converges.
+  (The opening example in Section 2.1 includes a typical illustration of $(s_n)$.)
+  Different characterizations of completeness lead to different proofs.
+
+  +
+    Prove the Alternating Series Test by showing that $(s_n)$ is a Cauchy sequence.
   
+  +
+    Supply another proof for this result using the Nested Interval Property (Theorem 1.4.1).
+
+  +
+    Consider the subsequences $(s_(2 n))$ and $(s_(2 n + 1))$, and show how the Monotone Convergence Theorem leads to a third proof for the Alternating Series Test.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.2][
+  Decide whether each of the following series converges or diverges:
+
+  + $sum_(n=1)^(oo) 1 / (2^n + n)$
+
+  + $sum_(n=1)^(oo) (sin (n)) / (n^2)$
+
+  + $1 - 3/4 + 4/6 - 5/8 + 6/10 - 7/12 + dots.c$
+
+  + $1 + 1/2 - 1/3 + 1/4 + 1/5 - 1/6 + 1/7 + 1/8 - 1/9$
+
+  + $1 - 1/2^2 + 1/3 - 1/4^2 + 1/5 - 1/6^2 + 1/7 - 1/8^2$
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.3][
+  +
+    Provide the details for the proof of the Comparison Test (Theorem 2.7.4) using the Cauchy Criterion for Series.
+
+  +
+    Give another proof for the Comparison Test, this time using the Monotone Convergence Theorem.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.4][
+  Give an example of each or explain why the request is impossible referencing the proper theorems(s).
+
+  +
+    Two series $sum x_n$ and $sum y_n$ that both diverge but where $sum x_n y_n$ converges.
+
+  +
+    A convergent series $sum x_n$ and a bounded sequence $(y_n)$ such that $sum x_n y_n$ diverges.
+
+  +
+    Two sequences $(x_n)$ and $(y_n)$ where $sum x_n$ and $sum (x_n + y_n)$ both converge but $sum y_n$ diverges.
+
+  +
+    A sequences $(x_n)$ satisfying $0 <= x_n <= 1 slash n$ where $sum (-1)^n x_n$ diverges.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.5][
+  Now that we have proved the basic facts about geometric series, supply a proof for Corollary 2.4.7.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.6][
+  Let's say that a series _subverges_ if the sequence of partial sums contains a subsequence that converges.
+  Consider this (invented) defintion for a moment, and then decide which of the following statements are valid propositions about subvergent series:
+
+  + If $(a_n)$ is bounded, then $sum a_n$ subverges.
+
+  + All convergent series are subvergent.
+
+  + If $sum abs(a_n)$ subverges, then $sum a_n$ subverges as well.
+
+  + If $sum a_n$ subverges, then $(a_n)$ has a convergent subsequence.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.7][
+  +
+    Show that if $a_n > 0$ and $lim (n a_n) = l$ with $l != 0$, then the series $sum a_n$ diverges.
+  +
+    Assume $a_n > 0$ and $lim (n^2 a_n)$ exists.
+    Show that $sum a_n$ converges.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.8][
+  Consider each of the following propositions.
+  Provide short proofs for those that are true and counterexamples for any that are not.
+
+  +
+    If $sum a_n$ converges absolutely, then $sum a_n^2$ also converges absolutely.
+
+  +
+    If $sum a_n$ converges and $(b_n)$ converges, then $sum a_n b_n$ converges.
+
+  +
+    If $sum a_n$ converges conditionally, then $sum n^2 a_n$ diverges.
 ]
 
-#exercise[2.7.x][
+#exercise[2.7.9 (Ratio Test)][
+  Given a series $sum_(n=1)^(oo) a_n$ with $a_n != 0$, the Ratio Test states that if $(a_n)$ satisfies
+  $
+    lim abs((a_(n+1))/a_n) = r < 1,
+  $
+  then the series converges absolutely.
+
+  +
+    Let $r'$ satisfy $r < r' < 1$.
+    Explain why there exists an $N$ such that $n >= N$ implies #box[$abs(a_(n+1)) <= abs(a_n)r'$].
   
+  + Why does $abs(a_N) sum (r')^n$ converge?
+
+  +
+    Now, show that $sum abs(a_n)$ converges, and conclude that $sum a_n$ converges.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.10 (Infinite Products)][
+  Review Exercise 2.4.10 about infinite products and then answer the following questions:
+
+  + Does $2/1 dot 3/2 dot 5/4 dot 9/8 dot 17/16 dots.c$ converge?
+
+  +
+    The infinite product $1/2 dot 3/4 dot 5/6 dot 7/8 dot 9/10 dots.c$ certainly converges.
+    (Why?)
+    Does it converge to zero?
+
+  +
+    In 1655, John Wallis famously derived the formula
+    $
+      ((2 dot 2) / (1 dot 3)) ((4 dot 4) / (3 dot 5)) ((6 dot 6) / (5 dot 7)) ((8 dot 8) / (7 dot 9)) dots.c = pi/2.
+    $
+    Show that the left side of this identity at least converges to something.
+    (A complete proof of this result is taken up in Section 8.3.)
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.11][
+  Find examples of two series $sum a_n$ and $sum b_n$ both of which diverge but for which $sum min{a_n, b_n}$ converges.
+  To make it more challenging, produce examples where $(a_n)$ and $(b_n)$ are strictly positive and decreasing.
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.12 (Summation-by-parts)][
+  Let $(x_n)$ and $(y_n)$ be sequences, let $s_n = x_1 + x_2 + dots.c + x_n$ and set $s_0 = 0$.
+  Use the observation that $x_j = s_j - s_(j-1)$ to verify the formula
+  $
+    sum_(j=m)^(n) x_j y_j = s_n y_(n+1) - s_(m-1) y_m + sum_(j=m)^n s_j (y_j - y_(j+1)).
+  $
 ]
 
-#exercise[2.7.x][
-  
+#exercise[2.7.13 (Abel's Test)][
+  Abel's Test for convergence states that if the series $sum_(k=1)^oo x_k$ converges, and if $(y_k)$ is a sequence satisfying
+  $
+    y_1 >= y_2 >= y_3 >= dots.c >= 0,
+  $
+  then the series $sum_(k=1)^oo x_k y_k$ converges.
+
+  +
+    Use Exercise 2.7.12 to show that
+    $
+      sum_(k=1)^n x_k y_k = s_n y_(n+1) + sum_(k=1)^n s_k (y_k - y_(k+1)),
+    $
+    where $s_n = x_1 + x_2 + dots.c + x_n$.
+
+  +
+    Use the Comparison Test to argue that $sum_(k=1)^oo s_k (y_k - y_(k+1))$ converges absolutely, and show how this leads directly to a proof of Abel's Test.
 ]
 
-#exercise[2.7.x][
+#exercise[2.7.14 (Dirichlet's Test)][
+  Dirichlet's Test for convergence states that if the partial sums of $sum_(k=1)^oo x_k$ are bounded (but not necessarily convergent), and if $(y_k)$ is a sequence satisfying $y_1 >= y_2 >= y_3 >= dots.c >= 0$ with $lim y_k = 0$, then the series $sum_(k=1)^oo x_k y_k$ converges.
+
+  +
+    Point out how the hypothesis of Dirichlet's Test differs from that of Abel's Test in Exercise 2.7.13, but show that essentially the same strategy can be used to provide a proof.
   
+  +
+    Show how the Alternating Series Test (Theorem 2.7.7) can be derived as a special case of Dirichlet's Test.
 ]
 
 == Double Summations and Products of Infinite Series
 
-#exercise[2.8.x][
-  
+#exercise[2.8.1][
+  Using the particular array $(a_(i j))$ from Section 2.1, compute $lim_(n -> oo) s_(n n)$.
+  How does this value compare to the two iterated values for the sum already computed?
 ]
 
-#exercise[2.8.x][
-  
+#exercise[2.8.2][
+  Show that f the iterate series
+  $
+    sum_(i=1)^oo sum_(j=1)^oo abs(a_(i j))
+  $
+  converges (meaning that for each fixed $i in NN$ the series $sum_(j=1)^oo abs(a_(i j))$ converges to some real number $b_i$, and the series $sum_(i=1)^oo b_i$ converges as well), then the iterated series
+  $
+    sum_(i=1)^oo sum_(j=1)^oo a_(i j)
+  $
+  converges.
 ]
 
-#exercise[2.8.x][
-  
+#exercise[2.8.3][
+  + Prove that $(t_(n n))$ converges.
+
+  +
+    Now, use the fact that $(t_(n n))$ is a Cauchy sequence to argue that $(s_(n n))$ converges.
 ]
 
-#exercise[2.8.x][
-  
+#exercise[2.8.4][
+  +
+    Let $epsilon.alt > 0$ be arbitrary and argue that there exists an $N_1 in NN$ such that $m, n >= N_1$ implies $B - epsilon.alt / 2 < t_(m n) <= B$.
+
+  +
+    Now, show that there exists an $N$ such that
+    $
+      abs(s_(m n)) < epsilon.alt
+    $
+    for all $m, n >= N$.
 ]
 
-#exercise[2.8.x][
-  
+#exercise[2.8.5][
+  +
+    Show that for all $m >= N$
+    $
+      abs((r_1 + r_2 + dots.c + r_m) - S) <= epsilon.alt.
+    $
+    Conclude that the iterated sum $sum_(i=1)^oo sum_(j=1)^oo a_(i j)$ converges to $S$.
+
+  +
+    Finish the proof by showing that the other iterated sum, $sum_(j=1)^oo sum_(i=1)^oo a_(i j)$, converges to $S$ as well.
+    Notice that the same argument can be used once it is established that, for each fixed column $j$, the sum $sum_(i=1)^oo a_(i j)$ converges to some real number $c_j$.
 ]
 
-#exercise[2.8.x][
+#exercise[2.8.6][
+  +
+    Assume the hypothesis---and hence the conclusion---of Theorem 2.8.1, show that $sum_(k=2)^oo d_k$ converges absolutely.
+
+  +
+    Imitate the strategy in the proof of Theorem 2.8.1 to show that $sum_(k=2)^oo d_k$ converges to $S = lim_(n -> oo) s_(n n)$.
+]
+
+#exercise[2.8.7][
+  Assume that $sum_(i=1)^oo a_i$ converges absolutely to $A$, and $sum_(j=1)^oo b_j$ converges absolutely to $B$.
   
+  +
+    Show that the iterated sum $sum_(i=1)^oo sum_(j=1)^oo abs(a_i b_j)$ converges so that we may apply Theorem 2.8.1.
+  +
+    Let $s_(n n) = sum_(i=1)^n sum_(j=1)^n a_i b_j$, and prove that $lim_(n -> oo) s_(n n) = A B$.
+    Conclude that
+    $
+      sum_(i=1)^oo sum_(j=1)^oo a_i b_j = sum_(j=1)^oo sum_(i=1)^oo a_i b_j = sum_(k=2)^oo d_k = A B,
+    $
+    where, as before, $d_k = a_1 b_(k-1) + a_2 b_(k-2) + dots.c + a_(k-1) b_1$.
 ]
