@@ -649,13 +649,47 @@ No exercises in this section.
   +
     Prove that the sequence defined by $x_1 = 3$ and
     $
-      x_(n+1) = 1 / (y - x_n)
+      x_(n+1) = 1 / (4 - x_n)
     $
     converges.
+  
   +
     Now that we know $lim x_n$ exists, explain why $lim x_(n+1)$ must also exist and equal the same value.
+  
   +
     Take the limit of each side of the recursive equation in part (a) to explicitly compute $lim x_n$.
+]
+
+#solution[
+  +
+    I claim that the sequence is monotone decreasing.
+    #proof[
+      BC: $x_2 = 1 < 3 = x_1$.
+
+      IH:
+      Assume true for some $n$ (that $x_n <= x_(n-1)$).
+      Then:
+      $
+        4-x_n >= 4 - x_(n-1) ==> 1/(4 - x_n) <= 1 / (4 - x_(n-1)) ==> x_(n+1) <= x_n.
+      $
+    ]
+    It is also bounded below by $1/4$, which can also be proved by induction.
+    The base case is obvious, and if we assume $x >= 1/4 > 0$, then
+    $
+      x_(n+1) = 1 / (4 - x_n) >= 1 / 4.
+    $
+    So now MCT finishes the argument.
+
+  +
+    It's literally the same, just missing the first term.
+
+    For $n >= N in NN$, we can see that $max{0, N - 1}$ works in the limit argument.
+
+  +
+    $
+      x = 1 / (4 - x) ==> x = 2 - sqrt(3).
+    $
+    $2 + sqrt(3)$ is not valid since it is greater than $3$.
 ]
 
 #exercise[2.4.2][
@@ -669,9 +703,19 @@ No exercises in this section.
     Solving for $y$, we conclude $lim y_n = 3 slash 2$.
 
     What is wrong with this argument?
+
   +
     This time set $y_1 = 1$ and $y_(n+1) = 3 - 1 / y_n$.
     Can the strategy in (a) be applied to compute the limit of this sequence?
+]
+
+#solution[
+  +
+    There may not be a limit in the first place.
+    In this case, there is not, since it oscillates between $1$ and $2$.
+  
+  +
+    Yes, we can use a similar approach to 2.4.1 to show that it is monotone increasing and bounded above by 3.
 ]
 
 #exercise[2.4.3][
@@ -685,6 +729,7 @@ No exercises in this section.
       ]
     $
     converges and find the limit.
+
   +
     Does the sequence
     $
@@ -698,6 +743,32 @@ No exercises in this section.
     If so, find the limit.
 ]
 
+#solution[
+  +
+    The recursive formula for the sequence is $x_(n+1) = sqrt(2 + x_n)$.
+
+    By induction (using the fact that the square root function is increasing), the sequence is increasing.
+
+    I also claim it is bounded above by $2$.
+    #proof[
+      BC: $sqrt(2) < 2$.
+
+      IH: assume true for some $n$.
+
+      Now:
+      $
+        sqrt(2 + x_n) < sqrt(4) = 2.
+      $
+    ]
+    Now we apply MCT.
+
+    Taking the limit of both sides of the recursive formula, we get that $x = 2$.
+  
+  +
+    By similar argument to above, we claim the sequence is monotone increasing and the upper bound is $2$.
+    The limit is $2$.
+]
+
 #exercise[2.4.4][
   +
     In Section 1.4 we used the Axiom of Completeness (AoC) to prove the Archimedean Property of $RR$ (Theorem 1.4.2).
@@ -706,6 +777,52 @@ No exercises in this section.
     Use the Monotone Convergence Theorem to supply a proof for the Nested Interval Property (Theorem 1.4.1) that doesn't make use of AoC.
 
     These two results suggest that we could have used the Monotone Convergence Theorem in place of AoC as our starting axiom for building a proper theory of the real numbers.
+]
+
+#solution[
+  +
+    Assume $y > 0$, otherwise we can just choose any $n in NN$ and be done.
+
+    Now notice that the sequence $1 / n$ is bounded below by 0, and is also monotone decreasing.
+
+    This suggests that it converges to a limit by MCT.
+
+    To produce the limit, notice that $lim 1/n = lim 1/(n + 1)$.
+
+    We can recursively see that:
+    $
+      1/(n+1) = 1/n dot (n / (n + 1)) = 1/n dot (1 - 1 / (n + 1)).
+    $
+    So by ALT we can see that the limit $s$ must be such that:
+    $
+      s = s (1 - s) ==> s = 0.
+    $
+
+    Therefore by the definition of a limit we get that for arbitrary $epsilon.alt > 0$, there exists $N in NN$ such that for $n >= N$:
+    $
+      abs(1 / n) < epsilon.alt.
+    $
+    Take $epsilon.alt = y$, and note that $1/n$ is always positive to get the Archimedean Property:
+    $
+      1/n < y "for large enough" n in NN.
+    $
+  
+  +
+    Note that the sequences $(a_n)$ and $(b_n)$ are monotone increasing/decreasing and bounded above/below.
+
+    Therefore by MCT they must converge to some $a$ and $b$ respectively.
+    In addition, its clear that $a_n <= a$ and $b_n >= b$ for all $n$.
+
+    I claim that $a <= b$.
+    If it were the case that $a > b$, then we could set $epsilon.alt = a - b$, and select some $b_n$ such that
+    $b_n - b = abs(b_n - b) < a - b$.
+
+    With some algebra we get:
+    $
+      b_n - a_n < a - a_n <= 0 quad ==> quad b_n < a_n.
+    $
+    This is impossible for an interval, which is a *contradiction*. Therefore it must be that $a <= b$ and thus we can choose any $x$ such that $a <= x <= b$, and it will be present in every interval.
+    Thus the interval will not be empty.
 ]
 
 #exercise[2.4.5][
@@ -718,6 +835,10 @@ No exercises in this section.
     Conclude that $lim x_n = sqrt(2)$.
   +
     Modify the sequence $(x_n)$ so that it converges to $sqrt(c)$.
+]
+
+#solution[
+  #TODO[July 8]
 ]
 
 #exercise[2.4.6 (Arithmetic--Geometric Mean)][
