@@ -1333,3 +1333,7 @@ No exercises in this section.
     $
     where, as before, $d_k = a_1 b_(k-1) + a_2 b_(k-2) + dots.c + a_(k-1) b_1$.
 ]
+
+== Epilogue
+
+No exercises in this section.
