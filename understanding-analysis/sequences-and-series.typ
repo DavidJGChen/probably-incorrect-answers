@@ -565,13 +565,15 @@ No exercises in this section.
 
 #solution[
   +
-    AFSOC that $a$ is not an upper bound for the set $B$.
+    True. AFSOC that $a$ is not an upper bound for the set $B$.
     Then there is some $b in B$ such that $b > a$. Let $epsilon.alt = b - a$.
     Then there is some $N in NN$ such that for all $n >= N$ we have $abs(a_n - a) < epsilon.alt$.
     Clearly all $a_n$ must be larger than $a$, so we have that $a_n - a < b - a$, so then $a_n < b$, and we have shown our contradiction since we assumed that all $a_n$ would also be upper bounds.
 
   +
-    #TODO[July 8]
+    True. AFSOC that $a in (0,1)$.
+    Then choose $epsilon.alt = 1/2 min{a, 1 - a} > 0$.
+    There must be an $a_n$ within that $epsilon.alt$-neighborhood, which is clearly not in the complement of $(0,1)$.
   
   +
     False, consider the sequence defined by the decimal approximation of $pi$.
@@ -602,6 +604,43 @@ No exercises in this section.
     Show $lim_(m -> oo) b_m = a$.
   +
     Prove that if $lim_(m, n -> oo) a_(m n)$ exists and the iterated limits both exist, then all three limits must be equal.
+]
+
+#solution[
+  +
+    The first limit is equal to $1$, while the second limit is equal to 0.
+  
+  +
+    Yes, the limit is $0$.
+    Yes, both iterated limits exist and are $0$.
+
+    For $a_(m n) = m n slash (m^2 + n^2)$, $lim_(m,n) a_(m n)$ does not exist, since we can make the sequence approach different values.
+    (This is not super rigorous, but it is if we assume the result that a limit can only have one value.)
+
+    However, the iterated limits exist and are both $0$.
+
+  +
+    Choose the following:
+    $
+      a_(m n) = (-1)^(m + n) (1/m + 1/n)
+    $
+    The iterated limits do not exist, as they will oscillate between $1/m$ and $-1/m$ or $1/n$ and $-1/n$.
+
+    However, $lim_(m, n) a_(m n) = 0$, which can be easily proven by triangle inequality.
+  
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+
+    Let's use the triangle inequality:
+    $
+      abs(b_m - a) &= abs(b_m - a_(m n) + a_(m n) - a)\
+      &<= abs(a_(m n) - b_m) + abs(a_(m n) - a)\
+      &<= epsilon.alt' + epsilon.alt''
+    $
+    Find $N$ and $M$ such that we approach $epsilon.alt' = epsilon.alt'' = epsilon.alt/2$, and take $m >= max{N, M}$ to finish the proof.
+
+  +
+    This is just part (d).
 ]
 
 == The Monotone Convergence Theorem and Infinite Series
