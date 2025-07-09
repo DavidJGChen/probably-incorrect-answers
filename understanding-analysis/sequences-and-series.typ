@@ -838,13 +838,65 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 8]
+  +
+    Clearly $x_1^2 = 4$.
+    Let's work out $x_(n+1)^2$:
+    $
+      x_(n+1)^2 &= 1/4 (x_n^2 + 4 + 4/(x_n^2))\
+      &= 1/4 (x_n^2 - 4 + 4/(x_n^2)) + 2\
+      &= 1/4 (x_n - 2 / x_n)^2 + 2\
+      &>=2.
+    $
+    This applies for all $n$.
+
+    Now, let's look at $x_n - x_(n+1)$:
+    $
+      x_n - x_(n+1) &= x_n - 1/2 (x_n + 2 / x_n)\
+      &= 1/2 x_n - 1 / x_n\
+      &= (x_n^2 - 2) / (2 x_n)\
+      &>= 0.
+    $
+    The last inequality relies on the fact that $x_n^2 >= 0$, as well as the fact that $x_n > 0$ for all $n$ (this is easy to see).
+
+    Thus, we have that $x_(n+1) <= x_n$ and the sequence is monotone decreasing, while being bounded below by $sqrt(2)$.
+
+    It therefore has a limit, and we can take the limit of both sides of the recursive formula to work it out:
+    $
+      x = 1/2 (x + 2 / x) ==> x = sqrt(2).
+    $
+  
+  +
+    I claim
+    $
+      x_(n+1) = 1/2 (x_n + c / x_n)
+    $
+    works.
+
+    Through similar steps to part (a), we first show that $x_n^2 >= c$ for all $n$:
+    $
+      x_(n+1)^2 &= 1/c^2 (x_n^2 + 2c + c^2 / x_n)\
+      &= 1/4 (x_n^2 - 2c + c^2 / x_n) + c\
+      &>= c.
+    $
+    Then we show that the sequence is monotone decreasing:
+    $
+      x_n - x_(n+1) &= x_n - 1/2 (x_n + c / x_n)\
+      &= 1/2 (x_n - c / x_n)\
+      &= 1/2 ((x_n^2 - c) / (x_n))\
+      &>= 0.
+    $
+
+    Then by MCT the limit exists, and we can compute it:
+    $
+      x = 1/2 (x + c/x) ==> x = sqrt(c).
+    $
 ]
 
 #exercise[2.4.6 (Arithmetic--Geometric Mean)][
   +
     Explain why $sqrt(x y) <= (x+y) slash 2$ for any two positive real numbers $x$ and $y$.
     (The geometric mean is always less than the arithmetic mean.)
+
   +
     Now let $0 <= x_1 <= y_1$ and define
     $
@@ -857,10 +909,48 @@ No exercises in this section.
     Show $lim x_n$ and $lim y_n$ both exist and are equal.
 ]
 
+#solution[
+  +
+    $
+      (sqrt(x) - sqrt(y))^2 >= 0 <==>\
+      x - 2sqrt(x y) + y >= 0 <==>\
+      (x + y) / 2 >= sqrt(x y).
+    $
+
+  +
+    First, note that both $y_n$ and $x_n$ are bounded below by $0$ for all $n$ by closure of positive numbers under addition, multiplication, and square root.
+
+    First, by AM-GM inequality, $x_n <= y_n$ for all $n$.
+
+    Next, I claim that $(y_n)$ is monotone decreasing.
+    #proof[
+      $
+        y_(n+1) = (x_n + y_n) / 2 <= y_n.
+      $
+    ]
+
+    I claim that $(x_n)$ is monotone increasing.
+    #proof[
+      $
+        x_(n+1) = sqrt(x_n y_n) >= x_n.
+      $
+    ]
+    Note also that $(x_n)$ is bounded above by $y_1$, since every $x_n <= y_n <= y_1$.
+
+    Therefore by MCT, the limit exists for both sequences.
+    To find the limit, let's solve for the limits in one of the recursive formulas:
+    $
+      y = (x + y) / 2 ==> x = y.
+    $
+    This checks out with the other formula.
+]
+
 #exercise[2.4.7 (Limit Superior)][
   Let $(a_n)$ be a bounded sequence.
+  
   +
     Prove that the sequence defined by $y_n = sup {a_k mid(:) k >= n}$ converges.
+
   +
     The _limit superior_ of $(a_n)$, or $lim sup a_n$, is defined by
     $
@@ -868,19 +958,80 @@ No exercises in this section.
     $
     where $y_n$ is the sequence from part (a) of this exercise.
     Provide a reasonable definition for $lim inf a_n$ and briefly explain why it always exists for any bounded sequence.
+  
   +
     Prove that $lim inf a_n <= lim sup a_n$ for every bounded sequence, and give an example of sequence for which the inequality is strict.
+  
   +
     Show that $lim inf a_n = lim sup a_n$ if and only if $lim a_n$ exists.
     In this case, all three share the same value.
 ]
 
+#solution[
+  +
+    $(y_n)$ must be bounded below, otherwise that would imply that $(a_n)$ is not bounded below.
+
+    In addition, $(y_n)$ is monotone decreasing.
+    From $y_n$ to $y_(n+1)$, we are only ignoring one element, which can never increase the supremum, only possibily decrease it (or keep it the same).
+
+    Thus, by MCT this sequence converges.
+
+  +
+    Let $(y_n)$ be defined as $y_n = inf{a_k mid(:) k >= n}$.
+
+    Then $liminf a_n = lim y_n$.
+
+    This exists by similar argument to part (a).
+
+  +
+    It is clear that for every $n$, $inf{a_k mid(:) k >= n} <= sup{a_k mid(:) k >= n}$.
+    Thus by the OLT their limits must follow the same inequality.
+
+    One example where equality holds is simply the constant $0$ sequence.
+
+  +
+    ($=>$)
+    We can directly apply the squeeze theorem for this direction, since $inf{a_k mid(:) k >= n} <= a_n <= sup{a_k mid(:) k >= n}$.
+
+    ($arrow.double.l$)
+    Since $lim a_n$ exists, we know that for arbitrary $epsilon.alt' > 0$ there exists an $N$ after which all $a_n$ exist within the $epsilon.alt'$-neighborhood of $a$.
+
+    The supremum of all of those points must also exist either within that neighborhood or on its boundary.
+
+    Therefore the $limsup a_n$ must converge to $a$ as well, if we just select $0 < epsilon.alt' < epsilon.alt$.
+
+    The same argument applies for $liminf a_n$.
+
+
+]
+
 #exercise[2.4.8][
   For each series, find an explicit formula for the sequence of partial sums and determine if the series converges.
+
   + $ sum_(n=1)^oo 1 / 2^n $
+  
   + $ sum_(n=1)^oo 1 / (n (n+1)) $
+  
   + $ sum_(n=1)^oo log ((n+1) / n) $
   (In (c), $log(x)$ refers to the natural logarithm function from calculus.)
+]
+
+#solution[
+  +
+    $s_n = 1 - 1 / (2^n)$.
+
+    This converges to $1$.
+
+  +
+    $s_n = 1 - 1 / (n + 1)$.
+
+    This converges to 1.
+
+  +
+    $s_n = log (n+1)$.
+
+    This does not converge, as it grows unbounded.
+    ($log n$ is unbounded above, it is easily shown that it contains an unbounded subsequence that grows like $n$).
 ]
 
 #exercise[2.4.9][
