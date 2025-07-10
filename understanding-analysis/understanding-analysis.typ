@@ -10,6 +10,8 @@
   bibliography: bibliography("refs.bib"),
 )
 
+#outline()
+
 = The Real Numbers
 #include "the-real-numbers.typ"
 #pagebreak()

@@ -1,5 +1,10 @@
 #import "@local/david:1.0.1": *
 
+#let ex-counter = counter("ex-counter")
+#let ex-count = {
+  ex-counter.step()
+  context [#counter(heading).display().#ex-counter.display()]
+}
 
 == Discussion: Rearrangements of Infinite Series
 
@@ -7,7 +12,7 @@ No exercises in this section.
 
 == The Limit of a Sequence
 
-#exercise[2.2.1][
+#exercise[#ex-count][
   What happens if we reverse the order of the quantifiers in Definition 2.2.3?
 
   _Definition:_ A sequence $(x_n)$ _verconges_ to $x$ if _there exists_ an $epsilon.alt > 0$ such that _for all_ $N in NN$ it is true that $n >= N$ implies $abs(x_n - x) < epsilon.alt$.
@@ -1001,8 +1006,6 @@ No exercises in this section.
     Therefore the $limsup a_n$ must converge to $a$ as well, if we just select $0 < epsilon.alt' < epsilon.alt$.
 
     The same argument applies for $liminf a_n$.
-
-
 ]
 
 #exercise[2.4.8][
@@ -1039,6 +1042,20 @@ No exercises in this section.
   Example 2.4.5 may be a useful reference.
 ]
 
+#solution[
+  Assume that $sum_(n=0)^oo 2^n b_(2^n)$ diverges.
+
+  Let's take a closer look at the partial sums of $sum_(n=1)^oo b_n$.
+
+  Particularly, let's look at the sequence of partial sums defined by $s_(2^k)$:
+  $
+    s_(2^k) &= b_1 + b_2 + (b_3 + b_4) + (b_5 + dots.c + b_8) + dots.c + (b_(2^(k-1) + 1) + dots.c + b_(2^k))\
+    &>= b_1 + 1 dot b_2 + 2 dot b_4 + 4 dot b_8 + dots.c + 2^(k-1) dot b_(2^k)\
+    &>= 1/2 (b_1 + 2 dot b_2 + 4 dot b_4 + 8 dot b_8 + dots.c + 2^(k) dot b_(2^k))\
+  $
+  This is unbounded, otherwise we could show that $sum_(n=0)^oo 2^n b_(2^n)$ converges because its partial sums converge.
+]
+
 #exercise[2.4.10 (Infinite Products)][
   A close relative of infinite series is the _infinite product_
   $
@@ -1055,9 +1072,49 @@ No exercises in this section.
   +
     Find an explicit formula for the sequence of partial products in the case where $a_n = 1 slash n$ and decide whether the sequence converges.
     Write out the first few terms in the sequence of partial products in the case where $a_n = 1 slash n^2$ and make a conjecture about the convergence of this sequence.
+
   +
     Show, in general, that the sequence of partial products converges if and only if $sum_(n=1)^oo a_n$ converges.
     (The inequality $1 + x <= 3^x$ for positive $x$ will be useful in one direction.)
+]
+
+#solution[
+  +
+    From a few calculations, and verified by induction, we can see that $p_m = m + 1$.
+    This clearly does not converge.
+
+    For $1 slash n^2$:
+    $
+      p_1 &= (1 + 1) &&= 2\
+      p_2 &= (1 + 1)(1 + 1/4) &&= 5/2\
+      p_3 &= (5/2)(10/9) &&= 25/9\
+      p_4 &= (25/9)(17/16) &&= 425/144
+    $
+    My conjecture is that this converges. *Not proved.*
+
+  +
+    ($=>$) I wish to show that if the sequence of partial products converges, then the infinite sum converges.
+
+    Reminder, we have that $a_n >= 0$.
+    
+    It is easy to see that in $p_m$, it contains the partial sum $s_m = sum_(n=1)^m a_n$.
+
+    To see this, we can simply expand out the product and see that $s_m$ exists as a subset of the terms.
+
+    Thus, $p_m >= s_m >= 0$.
+    Since $p_m$ is convergent, it must be bounded above.
+    So $s_m$ is also bounded above, and furthermore, is monotone increasing.
+    Thus it is also convergent.
+
+    ($arrow.double.l$)
+
+    Assume the infinite sum is convergent, to some limit $a$.
+
+    $
+      p_m = product_(n=1)^m (1 + a_n) <= product_(n=1)^m 3^(a_n) = 3^(sum_(n=1)^m a_n) = 3^(s_m).
+    $
+
+    I won't finish the proof rigorously, but this clearly also converges, which we use to show that the infinite product also converges.
 ]
 
 == Subsequences and the Bolzano--Weierstrass Theorem
@@ -1078,6 +1135,39 @@ No exercises in this section.
     A sequence that contains subsequences converging to every point in the infinite set ${1, 1 slash 2, 1 slash 3, 1 slash 4, 1 slash 5, dots}$, and no subsequences converging to points outside of this set.
 ]
 
+#solution[
+  +
+    Impossible, since that bounded subsequence itself would have a subsequence that converges.
+
+  +
+    Yes, let $a_n = 1 / (n + 1)$ and $b_n = 1 + 1 / n$.
+    Now alternate these.
+
+  +
+    Yes, we can just choose the enumeration of the rationals between 0 and $1$.
+    We can always choose a subsequence that gets arbitrarily close to any of the numbers in the set.
+  
+  +
+    False, since any such sequence must also converge to $0$, which I don't think is in the set.
+
+    If $0$ is allowed to be in the set, then consider the following sequence:
+    $
+      (1, 1, 1 slash 2, 1, 1 slash 2, 1 slash 3, 1, 1 slash 2, 1 slash 3, 1 slash 4, 1, dots)
+    $
+    Thus, every number in our sequence will appear an infinite number of times.
+
+    Any subsequence cannot converge to any number outside of this set (if it includes 0).
+
+    Assume we have a subsequence with limit $0 < x < 1$.
+    Find the number in our infinite set that is closest to it, say $1 slash n$, and AFSOC $1 slash n != x$.
+    (This is only possible if $x != 0$).
+
+    Now choose positive $epsilon.alt < abs(1/n - x)$.
+    Since we assumed that $1 slash n$ is the closest possible number in our sequence to $x$, there are no numbers in our sequence within this neighborhood.
+
+    Thus it must be the case that $x = 1 slash n$ for some $n$.
+]
+
 #exercise[2.5.2][
   Decide whether the following propositions are true or false, providing a short justification for each conclusion.
 
@@ -1092,6 +1182,25 @@ No exercises in this section.
 
   +
     If $(x_n)$ is monotone and contains a convergent subsequence, then $(x_n)$ converges.
+]
+
+#solution[
+  +
+    True, since we could create a proper subsequence by discarding finite elements from the beginning.
+    Since that converges, then clearly the original sequence also converges.
+
+  +
+    True.
+    This shows that for arbitrary $epsilon.alt > 0$, for all $N in NN$ there will always exist some $n >= N$ such that $x_n$ is outside of the $epsilon.alt$-neigborhood of any proposed limit, and we can choose that $n$ from the divergent subsequence.
+
+  +
+    True.
+    Since the sequence is bounded and diverges, $limsup x_n$ and $liminf x_n$ must exist and differ.
+    Thus we can also find subsequences that converge to those different values.
+
+  +
+    True, since the convergent subsequence is bounded.
+    The original sequence must obey the same bounds, and since it is monotone it must also be convergent.
 ]
 
 #exercise[2.5.3][
@@ -1109,6 +1218,17 @@ No exercises in this section.
     Why doesn't our proof in (a) apply to this example?
 ]
 
+#solution[
+  +
+    The regrouping gives us a sequence of partial sums $(s_(n_k))$.
+    This is a subsequence of the original sequence of partial sums $(s_n)$.
+    Since we know that is convergent, then the subsequence must also be convergent to the same limit.
+  
+  +
+    The proof only works in one direction, from convergence to associativity.
+    If we only have subsequence convergence, then we cannot say anything about the convergence of the original series.
+]
+
 #exercise[2.5.4][
   The Bolzano--Weirstrass Theorem is extremely important, and so is the strategy employed in the proof.
   To gain some more experience with this technique, assume the Nested Interval Property is true and use it to provide a proof of the Axiom of Completeness.
@@ -1116,9 +1236,52 @@ No exercises in this section.
   (Why precisely is this last assumption needed to avoid circularity?)
 ]
 
+#solution[
+  Assume we have a set that is bounded above by $M$.
+  Choose any element $x$ of our given set $X$.
+
+  If $x = M$ we are done, so assume $x < M$.
+  Let $l = M - x$.
+
+  Now form the closed interval $I_1 = [x, M]$.
+  Bisect it into two halves, and select $I_2$ based on the following criteria:
+  If the right-most half has elements in $X$, choose it.
+  Otherwise choose the left half.
+  Either way, $I_k$ should always include an element in $X$.
+
+  By the NIP, there exists a real number $s$ in every $I_k$, and every $I_k$ should contain an element from $X$.
+
+  I claim that $s$ is the supremum of $X$.
+
+  #proof[
+    Assume there was some $x'$ such that $x' > s$.
+    Then there would be some interval $I_k$ which contained both $s$ and $x'$, and some $I_(k+1)$ such that it only contained $s$.
+    This would imply that $x'$ existed in the right half of $I_k$ while $s$ exists in the left half of $I_k$.
+    However, by construction, we would have picked the right half of $I_k$, which is a *contradiction*.
+    Therefore it must be that any $x' in X$ is such that $x' <= s$.
+
+    To show it is the least upper bound, suppose we have some upper bound $b < s$. Then choose $epsilon.alt < s - b$.
+    Because the length of $I_k$ (which is $l / 2^k$) converges to 0, we can choose some $I_k$ such that the length is less than $epsilon.alt$.
+    By construction, it must contain some element $x'$ of $X$.
+    It must be that $x' < s$, otherwise we would immediately run into a contradiction.
+
+    Thus, we have:
+    $
+      abs(s - x') < s - b <==> s - x' < s - b <==> x' > b.
+    $
+    This is a *contradiction*, so therefore it must be that for any upper bound $b$, that $b >= s$.
+  ]
+]
+
 #exercise[2.5.5][
   Assume $(a_n)$ is a bounded sequence with the property that every convergent subsequence of $(a_n)$ converges to the same limit $a in RR$.
   Show that $(a_n)$ must converge to $a$.
+]
+
+#solution[
+  If $(a_n)$ diverged, then due to the fact that it is bounded, there would be two subsequences converging to the $limsup$ and $liminf$ respectively, which would be different values.
+
+  Thus $(a_n)$ must converge. Therefore it itself is a convergent subsequence, and must converge to $a$.
 ]
 
 #exercise[2.5.6][
@@ -1126,9 +1289,50 @@ No exercises in this section.
   (The results in Exercise 2.3.1 may be assumed.)
 ]
 
+#solution[
+  If $b > 1$, then $b^(1 slash n)$ is decreasing and bounded below by $1$.
+
+  If $b < 1$, then $b^(1 / n)$ is increasing and bounded above by $1$.
+
+  If $b = 1$, then we just have the constant sequence of $1$.
+
+  By MCT there must be some limit $l$
+
+  We can choose the subsequence $b^(1/(2n)) = sqrt(b^(1 slash n))$, which should have the same limit $l$.
+
+  By Exercise 2.3.1, we know that $(sqrt(b^(1 slash n))) -> sqrt(l)$, and the only value where $sqrt(l) = l$ is either $0$ or $1$.
+  It is clearly not zero, so the limit must be $1$.
+]
+
 #exercise[2.5.7][
   Extend the result proved in Example 2.5.3 to the case $abs(b) < 1$;
   that is, show $lim (b^n) = 0$ if and only if $-1 < b < 1$.
+]
+
+#solution[
+  ($arrow.double.l$)
+
+  Assume $-1 < b < 1$.
+  Let $epsilon.alt > 0$ be arbitrary.
+
+  From Example 2.5.3 we know that $abs(b)^n$ converges to $0$.
+  Using that result:
+  $
+    abs(b^n) = abs(abs(b)^n) < epsilon.alt
+  $
+  for all $n$ greater than some $N in NN$.
+  This proves that $b^n$ converges to $0$.
+
+  ($=>$)
+
+  First, if $b = 1$ then we clearly converge to $1$.
+  If $b = -1$ we diverge since we alternate between $-1$ and $1$.
+
+  Assume $b > 1$ or $b < -1$.
+  Then it must be true that $abs(b) > 1$.
+  Choose $0 < epsilon.alt < 1$.
+
+  Clearly it cannot converge to $0$ then, since with our given value of $epsilon.alt$ it can never be the case that $abs(b^n) < epsilon.alt$.
 ]
 
 #exercise[2.5.8][
@@ -1145,6 +1349,39 @@ No exercises in this section.
     Show that every sequence contains a monotone subsequence and explain how this furnishes a new proof of the Bolzano--Weierstrass Theorem.
 ]
 
+#solution[
+  +
+    Zero peak terms:
+    $
+      (-1, -1/2, -1/3, -1/4, dots)
+    $
+    One peak term:
+    $
+      (0, -1, -1/2, -1/3, -1/4, dots)
+    $
+    Two peak terms:
+    $
+      (1, 0, -1, -1/2, -1/3, -1/4, dots)
+    $
+    Infinitely many peak terms, not monotone:
+    $
+      (1, 0, 1/2, 0, 1/3, 0, 1/4, dots)
+    $
+
+  +
+    First, in the case that we have finite peak terms, choose the term after the last peak term, call it $x_n_1$.
+
+    We know that we can find another term $x_n_2$ after that term ($n_2 > n_1$) such that $x_k > x_n$.
+    Otherwise, $x_n$ would be a peak term.
+    The same logic applies for all $n_k$ and $n_(k-1)$.
+    Thus, we have found a monotone increasing subsequence.
+
+    In the case that we have infinite peak terms, we simply choose our subset as the peak terms, since each one must be less than or equal to the previous peak term.
+    Thus this gives us a monotone decreasing subsequence.
+
+    Therefore, we can conclude that since every bounded sequence has a monotone subsequence, that subsequence is itself bounded and by MCT convergent.
+]
+
 #exercise[2.5.9][
   Let $(a_n)$ be a bounded sequence, and define the set
   $
@@ -1152,6 +1389,32 @@ No exercises in this section.
   $
   Show that there exists a subsequence $(a_(n_k))$ converging to $s = sup S$.
   (This is a direct proof of the Bolzano--Weierstrass Theorem using the Axiom of Completeness).
+]
+
+#solution[
+  Notice $s$ is clearly bounded above by the upper bound of $(a_n)$, so by AoC $s = sup S$ exists.
+
+  Since $s$ is the supremum, we know that given arbitrary $n in NN$, that there must exist an element $x_n in S$ such that $x_n > s - 1/n$.
+  Rearranging, we get:
+  $
+    s - x_n < 1/n.
+  $
+  Note also that there must be infinite elements in $(a_n)$ that are less than $s + 1/n$.
+  Otherwise, we could find an element $x in S$ such that $s < x < s + 1/n$.
+
+  Let's choose the following subsequence.
+  Let $a_n_k$ be the first term after the first $n_(k-1)$ such that $x_k < a_(n_k) < s + 1/k$.
+
+  Thus, we have that $s - a_n_k < s - x_k < 1/k$
+
+  If $s < a_n_k$, then $a_n_k - s < 1/k$, so essentially we have that
+  $
+    abs(a_n_k - s) < 1/k.
+  $
+  Now for arbitrary $epsilon.alt$, we can just choose $N in NN$ such that $1/N < epsilon$, and now we see that for all $k >= N$ that our subsequence converges to $s$:
+  $
+    abs(a_n_k - s) < epsilon.alt.
+  $
 ]
 
 == The Cauchy Criterion
