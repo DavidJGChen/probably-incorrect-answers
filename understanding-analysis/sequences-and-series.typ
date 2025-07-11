@@ -1423,6 +1423,21 @@ No exercises in this section.
   Supply a proof for Theorem 2.6.2.
 ]
 
+#solution[
+  Assume $(x_n) -> x$.
+
+  Let $epsilon.alt$ be arbitrary.
+
+  Find $N in NN$ such that for all $n >= N$, we have $abs(x_n - x) < epsilon.alt/2$.
+
+  Then for $n, m >= N$, we have that:
+  $
+    abs(x_n - x_m) = abs(x_n - x + x - x_m) <= abs(x_n - x) + abs(x_m - x) < epsilon.alt / 2 + epsilon.alt / 2 = epsilon.alt.
+  $
+
+  Thus our sequence is also Cauchy.
+]
+
 #exercise[2.6.2][
   Give an example of each of the following, or argue that such a request is impossible.
 
@@ -1435,6 +1450,20 @@ No exercises in this section.
   + An unbounded sequence containing a subsequence that is Cauchy.
 ]
 
+#solution[
+  +
+    $x_n = (-1)^n / n$.
+  
+  +
+    Impossible, since all Cauchy sequences are bounded.
+  
+  +
+    Impossible, since the subsequence would have an upper bound, and all terms in the original sequence would also have to obey that upper bound and thus the original sequence would be convergent by MCT.
+
+  +
+    $(0, 1, 0, 2, 0, 3, 0, 4, dots)$
+]
+
 #exercise[2.6.3][
   If $(x_n)$ and $(y_n)$ are Cauchy sequences, then one easy way to prove that $(x_n + y_n)$ is Cauchy is to use the Cauchy Criterion.
   By Theorem 2.6.4, $(x_n)$ and $(y_n)$ must be convergent, and the Algebraic Limit Theorem then implies $(x_n + y_n)$ is convergent and hence Cauchy.
@@ -1443,6 +1472,29 @@ No exercises in this section.
     Give a direct argument that $(x_n + y_n)$ is a Cauchy sequence that does not use the Cauchy Criterion or the Algebraic Limit Theorem.
 
   + Do the same for the product $(x_n y_n)$.
+]
+
+#solution[
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+    Choose $n, m >= max{N_1, N_2}$ where $N_1, N_2 in NN$ are such that $abs(x_n - x_m) < epsilon.alt / 2$ and $abs(y_n - y_m) < epsilon.alt / 2$ respectively.
+
+    Then:
+    $
+      abs((x_n + y_n) - (x_m + y_m)) <= abs(x_n - x_m) + abs(y_n - y_m) < epsilon.alt.
+    $
+  
+  +
+    Since they are both Cauchy, we know they are bounded by some $M_1$ and $M_2$ respectively.
+    Let $epsilon.alt > 0$ be arbitrary.
+    Choose $n, m >= max{N_1, N_2}$ where $N_1, N_2 in NN$ are such that $abs(x_n - x_m) < epsilon.alt / (2 M_1)$ and $abs(y_n - y_m) < epsilon.alt / (2 M_2)$ respectively.
+    $
+      abs(x_n y_n - x_m y_m) &= abs(x_n y_n - x_m y_m + x_n y_m - x_n y_m)\
+      &<= abs(x_n y_n - x_n y_m) + abs(x_n y_m - x_m y_m)\
+      &= abs(x_n)abs(y_n - y_m) + abs(y_m)abs(x_n - x_m)\
+      &<= M_2 abs(y_n - y_m) + M_1 abs(x_n - x_m)\
+      &< epsilon.alt.
+    $
 ]
 
 #exercise[2.6.4][
@@ -1455,6 +1507,16 @@ No exercises in this section.
 
   + 
     $c_n = [[a_n]]$, where $[[x]]$ refers to the greatest integer less than or equal to $x$.
+]
+
+#solution[
+  +
+  
+  +
+  
+  +
+    No, consider the counter example where $a_n = (-1)^n / n$.
+    Then $c_n$ will alternate between $-1$ and $0$.
 ]
 
 #exercise[2.6.5][
