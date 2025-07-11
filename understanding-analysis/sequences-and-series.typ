@@ -1511,17 +1511,24 @@ No exercises in this section.
 
 #solution[
   +
+    Yup, by using reverse triangle inequality followed by triangle inequality.
+    $
+      abs(abs(a_n - b_n) - abs(a_m - b_m)) <= abs(a_n - b_n - a_m + b_m) <= abs(a_n - a_m) + abs(b_n - b_m).
+    $
+    I don't prove this rigorously.
   
   +
+    No, consider counter-example where $a_n = 1$.
+    Then $c_n$ will alternate between $-1$ and $1$.
   
   +
-    No, consider the counter example where $a_n = (-1)^n / n$.
+    No, consider the counter-example where $a_n = (-1)^n / n$.
     Then $c_n$ will alternate between $-1$ and $0$.
 ]
 
 #exercise[2.6.5][
   Consider the following (invented) definition:
-  A sequence $(s_n)$ is _pseudo-Cauchy_ if, for all $epsilon.alt > 0$, there exists an N such that if $n >= N$, then $abs(s_(n+1) - s_n) < epsilon.alt$.
+  A sequence $(s_n)$ is _pseudo-Cauchy_ if, for all $epsilon.alt > 0$, there exists an $N$ such that if $n >= N$, then $abs(s_(n+1) - s_n) < epsilon.alt$.
 
   Decide which one of the following two propositions is actually true.
   Supply a proof for the valid statement and a counterexample for the other.
@@ -1532,6 +1539,21 @@ No exercises in this section.
   ]
 ]
 
+#solution[
+  (ii) is true.
+  #proof[
+    Let $epsilon.alt > 0$ be arbitrary.
+    Let $N in NN$ be such that for $n >= N$, both $abs(x_(n+1) - x_n)$ and $abs(y_(n+1) - y_n)$ are less than $epsilon.alt / 2$.
+    Then we can check that:
+    $
+      abs(x_(n+1) + y_(n+1) - x_n - y_n) <= abs(x_(n+1) - x_n) + abs(y_(n+1) - y_n) < epsilon.alt.
+    $
+  ]
+
+  For the counterexample, consider the sequence of partial sums for the Harmonic series.
+  We know it is unbounded, but the difference between subsequence terms is simply $1/n$, so we can clearly make the difference as small as we'd like.
+]
+
 #exercise[2.6.6][
   Let's call a sequence $(a_n)$ _quasi-increasing_ if for all $epsilon.alt > 0$ there exists an $N$ such that whenever $n > m >= N$ it follows that $a_n > a_m - epsilon.alt$.
 
@@ -1539,11 +1561,60 @@ No exercises in this section.
     Give an example of a sequence that is quasi-increasing but not monotone or eventually monotone.
   
   +
-    Give an example of a quasi-increasing sequence that is dvergent and not monotone oreventually monotone.
+    Give an example of a quasi-increasing sequence that is divergent and not monotone or eventually monotone.
 
   +
     Is there an analogue of the Monotone Convergence Theorem for quasi-increasing sequences?
     give an example of a bounded, quasi-increasing sequence that doesn't converge, or prove that no such sequence exists.
+]
+
+#solution[
+  +
+    $
+      (1, 1/2, 1, 3/4, 1, 7/8, 1, 15/16, dots)
+    $
+
+  +
+    $
+      (1, 1/2, 2, 7/4, 3, 23/8, 4, 63/16, ...)
+    $
+
+  +
+    I claim that if our sequence is bounded from above and is quasi-increasing, then it converges.
+    #proof[
+      Let $epsilon.alt > 0 $ be arbitrary.
+
+      Since the sequence is quasi-increasing, there exists $N_1$ such that for any $n > m >= N_1$ we have $a_n > a_m - epsilon.alt / 2$.
+
+      First, note that we have that
+      $
+        a_n - a_m > -epsilon.alt/2 > -epsilon.alt.
+      $
+
+      Now, consider $s_N_1 = sup{a_k mid(:) k >= N_1}$.
+      This must exist since the sequence is bounded.
+      By some lemma, there must be some $N_2 >= N_1$ such that $s_N_1 - epsilon.alt/2 < a_N_2$.
+
+      Note that for $m >= N_2$ we have that $a_m - a_N_2 > -epsilon.alt / 2$, so with some rearranging we get:
+      $
+        -a_m < -a_N_2 + epsilon.alt/2.
+      $
+
+      Now, for any $n,m >= N_2$, we have the following:
+      $
+        a_n - a_m &<= s_N_1 - a_m\
+        &< s_N_1 - a_N_2 + epsilon.alt/2 \
+        &<= epsilon.alt/2 + epsilon.alt/2.
+      $
+      So putting everything together, we have:
+      $
+        -epsilon.alt < a_n - a_m < epsilon.alt quad ==> quad abs(a_n - a_m) < epsilon.alt
+      $
+      for $n > m >= N_2$.
+
+      For $n < m$, we can simply switch the symbols and it works out fine.
+
+    ]
 ]
 
 #exercise[2.6.7][
