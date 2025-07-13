@@ -1626,11 +1626,61 @@ No exercises in this section.
     This shows that BW, AoC, and MCT are all equivalent.
 
   +
-    Use the Cauchy Criterion to prove the Bolzano-Weierstrass Theorem, and find the point in the argument where the Archimedean Property is implicitly required.
+    Use the Cauchy Criterion to prove the Bolzano--Weierstrass Theorem, and find the point in the argument where the Archimedean Property is implicitly required.
     This establishes the final link in the equivalence of the five characterizations of the completeness discussed at the end of Section 2.6.
 
   +
     How do we know it is impossible to prove the Axiom of Completeness starting from the Archimedean Property?
+]
+
+#solution[
+  +
+    Assume that we have a bounded sequence $(a_n)$ such that it is monotonically increasing.
+
+    Then we know by BW that there is a convergent subsequence $(a_n_k) -> a$.
+
+    I claim that $(a_n)$ also converges to $a$.
+
+    #proof[
+      Let $epsilon.alt > 0$ be arbitrary.
+      Now there must exist $K in NN$ such that for every $k >= K$,
+      $
+        abs(a_n_k - a) < epsilon.alt.
+      $
+      Notice also that $a_n_k <= a$, since otherwise, we could find an element of the subsequence such that it contradicts the increasing assumption.
+
+      Consider $N = n_k$.
+      It must also be that every $a_n <= a$, otherwise again, we could find a counterexample to the increasing assumption.
+
+      Thus:
+      $
+        abs(a_n - a) = a - a_n = a - a_n_k + a_n_k - a_n < a - a_n_k <= epsilon.alt.
+      $
+      This shows that $(a_n) -> a$.
+    ]
+
+  +
+    Assume that we have a bounded sequence.
+    We wish to show that there is a subsequence that is Cauchy, thus implying that it converges.
+    #proof[
+      Assume our interval is bounded by $M$.
+      First, we select any element, with index $n_1$.
+      We proceed by bisecting the interval, and selecting the half that has infinite terms in the sequence that occur _after_ our selected element $a_n_1$.
+      We repeat the above steps.
+
+      For arbitrary $epsilon.alt > 0$, we repeat this process $K$ times until $M / 2^K < epsilon.alt$.
+      We now know that for any $k >= K$, $(a_n_k)$ as chosen by our iterative process above will be contained within the same $epsilon.alt$-neighborhood.
+      This is the step where the Archimedean Property is implicitly required.
+
+      Now, it should be clear that for any $k_1, k_2 >= K$, since they are contained within the same $epsilon.alt$-neighborhood, that it must be such that
+      $
+        abs(a_k_1 - a_k_2) < epsilon.alt.
+      $
+      This implies the subsequence is Cauchy and therefore converges by the CC.
+    ]
+
+  +
+    The rationals are not complete, but the Archimedean Property is valid over $QQ$.
 ]
 
 == Properties of Infinite Series
