@@ -1704,6 +1704,59 @@ No exercises in this section.
     Consider the subsequences $(s_(2 n))$ and $(s_(2 n + 1))$, and show how the Monotone Convergence Theorem leads to a third proof for the Alternating Series Test.
 ]
 
+#solution[
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+    Since $(a_n) -> 0$, we can find $N$ s.t. $n >= N$ implies
+    $
+      abs(a_n) = a_n < epsilon.alt.
+    $
+    Now for any $n > m >= N$, note that $abs(s_n - s_m)$ is equivalent to:
+    $
+      abs(a_(m+1) - a_(m+2) + dots.c plus.minus a_n).
+    $
+    Using the triangle inequality, we can split the above into the following:
+    $
+      <= abs(a_(m+1) - a_(m+2)) + dots.c + abs(a_(n-1) - a_n)
+    $
+    The above assumes $n-m$ is even, but if it is odd, the last two terms are instead $abs(a_(n-2) - a_(n-1)) + abs(a_n)$.
+
+    Inside all of the absolute values, all the expressions are actually non-negative, so we can remove the absolute values and regroup the terms:
+    $
+      = a_(m+1) + (- a_(m+2) + a_(m+3)) + dots.c + (- a_n).
+    $
+    Now notice that all the expressions with in the parentheses are $<= 0$.
+    This allows us to finish the inequality:
+    $
+      abs(s_n - s_m) <= a_(m+1) < epsilon.alt.
+    $
+    Therefore the sequence of partial sums is Cauchy and thus convergent.
+  
+  +
+    I construct a sequence of closed intervals such that it contains an infinite number of the partial sums, as well as having the property that their lengths converge to $0$ so that the sequence converges to a single limit.
+    Let $I_1$ be $[0, a_1]$.
+    Clearly since $a_2 <= a_1$, $a_1 - a_2 >= 0$, and $a_1 - a_2 <= a_1$.
+    The next interval $[a_1 - a_2, a_1]$ clearly contains $s_2$ and also has a length of $a_2$.
+
+    We continue in this manner, with the intervals being clearly nested.
+    Since the length of the $n$th interval is exactly $a_n$, all of the intervals are valid and we can always find one smaller than any $epsilon.alt > 0$.
+
+    By the NIP, this shows that there must exist a _single_ real number $s$ such that it is contained within all the intervals.
+
+    Furthermore, by construction for arbitrary $epsilon.alt > 0$ we can always find $N$ such that for $n >= N$, we have $abs(s_n - s) < epsilon.alt$.
+
+    This shows that the sequence of partial sums converges to $s$, which is a result of NIP.
+
+  +
+    I don't prove this rigorously.
+
+    But clearly $(s_(2n))$ is lower bounded by $0$ and monotonically increasing, while $(s_(2n + 1))$ is upper bounded by $a_1$ and monotonically decreasing.
+
+    Thus by MCT they must converge respectively to some $s_1$ and $s_2$.
+
+    It must also be the case that $s_1 = s_2$, otherwise we could find two partial sums $s_n$ and $s_(n+1)$ such that they are too far from each other, which contradicts the fact that the original sequence converges to $0$.
+]
+
 #exercise[2.7.2][
   Decide whether each of the following series converges or diverges:
 
@@ -1713,9 +1766,46 @@ No exercises in this section.
 
   + $1 - 3/4 + 4/6 - 5/8 + 6/10 - 7/12 + dots.c$
 
-  + $1 + 1/2 - 1/3 + 1/4 + 1/5 - 1/6 + 1/7 + 1/8 - 1/9$
+  + $1 + 1/2 - 1/3 + 1/4 + 1/5 - 1/6 + 1/7 + 1/8 - 1/9 + dots.c$
 
-  + $1 - 1/2^2 + 1/3 - 1/4^2 + 1/5 - 1/6^2 + 1/7 - 1/8^2$
+  + $1 - 1/2^2 + 1/3 - 1/4^2 + 1/5 - 1/6^2 + 1/7 - 1/8^2 + dots.c$
+]
+
+#solution[
+  +
+    $
+      0 <= a_k <= 1/(2^k).
+    $
+    The RHS gives us a geometric series with $abs(1/2) < 1$, so by comparison test this converges.
+
+  +
+    $
+      0 <= abs(a_k) <= 1 / k^2
+    $
+    We know the RHS gives us a series which converges, so therefore, using the comparison and absolute convergence test we can conclude that the original series converges.
+
+  +
+    This does not converge, since we can always find two adjacent partial sums and notice that they will always be at least $1/2$ distance apart.
+
+  +
+    This is equal to $2 - sum_(n=1)^oo ((-1)^(n+1))/n$.
+    We know by Alternating Series Test that this converges.
+
+  +
+    The series diverges.
+
+    I don't prove this ultra-rigorously, but here are the high-level steps.
+    
+    First, I show that $1 + 1/3 + 1/5 + dots.c$ diverges, by using the ALT and comparison tests against the harmonic series.
+
+    Next, I show that $1/2^2 + 1/4^2 + 1/6^2 + dots.c$ converges using comparison test vs $sum 1/n^2$, which we know to converge using the p-test with $p > 1$.
+
+    Thus, the negative of that series should also converge by ALT.
+
+    Finally, we view $1 + 1/3 + 1/5 + dots.c$ as the sum of our original unknown series and our known convergent series.
+
+    Therefore, it cannot converge, otherwise by ALT we would show that the harmonic series converges.
+    
 ]
 
 #exercise[2.7.3][
@@ -1724,6 +1814,10 @@ No exercises in this section.
 
   +
     Give another proof for the Comparison Test, this time using the Monotone Convergence Theorem.
+]
+
+#solution[
+  #TODO[July 13]
 ]
 
 #exercise[2.7.4][
