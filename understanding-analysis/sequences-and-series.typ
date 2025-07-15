@@ -1817,7 +1817,32 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 13]
+  +
+    Assume $sum b_k$ converges.
+    Let $epsilon.alt > 0$ be arbitrary.
+
+    Then we know by Cauchy Criterion that there exists $N$ such that any $n > m >= N$ gives us
+    $
+      abs(b_(m+1) + dots.c + b_n) < epsilon.alt.
+    $
+    Clearly, we can chain the following inequalities due to the non-negative assumption of $(a_n)$:
+    $
+      abs(a_(m+1) + dots.c + a_n) = a_(m+1) + dots.c + a_n <= b_(m+1) + dots.c + b_n <= abs(b_(m+1) + dots.c + b_n) < epsilon.alt.
+    $
+    The opposite direction proceeds by contradiction proof.
+    Assume that $sum a_k$ diverges, and AFSOC that $sum b_k$ converges.
+    Then by the first part we get that $sum a_k$ actually converges.
+
+  +
+    Since $sum b_k$ converges, let's call the limit of the partial sums $B$.
+
+    This is an upper bound on all the partial sums since it is monotonically increasing.
+
+    Thus it is also an upper bound on all partial sums in the series $sum a_k$.
+
+    This sequence is also monotonically increasing, so by the MCT the partial sums must converge.
+
+    The opposite direction follows the same argument as before.
 ]
 
 #exercise[2.7.4][
@@ -1836,8 +1861,62 @@ No exercises in this section.
     A sequences $(x_n)$ satisfying $0 <= x_n <= 1 slash n$ where $sum (-1)^n x_n$ diverges.
 ]
 
+#solution[
+  +
+    $
+      &(x_n) = (0,1,0,1,dots),\
+      &(y_n) = (1,0,1,0,dots).
+    $
+
+  +
+    $
+      &sum x_k = 1 - 1/2 + 1/3 - 1/4 + dots.c,\
+      &y_n = (-1)^n.
+    $
+
+  +
+    This is false, since if $sum x_k = x$, then $sum -x_k = -x$ by ALT, and this implies that if $sum (x_k + y_k)$ converges then $sum (x_k + y_k - x_k) = sum y_k$ also converges.
+
+  +
+    $
+      (x_n) = (1, 0, 1/3, 0, 1/5, 0, dots)
+    $
+    This diverges in the same manner as the harmonic series.
+]
+
 #exercise[2.7.5][
   Now that we have proved the basic facts about geometric series, supply a proof for Corollary 2.4.7.
+]
+
+#solution[
+  ($=>$)
+  #proof[
+    Assume $sum_(n=1)^oo 1 slash n^p$ converges.
+    AFSOC that $p <= 1$.
+
+    Then, we have that $1 slash n <= 1 slash n^p$.
+
+    By comparison test, this implies that the harmonic series converges.
+    *Contradiction!*
+    Therefore it must be that $p > 1$.
+  ]
+
+  ($arrow.double.l$)
+  #proof[
+    Assume $p > 1$.
+
+    By grouping terms, $sum_(n=1)^oo 1 slash n^p$ is equivalent to the following series:
+    $
+      sum_(n=1)^oo 1 slash n^p = sum_(k=0)^oo (1/(2^k)^p + 1/(2^k + 1)^p + dots.c + 1/(2^(k+1) - 1)^p).
+    $
+    Working with each term in the new sequence, we see that:
+    $
+      1/(2^k)^p + 1/(2^k + 1)^p + dots.c + 1/(2^(k+1) - 1)^p <= 2^k dot 1/(2^k)^p = (1 / 2^(p-1) )^k.
+    $
+    We can recognize this as a term from a geometric series, which must converge since $p > 1$ implies that $0 < 1 slash 2^(p-1) < 1$.
+
+    By comparison test, our original series must converge.
+  ]
 ]
 
 #exercise[2.7.6][
@@ -1853,12 +1932,46 @@ No exercises in this section.
   + If $sum a_n$ subverges, then $(a_n)$ has a convergent subsequence.
 ]
 
+#solution[
+  +
+    False, just consider $a_n = 1$.
+    Then all subsequences of partial sums increase without bound.
+
+  +
+    True, since the sequence of partial sums converges, and it is a subsequence itself.
+
+  +
+    True.
+    If the sequence of partial absolute sums contains a convergent subsequence, then the partial absolute sums also converge.
+
+    Thus, the series converges absolutely, implying that the original series converges.
+
+    By part (b), we know that the series must also subverge.
+
+  +
+    Consider $(a_n) = (1, -2, 2, -3, 3, -4, 4, dots)$.
+    The partial sums look like:
+    $
+      (1, -1, 1, -2, 1, -3, 1, dots).
+    $
+    So the partial sums have a convergent subsequence, but the sequence $(a_n)$ does not.
+]
+
 #exercise[2.7.7][
   +
     Show that if $a_n > 0$ and $lim (n a_n) = l$ with $l != 0$, then the series $sum a_n$ diverges.
+
   +
     Assume $a_n > 0$ and $lim (n^2 a_n)$ exists.
     Show that $sum a_n$ converges.
+]
+
+#solution[
+  #TODO[July 15]
+  +
+    WTS that if $sum a_n$ converges then harmonic series converges
+
+  +
 ]
 
 #exercise[2.7.8][
@@ -1873,6 +1986,10 @@ No exercises in this section.
 
   +
     If $sum a_n$ converges conditionally, then $sum n^2 a_n$ diverges.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.7.9 (Ratio Test)][
@@ -1890,6 +2007,10 @@ No exercises in this section.
 
   +
     Now, show that $sum abs(a_n)$ converges, and conclude that $sum a_n$ converges.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.7.10 (Infinite Products)][
@@ -1911,9 +2032,17 @@ No exercises in this section.
     (A complete proof of this result is taken up in Section 8.3.)
 ]
 
+#solution[
+  #TODO[July 15]
+]
+
 #exercise[2.7.11][
   Find examples of two series $sum a_n$ and $sum b_n$ both of which diverge but for which $sum min{a_n, b_n}$ converges.
   To make it more challenging, produce examples where $(a_n)$ and $(b_n)$ are strictly positive and decreasing.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.7.12 (Summation-by-parts)][
@@ -1922,6 +2051,10 @@ No exercises in this section.
   $
     sum_(j=m)^(n) x_j y_j = s_n y_(n+1) - s_(m-1) y_m + sum_(j=m)^n s_j (y_j - y_(j+1)).
   $
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.7.13 (Abel's Test)][
@@ -1942,6 +2075,10 @@ No exercises in this section.
     Use the Comparison Test to argue that $sum_(k=1)^oo s_k (y_k - y_(k+1))$ converges absolutely, and show how this leads directly to a proof of Abel's Test.
 ]
 
+#solution[
+  #TODO[July 15]
+]
+
 #exercise[2.7.14 (Dirichlet's Test)][
   Dirichlet's Test for convergence states that if the partial sums of $sum_(k=1)^oo x_k$ are bounded (but not necessarily convergent), and if $(y_k)$ is a sequence satisfying $y_1 >= y_2 >= y_3 >= dots.c >= 0$ with $lim y_k = 0$, then the series $sum_(k=1)^oo x_k y_k$ converges.
 
@@ -1952,11 +2089,19 @@ No exercises in this section.
     Show how the Alternating Series Test (Theorem 2.7.7) can be derived as a special case of Dirichlet's Test.
 ]
 
+#solution[
+  #TODO[July 15]
+]
+
 == Double Summations and Products of Infinite Series
 
 #exercise[2.8.1][
   Using the particular array $(a_(i j))$ from Section 2.1, compute $lim_(n -> oo) s_(n n)$.
   How does this value compare to the two iterated values for the sum already computed?
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.8.2][
@@ -1971,11 +2116,19 @@ No exercises in this section.
   converges.
 ]
 
+#solution[
+  #TODO[July 15]
+]
+
 #exercise[2.8.3][
   + Prove that $(t_(n n))$ converges.
 
   +
     Now, use the fact that $(t_(n n))$ is a Cauchy sequence to argue that $(s_(n n))$ converges.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.8.4][
@@ -1988,6 +2141,10 @@ No exercises in this section.
       abs(s_(m n)) < epsilon.alt
     $
     for all $m, n >= N$.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.8.5][
@@ -2003,12 +2160,20 @@ No exercises in this section.
     Notice that the same argument can be used once it is established that, for each fixed column $j$, the sum $sum_(i=1)^oo a_(i j)$ converges to some real number $c_j$.
 ]
 
+#solution[
+  #TODO[July 15]
+]
+
 #exercise[2.8.6][
   +
     Assume the hypothesis---and hence the conclusion---of Theorem 2.8.1, show that $sum_(k=2)^oo d_k$ converges absolutely.
 
   +
     Imitate the strategy in the proof of Theorem 2.8.1 to show that $sum_(k=2)^oo d_k$ converges to $S = lim_(n -> oo) s_(n n)$.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 #exercise[2.8.7][
@@ -2023,6 +2188,10 @@ No exercises in this section.
       sum_(i=1)^oo sum_(j=1)^oo a_i b_j = sum_(j=1)^oo sum_(i=1)^oo a_i b_j = sum_(k=2)^oo d_k = A B,
     $
     where, as before, $d_k = a_1 b_(k-1) + a_2 b_(k-2) + dots.c + a_(k-1) b_1$.
+]
+
+#solution[
+  #TODO[July 15]
 ]
 
 == Epilogue
