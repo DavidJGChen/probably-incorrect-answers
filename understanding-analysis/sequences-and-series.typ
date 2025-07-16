@@ -2099,12 +2099,35 @@ No exercises in this section.
 
 #solution[
   +
-    By the result of 2.4.10, we know that this infinite product converges if and only if $1 + 1/2 dot 1/4 dot 1/8 dot dots.c$ converges.
+    By the result of 2.4.10, we know that this infinite product converges if and only if $1 + 1/2 + 1/4 + 1/8 + dots.c$ converges.
 
-    This is simply the geometric
+    This is simply the geometric series with $r = 1/2$.
 
   +
     The partial products are monotonically decreasing and bounded below by $0$, so by MCT it must converge.
+
+    It does converge to $0$.
+
+    #proof[
+      The product can be rewritten as:
+      $
+        product_(n=1)^oo (2n - 1) / (2n) = 1 slash product_(n=1)^oo (2 n) / (2 n - 1) = 1 slash product_(n=1)^oo [1 + 1/(2 n - 1)]\
+      $
+      Let $epsilon.alt > 0$.
+      The sum $sum 1/(2n - 1)$ diverges by comparison test, so the sequence of partial products (in the demoninator) must diverge too.
+
+      Let $N in NN$ such that $m >= N$ means $product_(n=1)^m [1 + 1/(2 n - 1)] >= 2 / epsilon.alt > 1 / epsilon.alt$.
+
+      Then this implies that $0 < p_m < epsilon.alt$ as desired.
+    ]
+
+  +
+    Each term in the product is defined as:
+    $
+      x_n = (2n)^2 / ((2n - 1)(2n + 1)) = (4n^2) / (4n^2 - 1) = 1 + 1 / (4n^2 - 1).
+    $
+    Using 2.4.10, we can see that $a_n = 1 / (4n^2 - 1) <= 1/(3n^2)$, (true for $n >= 1$).
+    Thus by comparison test the series $sum a_n$ converges, so the original product converges as well.
 ]
 
 #exercise[2.7.11][
@@ -2164,7 +2187,24 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    This follows directly, if $s_0 = 0$.
+    Just let $m = k = 1$.
+
+  +
+    Recall that since $(s_k)$ converges, it means that there exists $M$ such that for all $k$, $abs(s_k) <= M$.
+    $
+      abs(s_k (y_k - y_(k+1))) = abs(s_k) abs(y_k - y_(k+1)) <= M (y_k - y_(k+1))
+    $
+    The partial sums of the series of the RHS are:
+    $
+      M sum_(k=1)^n (y_k - y_(k+1)) = M (y_1 - y_(n+1)) <= M y_1.
+    $
+    This is true for every $n$, so this is an upper bound.
+    It is also true that we are monotonically increasing, so by MCT this must converge.
+    By comparison test this implies that $sum_(k=1)^oo s_k (y_k - y_(k+1))$ converges absolutely, and thus itself converges.
+
+    Finally, we can apply ALT of sequences to deduce that the sequence of partial sums converges as well.
 ]
 
 #exercise[2.7.14 (Dirichlet's Test)][
@@ -2178,9 +2218,12 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
-
   +
+    This differs in two ways.
+    First, the partial sums are bounded but don't converge.
+    Second, the limit of $(y_n)$ is $0$ and not some other non-negative value.
+
+    This has no effect on the proof, since all we needed was that $abs(s_n)$ was bounded, and in the end, the ALT is still valid as the first term will converge to $0$.
 
   +
     The partial sums of the sequence $x_n = (-1)^(n+1)$ gives us a bounded sequence.
