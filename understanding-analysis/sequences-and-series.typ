@@ -1967,11 +1967,40 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
   +
-    WTS that if $sum a_n$ converges then harmonic series converges
+    Fix $0 < epsilon.alt < l$.
+
+    Now, AFSOC that $sum a_n$ converges.
+
+    By ALT we know that $(n a_n - l) -> 0$.
+
+    Thus we know that after some $N$, all $n >= N$ is such that
+    $
+      abs(n a_n - l) < l - epsilon.alt.
+    $
+    Alternatively,
+    $
+      &-l + epsilon.alt < n a_n - l < l - epsilon.alt\
+      ==> quad &epsilon.alt < n a_n\
+      ==> quad &1/n < 1/epsilon.alt a_n.
+    $
+
+    By ALT, we know starting from $n = N$, that $sum a_n slash epsilon.alt$ converges.
+
+    So we deduce that the harmonic series after $N$ must also converge, by comparison test.
+    This is a *contradiction!*
+    Thus, $sum a_n$ must actually diverge.
 
   +
+    Assume $n^2 a_n = l >= 0$.
+    This is valid from the Order Limit Theorem.
+    Now choose $epsilon.alt > l >= 0$.
+
+    For some $N in NN$ we know that $n^2 a_n - l < epsilon.alt - l$, so therefore
+    $a_n < epsilon.alt / n^2$.
+
+    The series $sum_(n=N)^oo epsilon.alt/n^2$ must converge, so thus $sum_(n=N)^oo a_n$ must also converge by comparison test.
+    Because the tail converges, the full series must converge as well.
 ]
 
 #exercise[2.7.8][
@@ -1989,7 +2018,30 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    True.
+    Note first that $abs(a_n^2) = a_n^2$ in the reals.
+    After some point, it must be that $abs(a_n) < 1$.
+    This allows us to say that $a_n^2 < abs(a_n)$.
+    By comparison test on the tails, $sum a_n^2$ converges.
+
+  +
+    False.
+    Consider the series
+    $sum_(n=1)^oo (-1)^(n+1) 1/sqrt(n)$
+    By AST this converges.
+    In addition, the sequence $b_n = (-1)^(n+1) 1/sqrt(n)$ clearly converges to $0$.
+    However, the series $sum a_n b_n = sum 1/n$ which diverges.
+
+  +
+    AFSOC that $sum n^2 a_n$ converges.
+    Then we must have that $(n^2 a_n) -> 0$.
+    So for some $epsilon.alt = 1$, we have $N in NN$ after which
+    $
+      abs(n^2 a_n) < 1 ==> abs(a_n) < 1/n^2
+    $
+    By comparison test this means that the tail of $sum abs(a_n)$ converges, which implies that $sum a_n$ converges absolutely.
+    This is a *contradiction*, so therefore $sum n^2 a_n$ must diverge.
 ]
 
 #exercise[2.7.9 (Ratio Test)][
@@ -2010,7 +2062,20 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    Let $epsilon.alt = r' - r > 0$.
+    Then choose $N$ such that
+    $abs(abs(a_(n+1) / a_n) - r) < epsilon.alt$.
+    With some manipulation, we get:
+    $abs(a_(n+1)) < abs(a_n)(epsilon.alt + r) = abs(a_n) r'$.
+
+  +
+    This is a geometric series, and we know that $abs(r') = r' < 1$.
+
+  +
+    We first see that for $n >= N$, that $abs(a_n) <= abs(a_N)(r')^(n - N)$.
+
+    The series formed from the RHS converges (if we take out the factor of $(r')^(-N)$), so by comparison test, $sum abs(a_n)$ must converge.
 ]
 
 #exercise[2.7.10 (Infinite Products)][
@@ -2033,7 +2098,13 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    By the result of 2.4.10, we know that this infinite product converges if and only if $1 + 1/2 dot 1/4 dot 1/8 dot dots.c$ converges.
+
+    This is simply the geometric
+
+  +
+    The partial products are monotonically decreasing and bounded below by $0$, so by MCT it must converge.
 ]
 
 #exercise[2.7.11][
@@ -2042,7 +2113,17 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  Consider this series:
+  $
+    1 + 1/2^2 + 1/2^2 + 1/2^2 + 1/2^2 + 1/6^2 + 1/7^2 + dots.c + 1/42^2 + dots.c
+  $
+  The other series is:
+  $
+    1 + 1/2^2 + 1/3^2 + 1/4^2 + 1/5^2 + "(36 duplicates of)" 1/6^2 + 1/42^2 + 1/43^2 + dots.c
+  $
+  Clearly the minimum of each individual term gives us $1/n^2$, of which, the series we know to converge.
+
+  However, each individual series has an infinite number of finite length portions that add to $1$.
 ]
 
 #exercise[2.7.12 (Summation-by-parts)][
@@ -2054,7 +2135,14 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  $
+    sum_(j=m)^n x_j y_j &= sum_(j=m)^n [s_j y_j - s_(j-1) y_j]\
+    &= sum_(j=m)^n s_j y_j - sum_(j=m)^n s_(j-1) y_j\
+    &= sum_(j=m)^n s_j y_j - sum_(j=m-1)^(n-1) s_j y_(j+1)\
+    &= sum_(j=m)^n s_j y_j - sum_(j=m)^(n-1) s_j y_(j+1) - s_(m-1) y_m\
+    &= sum_(j=m)^n s_j y_j - sum_(j=m)^(n) s_j y_(j+1) - s_(m-1) y_m + s_n y_(n+1)\
+    &= s_n y_(n+1) - s_(m-1) y_m + sum_(j=m)^n s_j (y_j - y_(j+1)).
+  $
 ]
 
 #exercise[2.7.13 (Abel's Test)][
@@ -2091,6 +2179,16 @@ No exercises in this section.
 
 #solution[
   #TODO[July 15]
+
+  +
+
+  +
+    The partial sums of the sequence $x_n = (-1)^(n+1)$ gives us a bounded sequence.
+    ($(1,0,1,0,1,dots)$)
+
+    The sequence $(y_k)$ is the sequence of interest $(a_n)$ in the AST.
+
+    By Dirichlet's Test, we can conclude that $sum_(n=1)^oo (-1)^(n+1) a_n$ converges.
 ]
 
 == Double Summations and Products of Infinite Series
