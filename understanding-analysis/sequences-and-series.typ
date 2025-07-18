@@ -2242,7 +2242,12 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  The result seems to be equivalent to the following series:
+  $
+    -1 - 1/2 - 1/4 - 1/8 - dots.c
+  $
+  This converges to $-2$.
+  This gives the same result as if we summed all the columns first and then then added them all up.
 ]
 
 #exercise[2.8.2][
@@ -2258,7 +2263,26 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  Fix arbitrary $i$.
+  We know that $sum_(j=1)^oo abs(a_(i j))$ converges to some $b_i$.
+  (Also note that this $b_i > 0$).
+
+  By ACT, we then know that $sum_(j=1)^oo a_(i j)$ also converges, let's call this value $b'_i$.
+
+  Note that if the sequence of partial sums $(sum_(j=1)^n a_(i j))_(n in NN)$ converges to $b'_i$, then the sequence of absolute partial sums $(abs(sum_(j=1)^n a_(i j)))_(n in NN)$ converges to $abs(b'_i)$.
+  This directly follows from the $epsilon.alt$ definition of convergence and the reverse triangle inequality.
+
+  Now, I argue that $abs(b'_i) <= b_i$.
+
+  When comparing partial sums, we see the following due to triangle inequality:
+  $
+    abs(sum_(j=1)^n a_(i j)) <= sum_(j=1)^n abs(a_(i j))
+  $
+  So by order limit theorem, it must be that $abs(b'_i) <= b_i$.
+
+  Since both are non-negative and this holds for any $i$, we can use the comparison test to justify that $sum_(i=1)^oo abs(b'_i)$ converges.
+
+  Therefore by ACT, we know that $sum_(i=1)^oo b'_i$ also converges.
 ]
 
 #exercise[2.8.3][
@@ -2269,7 +2293,49 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    The sequence $(t_(n n))_(n in NN)$ is defined as the partial sums
+    $
+      t_(n n) = sum_(i=1)^n sum_(j=1)^n abs(a_(i j))
+    $
+    First, note that we get for free that $sum_(i=1)^oo sum_(j=1)^oo abs(a_(i j))$ converges.
+    Let's assume this is the same definition of convergence as in exercise 2.8.2.
+
+    The first thing we can note is that the sequence $(t_(n n))$ is monotone increasing.
+    Second, we can upper bound it.
+
+    Note that for any fixed $i$, that $sum_(j=1)^n abs(a_(i j)) <= sum_(j=1)^oo abs(a_(i j))$.
+    Then similar logic upper bounds the series indexed by $i$.
+
+    So therefore we have:
+    $
+      t_(n n) = sum_(i=1)^n sum_(j=1)^n abs(a_(i j)) <= sum_(i=1)^oo sum_(j=1)^oo abs(a_(i j)).
+    $
+    Thus, we can conclude that $(t_(n n))$ converges by MCT.
+  
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+    Since $(t_(n n))$ is Cauchy, there exists some $N in NN$ such that for $n > m >= N$, we get that:
+    $
+      abs(t_(n n) - t_(m m)) < epsilon.alt.
+    $
+    Let's expand out the terms and see what we can deduce:
+    $
+      &abs(t_(n n) - t_(m m))\
+      &= abs(sum_(i=1)^n sum_(j=1)^n abs(a_(i j)) - sum_(i=1)^m sum_(j=1)^m abs(a_(i j)))\
+      &= abs(sum_(i=1)^n [sum_(j=1)^m abs(a_(i j)) + sum_(j=m+1)^n abs(a_(i j))] - sum_(i=1)^m sum_(j=1)^m abs(a_(i j)))\
+      &= abs(sum_(i=1)^m sum_(j=1)^m abs(a_(i j)) + sum_(i=1)^m sum_(j=m+1)^n abs(a_(i j)) + sum_(i=m+1)^n sum_(j=1)^m abs(a_(i j)) + sum_(i=m+1)^n sum_(j=m+1)^n abs(a_(i j)) - sum_(i=1)^m sum_(j=1)^m abs(a_(i j)))\
+      &= abs(sum_(i=1)^m sum_(j=m+1)^n abs(a_(i j)) + sum_(i=m+1)^n sum_(j=1)^m abs(a_(i j)) + sum_(i=m+1)^n sum_(j=m+1)^n abs(a_(i j)))\
+      &= sum_(i=1)^m sum_(j=m+1)^n abs(a_(i j)) + sum_(i=m+1)^n sum_(j=1)^m abs(a_(i j)) + sum_(i=m+1)^n sum_(j=m+1)^n abs(a_(i j))\
+      &>= abs(sum_(i=1)^m sum_(j=m+1)^n a_(i j) + sum_(i=m+1)^n sum_(j=1)^m a_(i j) + sum_(i=m+1)^n sum_(j=m+1)^n a_(i j)) wide"by triangle inequality"\
+      &= abs(sum_(i=1)^n sum_(j=1)^n a_(i j) - sum_(i=1)^m sum_(j=1)^m a_(i j)) wide wide wide wide"by similar logic to previous steps."\
+      &= abs(s_(n n) - s_(m m)).
+    $
+    Therefore, we can conclude that:
+    $
+      abs(s_(n n) - s_(m m)) < epsilon.alt,
+    $
+    such that $(s_(n n))_(n in NN)$ is Cauchy and converges.
 ]
 
 #exercise[2.8.4][
@@ -2285,7 +2351,39 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    Since $B$ is a supremum, clearly we have that for any $m, n in NN$ that $t_(m n) <= B$.
+
+    Now, recall that for $B - epsilon.alt/2$, there must be some element such that it is strictly greater.
+    Let's call that element $t_(M M')$.
+    Since in both series, $t$ is monotonically increasing, we have that
+    $t_(m n) >= t_(N_1 N_1)$ for $m, n >= N_1 = max{M, M'}$.
+
+    Thus we have $N_1$ such that for $m, n >= N_1$,
+    $
+      B - epsilon.alt / 2 < t_(m n) <= B.
+    $
+
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+    Choose $N_2$ such that for $n >= N_2$ we get that
+    $abs(s_(n n) - S) < epsilon.alt / 2$.
+    Choose $N_1$ from part (a), and let $N = max{N_1, N_2}$.
+    Now using the triangle inequality, we get that:
+    $
+      abs(s_(m n) - S) &= abs(s_(m n) - s_(n n) + s_(n n) - S)\
+      &<= abs(s_(m n) - s_(n n)) + abs(s_(n n) - S)\
+      &< abs(s_(m n) - s_(n n)) + epsilon.alt / 2\.
+    $
+    I don't write out the entire chain of inequalities since it is tedious, but we can show that
+    $
+      abs(s_(m n) - s_(n n)) < abs(t_(m n) - t_(n n)) < epsilon.alt / 2.
+    $
+    The last inequality is because both terms must live in the same $epsilon.alt/2$-length interval from #box[$(B - epsilon.alt / 2, B]$].
+    Thus, we can finish the inequality:
+    $
+      abs(s_(m n) - S) < abs(s_(m n) - s_(n n)) + epsilon.alt / 2 < epsilon.alt / 2 + epsilon.alt / 2 = epsilon.alt.
+    $
 ]
 
 #exercise[2.8.5][
@@ -2302,7 +2400,47 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+    Choose $N in NN$ from the result of Exercise 2.8.4 such that for $m, n >= N$, we get that
+    $
+      abs(s_(m n) - S) < epsilon.alt / 2
+    $
+    Fix arbitrary $m >= N$.
+
+    Now for every $r_i$ with $i in [m]$, it must be the case that the partial sums $(sum_(j=1)^n a_(i j)) -> r_i$.
+
+    So we can choose $N' in NN$ such that for $n >= max{N, N'}$:
+    $
+      abs(r_i - sum_(j=1)^n a_(i j)) < epsilon.alt/(2 m).
+    $
+
+    Now, we can chain some inequalities:
+    $
+      abs(r_1 + dots.c + r_m - S) &= abs(sum_(i=1)^m r_i - s_(m n) + s_(m n) - S)\
+      &<= abs(sum_(i=1)^m r_i - s_(m n)) + abs(s_(m n) - S)\
+      &= abs(sum_(i=1)^m (r_i - sum_(j=1)^n a_(i j))) + abs(s_(m n) - S)\
+      &<= sum_(i=1)^m abs((r_i - sum_(j=1)^n a_(i j))) + abs(s_(m n) - S)\
+      &< m dot epsilon.alt / (2 m) + epsilon.alt / 2\
+      &= epsilon.alt.
+    $
+    Thus, it must be the case that the iterated sum converges to $S$.
+
+  +
+    For fixed $j$, we clearly have that:
+    $
+      abs(a_(i j)) <= sum_(k=1)^oo abs(a_(i k)),
+    $
+    which we know to converge by our hypothesis.
+    Thus by convergence test, $sum_(i=1)^oo abs(a_(i j))$ converges for fixed $j$.
+
+    By ACT, we then can say that $sum_(i=1)^oo a_(i j)$ converges to $c_j$.
+
+    So now, when we expand out $s_(m n)$, we have:
+    $
+      s_(m n) = sum_(i=1)^m a_(i 1) + dots.c + sum_(i=1)^m a_(i n).
+    $
+    We can then follow the same steps as in part (a) to show that the iterated sum converges to $S$.
 ]
 
 #exercise[2.8.6][
@@ -2314,7 +2452,39 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    $
+      sum_(k=2)^(n)abs(d_k) = sum_(k=2)^(n)abs(sum_(j=1)^(k-1) a_(k-j, j)) <= sum_(k=2)^(n)sum_(j=1)^(k-1) abs(a_(k-j, j)) <= sum_(i=1)^n sum_(j=1)^n abs(a_(i j)).
+    $
+    Therefore the sequence of partial sums is monotonically increasing and upper bounded, so it converges.
+
+  +
+    This is super tedious, so I'll just write out the high level steps.
+
+    We want to show that for arbitrary $epsilon.alt$, there is a $N$ such that for $n >= N$ we have
+    $
+      abs(sum_(k=2)^n d_k - S) < epsilon.alt.
+    $
+    First, choose $N'$ such that any $n' >= N'$ is such that $abs(s_(n' n') - S) < epsilon.alt/2$.
+    Next, choose $N''$ such that $m, n >= N''$ is such that $abs(t_(m m) - t_(n n)) < epsilon.alt / 2$.
+
+    Choose $N = max{2N', N''}$.
+    (We need the $2N'$ to make sure that our $n'$, which follows from our choice of $n$, is big enough.)
+
+    We find $n'$ such that $s_(n' n')$ is contained completely within $sum_(k=2)^n d_k$, while $n'+1$ is not.
+
+    Then we split the expression into:
+    $
+      abs(sum_(k=2)^n d_k - S) <= abs(sum_(k=2)^n d_k - s_(n' n')) + abs(s_(n' n') - S) < abs(sum_(k=2)^n d_k - s_(n' n')) + epsilon.alt / 2.
+    $
+    Using similar techniques as seen before, we see that:
+    $
+      abs(sum_(k=2)^n d_k - s_(n' n')) <= abs(sum_(k=2)^n abs(d_k) - t_(n' n')) = sum_(k=2)^n abs(d_k) - t_(n' n') <= t_(n n) - t_(n' n') <= abs(t_(n n) - t_(n' n')) < epsilon.alt / 2.
+    $
+    Putting it together, we get that for $n >= N$:
+    $
+      abs(sum_(k=2)^n d_k - S) < epsilon.alt.
+    $
 ]
 
 #exercise[2.8.7][
@@ -2332,7 +2502,39 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[July 15]
+  +
+    For fixed $i$:
+    $
+      abs(a_i b_j) = abs(a_i) abs(b_j)
+    $
+    which converges by ALT for series, since $sum_(j=1)^oo abs(b_j)$ converges.
+
+    If $sum_(j=1)^oo abs(b_j) = B'$, then $sum_(j=1)^oo abs(a_i b_j) = abs(a_i) B'$.
+
+    Now, we look at $sum_(i=1)^oo abs(a_i) B'$.
+    By similar argument, we argue that it converges by ALT.
+
+  +
+    Let $epsilon.alt > 0$ be arbitrary.
+    Now, choose $N_1$ such that for $n >= N_1$ we have
+    $
+      abs(sum_(j=1)^n b_j - B) < epsilon.alt / (2 A'),
+    $
+    where $A'$ is the limit of $sum_(i=1)^n abs(a_i)$,
+    and $N_2$ such that for $n >= N_2$ we have
+    $
+      abs(sum_(i=1)^n a_i - A) < epsilon.alt / (2 abs(B)).
+    $
+    Then, for $n >= max{N_1, N_2}$, we have
+    $
+      abs(s_(n n) - A B) &= abs(sum_(i=1)^n sum_(j=1)^n a_i b_j - A B)\
+      &= abs((sum_(i=1)^n a_i) (sum_(j=1)^n b_j) - A B)\
+      &= abs((sum_(i=1)^n a_i) (sum_(j=1)^n b_j) - (sum_(i=1)^n a_i) B + (sum_(i=1)^n a_i) B  - A B)\
+      &<= abs((sum_(i=1)^n a_i) (sum_(j=1)^n b_j) - (sum_(i=1)^n a_i) B) + abs((sum_(i=1)^n a_i) B  - A B)\
+      &= abs((sum_(i=1)^n a_i)) abs((sum_(j=1)^n b_j) - B) + abs(B)abs((sum_(i=1)^n a_i) - A)\
+      &< (sum_(i=1)^n abs(a_i)) dot epsilon.alt/(2 A') - abs(B) epsilon.alt / abs((2 abs(B)))\
+      &= epsilon.alt.
+    $
 ]
 
 == Epilogue
