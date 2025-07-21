@@ -312,13 +312,13 @@ No exercises in this section.
   Which are true if every blank is filled in with the word "compact"?
   Which are true if every blank is filled in with the work "closed"?
 
-  + Every [blank] set has a maximum.
+  + Every #blank(3em) set has a maximum.
 
   +
-    If $A$ and $B$ are [blank], then $A + B = {a + b mid(:) a in A, b in B}$ is also [blank].
+    If $A$ and $B$ are #blank(3em), then $A + B = {a + b mid(:) a in A, b in B}$ is also #blank(3em).
 
   + 
-    If ${A_n mid(:) n in NN}$ is a collection of [blank] sets with the property that every finite subcollection has a nonempty intersection, then $inter.big_(n=1)^oo A_n$ is nonempty as well.
+    If ${A_n mid(:) n in NN}$ is a collection of #blank(3em) sets with the property that every finite subcollection has a nonempty intersection, then $inter.big_(n=1)^oo A_n$ is nonempty as well.
 ]
 
 #solution[
@@ -419,11 +419,11 @@ No exercises in this section.
 
 #exercise[3.3.13][
   Let's call a set _clompact_ if it has the property that every _closed_ cover (i.e., a cover consisting of closed sets) admists a finite subcover
-  Describe all of the clompact subsets of $RR$.
+  Describe all of the   clompact subsets of $RR$.
 ]
 
 #solution[
-  
+
 ]
 
 == Perfect Sets and Connected Sets
