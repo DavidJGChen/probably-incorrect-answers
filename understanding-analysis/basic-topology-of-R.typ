@@ -233,55 +233,197 @@ No exercises in this section.
 == Compact Sets
 
 #exercise[3.3.1][
+  Show that if $K$ is compact and nonempty, then $sup K$ and $inf K$ both exist and are elements of $K$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.2][
+  Decide which of the following sets are compact.
+  For those that are not compact, show how Definition 3.3.1 breaks down.
+  In other words, give an example of a sequence contained in the given set that does not possess a subsequence converging to a limit in the set.
+
+  + $NN$.
+
+  + $QQ inter [0,1]$.
+
+  + The Cantor set.
+
+  + ${1 + 1 slash 2^2 + 1 slash 3^2 + dots.c + 1 slash n^2 mid(:) n in NN}$.
+
+  + ${1, 1 slash 2, 2 slash 3, 3 slash 4, 4 slash 5, dots}$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.3][
+  Prove the converse of Theorem 3.3.4 by showing that if a set $K subset.eq RR$ is closed and bounded, then it is compact.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.4][
+  Assume $K$ is compact and $F$ is closed.
+  Decide if the following sets are definitely compact, definitely closed, both, or neither.
+
+  + $K inter F$
+
+  + $overline(F^complement union K^complement)$
+
+  + $K setdiff F = {x in K mid(:) x in.not F}$
+
+  + $overline(K inter F^complement)$
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.5][
+  Decide whether the following propositions are true or false.
+  If the claim is valid, supply a short proof, and if the claim is false, provide a counterexample.
+
+  + The arbitrary intersection of compact sets is compact.
+
+  + The arbitrary union of compact sets is compact.
+
+  +
+    Let $A$ be arbitrary, and let $K$ be compact.
+    Then, the intersection $A inter K$ is compact.
+
+  +
+    If $F_1 supset.eq F_2 supset.eq F_3 supset.eq F_4 supset.eq dots.c$ is a nested sequence of nonempty closed sets, then the intersection $inter.big_(n=1)^oo F_n != emptyset$.
+
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.6][
+  This exercise is meant to illustrate the point made in the opening paragraph to Section 3.3.
+  Verify that the following three statements are true if every blank is filled in with the word "finite".
+  Which are true if every blank is filled in with the word "compact"?
+  Which are true if every blank is filled in with the work "closed"?
+
+  + Every [blank] set has a maximum.
+
+  +
+    If $A$ and $B$ are [blank], then $A + B = {a + b mid(:) a in A, b in B}$ is also [blank].
+
+  + 
+    If ${A_n mid(:) n in NN}$ is a collection of [blank] sets with the property that every finite subcollection has a nonempty intersection, then $inter.big_(n=1)^oo A_n$ is nonempty as well.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.7][
+  As some more evidence of the surprising nature of the Cantor set, follow these steps to show that the sum $C + C = {x + y mid(:) x,y in C}$ is equal to the closed interval $[0,2]$.
+  (Keep in mind that $C$ has zero length and contains no intervals.)
+
+  Because $C subset.eq [0,1]$, $C+C subset.eq [0,2]$, so we only need to prove that the reverse inclusion $[0,2] subset.eq {x + y mid(:) x,y in C}$.
+  Thus, given $s in [0,2]$, we must find two elements $x, y in C$ satisfying $x + y = s$.
+
+  +
+    Show that there exist $x_1, y_1 in C_1$ for which $x_1 + y_1 = s$.
+    Show in general that, for an arbitrary $n in NN$, we can always find $x_n, y_n in C_n$ for which $x_n + y_n = s$.
+
+  +
+    Keeping in mind that the sequences $(x_n)$ and $(y_n)$ do not necessarily converge, show how they can nevertheless be used to produce the desired $x$ and $y$ in $C$ satisfying $x + y = s$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.8][
+  Let $K$ and $L$ be nonempty compact sets, and define
+  $
+    d = inf{abs(x - y) mid(:) x in K "and" y in L}.
+  $
+  This turns out to be a reasonable definition for the _distance_ between $K$ and $L$.
+
+  +
+    If $K$ and $L$ are disjoint, show $d > 0$ and that $d = abs(x_0 - y_0)$ for some $x_0 in K$ and $y_0 in L$.
+
+  +
+    Show that it's possible to have $d = 0$ if we assume only that the disjoint sets $K$ and $L$ are closed.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.9][
+  Follow these steps to prove the final implication in Theorem 3.3.8.
+
+  Assume $K$ satisfies (i) and (ii), and let ${O_lambda mid(:) lambda in Lambda}$ be an open cover for $K$.
+  For contradiction, let's assume that no finite subcover exists.
+  Let $I_0$ be a closed interval containing $K$.
+
+  +
+    Show that there exists a nested sequence of closed intervals $I_0 supset.eq I_1 supset.eq I_2 supset.eq dots.c$ with the property that, for each $n$, $I_n inter K$ cannot be finitely covered and $lim abs(I_n) = 0$.
+
+  + Argue that there exists an $x in K$ such that $x in I_n$ for all $n$.
+
+  +
+    Because $x in K$, there must exist an open set $O_(lambda_0)$ from the original collection that contains $x$ as an element.
+    Explain how this leads to the desired contradiction.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.10][
+  Here is an alternate proof to the one given in Exercise 3.3.9 for the final implication in the Heine--Borel Theorem.
+
+  Consider the special case where $K$ is a closed interval.
+  Let ${O_lambda mid(:) lambda in Lambda}$ be an open cover for $[a,b]$ and define $S$ to be the set of all $x in [a,b]$ such that $[a,x]$ has a finite subcover from ${O_lambda mid(:) lambda in Lambda}$.
+
+  + Argue that $S$ is nonempty and bounded, and thus $s = sup S$ exists.
+
+  + Now show $s = b$, which implies $[a,b]$ has a finite subcover.
+
+  + Finally, prove the theorem for an arbitrary closed and bounded set $K$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.11][
+  Consider each of the sets listed in Exercise 3.3.2.
+  For each one that is not compact, find an open cover for which there is no finite subcover.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.12][
+  Using the concept of open covers (and explicitly avoiding the Bolzano--Weierstrass Theorem), prove that every bounded infinite set has a limit point.
+]
+
+#solution[
 
 ]
 
 #exercise[3.3.13][
+  Let's call a set _clompact_ if it has the property that every _closed_ cover (i.e., a cover consisting of closed sets) admists a finite subcover
+  Describe all of the clompact subsets of $RR$.
+]
 
+#solution[
+  
 ]
 
 == Perfect Sets and Connected Sets
