@@ -541,43 +541,113 @@ No exercises in this section.
 == Baire's Theorem
 
 #exercise[3.5.1][
+  Argue that a set $A$ is a $G_delta$ set if and only if its complement is an $F_delta$ set.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.2][
+  Replace each #blank(3em) with the word _finite_ or _countable_, depending on which is more appropriate.
+
+  + The #blank(3em) union of $F_sigma$ sets is an $F_sigma$ set.
+  
+  + The #blank(3em) intersection of $F_sigma$ sets is an $F_sigma$ set.
+  
+  + The #blank(3em) union of $G_delta$ sets is a $G_delta$ set.
+  
+  + The #blank(3em) intersection of $G_delta$ sets is a $G_delta$ set.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.3][
+  (This exercise has already appeared as Exercise 3.2.15.)
+
+  + Show that a clsoed interval $[a,b]$ is a $G_delta$ set.
+
+  +
+    Show that the half-open interval $(a,b]$ is both a $G_delta$ and an $F_sigma$ set.
+
+  +
+    Show that $QQ$ is an $F_sigma$ set, and the set of irrationals $II$ forms a $G_delta$ set.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.4][
+  Starting with $n = 1$, inductively construct a nested sequence of _closed_ intervals $I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.c$ satisfying $I_n subset.eq G_n$.
+  Give special attention to the issue of endpoints of each $I_n$.
+  Show how this leads to a proof of the theorem.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.5][
+  Show that it is impossible to write
+  $
+    RR = union.big_(n=1)^oo F_n,
+  $
+  where for each $n in NN$, $F_n$ is a closed set containing no nonempty open intervals.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.6][
+  Show how the previous exercise implies that the set $II$ of irrationals cannot be an $F_sigma$ set, and $QQ$ cannot be a $G_delta$ set.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.7][
+  Using Exercise 3.5.6 and versions of the statements in Exercise 3.5.2, construct a set that is neither in $F_sigma$ nor in $G_delta$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.8][
+  Show that a set $E$ is nowhere-dense in $RR$ if and only if the complement of $overline(E)$ is dense in $RR$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.9][
+  Decide whether the following sets are dense in $RR$, nowher-dense in $RR$, or somewhere in between.
+
+  + $A = QQ inter [0,5]$.
+
+  + $B = {1 slash n mid(:) n in NN}$.
+  
+  + the set of irrationals.
+
+  + the Cantor set.
+]
+
+#solution[
 
 ]
 
 #exercise[3.5.10][
+  Finish the proof by finding a contradiction to the results in this section.
+]
 
+#solution[
+  
 ]
 
 == Epilogue
