@@ -429,39 +429,113 @@ No exercises in this section.
 == Perfect Sets and Connected Sets
 
 #exercise[3.4.1][
+  If $P$ is a perfect set and $K$ is compact, is the intersection $P inter K$ always compact?
+  Always perfect?
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.2][
+  Does there exist a perfect set consisting of only rational numbers?
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.3][
+  Review the portion of the proof given in Example 3.4.2 and follow these steps to complete the argument.
+
+  + 
+    Because $x in C_1$, argue that there exists an $x_1 in C inter C_1$ with $x_1 != x$ satisfying $abs(x - x_1) <= 1 slash 3$.
+
+  +
+    Finish the proof by showing that for each $n in NN$, there exists $x_n in C inter C_n$, different from $x$, satisfying $abs(x - x_n) <= 1 slash 3^n$.
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.4][
+  Repeat the Cantor construction from Section 3.1 starting with the interval $[0,1]$.
+  This time, however, remove the open middle _fourth_ from each component.
+
+  + 
+    Is the resulting set compact?
+    Perfect?
+
+  +
+    Using the algorithms from Section 3.1, compute the length and dimension of this Cantor-like set.
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.5][
+  Let $A$ and $B$ be nonempty subsets of $RR$.
+  Show that if there exist disjoint open sets $U$ and $V$ with $A subset.eq U$ and $B subset.eq V$, then $A$ and $B$ are separated.
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.6][
+  Prove Theorem 3.4.6.
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.7][
+  A set $E$ is _totally disconnected_ if, given any two distinct points $x, y in E$, there exist separated sets $A$ and $B$ with $x in A$, $y in B$, and $E = A union B$.
+
+  + Show that $QQ$ is totally disconnected.
+
+  + Is the set of irrational numbers totally disconnected?
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.8][
+  Follow these steps to show that the Cantor set is totally disconnected in the sense described in Exercise 3.4.7.
+
+  Let $C = inter.big_(n=0)^oo C_n$, as defined in Section 3.1.
+
+  +
+    Given $x, y in C$, with $x < y$, set $epsilon.alt = y - x$.
+    For each $n = 0, 1, 2, dots$, the set $C_n$ consists of a finite number of losed intervals.
+    Explain why there must exist an $N$ large enough so that it is impossible for $x$ and $y$ both to belong to the same closed interval of $C_N$.
+
+  + Show that $C$ is totally disconnected.
+]
+
+#solution[
 
 ]
 
 #exercise[3.4.9][
+  Let ${r_1, r_2, r_3, dots}$ be an enumeration of the rational numbers, and for each $n in NN$ set $epsilon.alt_n = 1 slash 2^n$.
+  Define $O = union.big_(n=1)^oo V_(epsilon.alt_n)(r_n)$, and let $F = O^complement$.
 
+  +
+    Argue that $F$ is a closed, nonempty set consisting only of irrational numbers.
+
+  +
+    Does $F$ contain any nonempty open intervals?
+    Is $F$ totally disconnected?
+    (See Exercise 3.4.7 for the definition.)
+
+  +
+    Is it possible to know whether $F$ is perfect?
+    If not, can we modify the construction to produce a nonempty perfect set of irrational numbers?
 ]
 
 == Baire's Theorem
