@@ -207,7 +207,7 @@ No exercises in this section.
 
 #solution[
   +
-    
+
 ]
 
 #exercise[3.2.8][
@@ -226,6 +226,18 @@ No exercises in this section.
 ]
 
 #solution[
+  + Definitely closed, since the closure of a set is always closed.
+
+  + 
+    Definitely open, since $B^complement$ is open, and $A setdiff B = A inter B^complement$.
+
+  + Definitely open, since $A^complement union B$ is closed.
+
+  + 
+    Definitely closed, since this just equals $(A union A^complement) inter B = RR inter B = B$.
+
+  +
+    Definitely closed.
 
 ]
 
@@ -243,7 +255,42 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    Consider any element $x in (union.big_(lambda in Lambda) E_lambda)^complement$.
+    Then we know it must be that $x in.not union.big_(lambda in Lambda) E_lambda$.
+    Therefore, it must be that $x$ cannot be in any given $E_lambda$, else it would appear in the union.
+    Thus, for any $lambda$, we see that $x in.not E_lambda$, or alternatively, that $x in E_lambda^complement$.
+    Thus, since $x in E_lambda^complement$ for every $lambda$, it must be in the intersection of all $E_lambda^complement$.
+    So therefore, $(union.big_(lambda in Lambda) E_lambda)^complement subset.eq inter.big_(lambda in Lambda) E_(lambda)^complement$.
 
+    Now, if $x in inter.big_(lambda in Lambda) E_(lambda)^complement$, then for all $lambda in Lambda$, $x in E_lambda^complement$.
+    Alternatively, we see that $x in.not E_lambda$ for all $lambda$.
+    Thus, if we take the union of all $E_lambda$, $x$ cannot be in that union.
+
+    Thus we have that $inter.big_(lambda in Lambda) E_(lambda)^complement subset.eq (union.big_(lambda in Lambda) E_lambda)^complement$, so together we have that $(union.big_(lambda in Lambda) E_lambda)^complement = inter.big_(lambda in Lambda) E_(lambda)^complement$.
+
+    The other law is very similar, so I skip it.
+
+  +
+    #set enum(numbering: "(i)")
+
+    +
+      _The union of a finite collection of closed sets is closed._
+      #proof[
+        Let $C_1, dots, C_n$ be the finite collection of closed sets.
+
+        We know that $C_i^complement$ is open. Furthermore, from De Morgan's Laws, we know that $(union.big_(i=1)^n C_i)^complement = inter.big_(i=1)^n C_i^complement$, which we know from Theorem 3.2.3 to be open.
+
+        Since the complement is open, we know that $union.big_(i=1)^n C_i$ must be closed by Theorem 3.2.13.
+      ]
+    
+    +
+      _The intersection of an arbitrary collection of closed sets is closed._
+      #proof[
+        Again, by De Morgan, we see that $(inter.big_(lambda in Lambda) C_lambda)^complement = union.big_(lambda in Lambda) C_lambda^complement$, which is open by Theorem 3.2.3.
+
+        This shows that $inter.big_(lambda in Lambda) C_lambda$ must be closed by Theorem 3.2.13.
+      ]
 ]
 
 #exercise[3.2.10][
@@ -259,7 +306,16 @@ No exercises in this section.
 ]
 
 #solution[
+  We take countable to mean countably infinite.
 
+  (i) cannot be realized, since we have a bounded, infinite set, so we know by Bolzano--Weierstrass that any countable sequence (a.k.a, an ordering) of the elements in our set must have a convergent subsequence.
+  This must then converge to a limit point.
+
+  (ii) can be realized.
+  Consider the set $QQ inter [0,1]$.
+  Any element in this set must be a limit point, since we can always find a sequence of rationals that approach it.
+
+  (iii) cannot be realized, since otherwise, we could select a distinct rational number from within the isolated $epsilon.alt$-neighborhood of each isolated point, and this would indicate that there are uncountably many rationals.
 ]
 
 #exercise[3.2.11][
@@ -269,6 +325,7 @@ No exercises in this section.
 ]
 
 #solution[
+  +
 
 ]
 
@@ -279,7 +336,7 @@ No exercises in this section.
 ]
 
 #solution[
-
+  
 ]
 
 #exercise[3.2.13][
