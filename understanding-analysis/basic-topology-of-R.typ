@@ -15,7 +15,12 @@ No exercises in this section.
 ]
 
 #solution[
+  + 
+    It is used when assuming we can find a non-zero minimum of the $epsilon.alt$-neighborhoods.
 
+  +
+    The collection ${(-1/n, 1/n) mid(:) n in NN}$ are all open intervals, yet their intersection is the finite set with one element $0$.
+    This is closed, since there are no limit points.
 ]
 
 #exercise[3.2.2][
@@ -34,6 +39,27 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    For $A$, the limit points are $1$ and $-1$.
+    For $B$, the limit points are $[0,1] subset.eq RR$.
+
+  + 
+    $A$ is not open in $RR$, since it contains isolated points.
+    $A$ is not closed either, since it does not contain the limit point $-1$.
+
+    $B$ is not open, since any $epsilon.alt$-neighborhood of any point will necessarily contain reals, which do not exist in $B$.
+    $B$ is not closed either, since it contains irrational limit points.
+    Or, we can see that it does not contain $0$ or $1$.
+
+  +
+    $A$ contains isolated points, for example, $-1/3$, since we can take $epsilon.alt = 2/15$, and notice that this neighborhood around $-1/3$ contains no other elements of $A$ other than $-1/3$.
+
+    $B$ contains no isolated points, due to the density of rationals.
+
+  +
+    The closure $overline(A)$ is $A union {-1}$.
+
+    The closure $overline(B)$ is $[0,1] subset.eq RR$.
 
 ]
 
@@ -54,7 +80,26 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    Not open, just pick any point.
+    Not closed, pick any irrational limit point.
 
+  +
+    Not open, just pick any point.
+    Closed, there are no limit points.
+
+  +
+    Open, just pick a small enough $epsilon.alt$ such that it won't contain $0$.
+    Not closed, $0$ is a limit point.
+
+  +
+    Not open, since it only contains rationals.
+    Not closed, it does not contain its limit.
+    (If it did, then we could show that it has a limit strictly greater than the proposed limit.)
+
+  +
+    Not open, since it only contains rationals.
+    Closed, since it does not have any limit points.
 ]
 
 #exercise[3.2.4][
@@ -66,15 +111,43 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    If $s in A$, then clearly $s in overline(A)$.
+    Assume $s in.not A$.
+    Then we know that for any $epsilon.alt > 0$, that there will exist some $a in A$ such that $a > s - epsilon.alt$.
+    This means that any $epsilon.alt$-neighborhood of $s$ will intersect with $A$, thus showing that $s$ is a limit point and will be included in the closure.
 
+  +
+    An open set cannot contain its supremum, since any $epsilon.alt$-neighborhood centered at the supremum will necessarily contain points greater than the supremum, which cannot be in the original set.
 ]
 
 #exercise[3.2.5][
-  Prove Theorem 3.2.8
+  Prove Theorem 3.2.8.
 ]
 
 #solution[
+  We want to show that a set $F subset.eq RR$ is closed if and only if every Cauchy sequence contained in $F$ has a limit that is also an element of $F$.
 
+  ($=>$)
+  #proof[
+    Assume $F$ is closed.
+    Every Cauchy sequence in $RR$ must converge to some limit.
+    If the Cauchy sequence converges to a limit, where the limit is already an element of the sequence, then we automatically know it is in $F$.
+
+    If the limit converges to an element not in the sequence, then we know that this must be a limit point, and since $F$ contains all its limit points then the limit must be in $F$.
+  ]
+
+  ($arrow.double.l$)
+  #proof[
+    Assume that every Cauchy sequence contained in $F$ has a limit that is also an element of $F$.
+
+    Let $x$ be an arbitrary limit point of $F$.
+    Then we can find some sequence in $F$ that converges to $x$, where $x$ itself is not present in said sequence.
+
+    Every convergent sequence must be Cauchy, so therefore, the limit $x$ must also be in $F$.
+
+    Thus $F$ contains all its limit points.
+  ]
 ]
 
 #exercise[3.2.6][
@@ -91,11 +164,35 @@ No exercises in this section.
 
   + Every bounded infinite closed set contains a rational number.
 
-  + The Canteor set is closed.
+  + The Cantor set is closed.
 ]
 
 #solution[
+  +
+    False.
+    Consider $RR setdiff {pi}$.
+    This is open, since for any point $x$ we can just choose $epsilon.alt = abs(pi - x) / 2$, which is clearly non-zero and will be a strict subset of our original set.
 
+  +
+    False.
+    The empty set is a closed set.
+    If the empty set is ignored, then this is still not true, as we can see that the collection of sets ${k >= n mid(:) k in NN}_(n in NN)$ are all clearly closed, yet there cannot be any element in the infinite intersection.
+
+  +
+    True.
+    Consider any point $x$, and then select the $epsilon.alt$-neighborhood surrounding $x$ such that it is a subset of the original set.
+    Due to the density of rationals, there must exist a rational within that neighborhood.
+
+  +
+    False.
+    Consider ${pi + 1/n mid(:) n in NN} union {pi}$.
+    This is bounded below by $pi$, and above by $pi + 1$.
+    It is infinite, yet no element can be rational.
+
+  +
+    True.
+    Each $C_n$ is a finite union of closed intervals, and is thus a closed set.
+    Then, $C$ is an infinite intersection of each $C_n$, so it is a closed set as well.
 ]
 
 #exercise[3.2.7][
@@ -109,7 +206,8 @@ No exercises in this section.
 ]
 
 #solution[
-
+  +
+    
 ]
 
 #exercise[3.2.8][
@@ -647,7 +745,7 @@ No exercises in this section.
 ]
 
 #solution[
-  
+
 ]
 
 == Epilogue
