@@ -87,12 +87,12 @@ No exercises in this section.
 #exercise[1.2.5 (De Morgan's Laws)][
   Let $A$ and $B$ be subsets of $RR$.
   +
-    If $x in (A union B)^complement$, explain why $x in A^complement union B^complement$.
+    If $x in (A inter B)^complement$, explain why $x in A^complement union B^complement$.
     This shows that $(A inter B)^complement subset.eq A^complement union B^complement$.
   +
     Prove the reverse inclusion $(A inter B)^complement supset.eq A^complement union B^complement$, and conclude that $(A inter B)^complement = A^complement union B^complement$.
   +
-    Show $(A union B)^complement = A^complement union B^complement$ by demonstrating inclusion both ways.
+    Show $(A union B)^complement = A^complement inter B^complement$ by demonstrating inclusion both ways.
 ]
 
 #solution[
