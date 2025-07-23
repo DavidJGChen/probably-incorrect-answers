@@ -207,6 +207,27 @@ No exercises in this section.
 
 #solution[
   +
+    Let $x in RR$ be a limit point of $L$.
+    Then for any $epsilon.alt > 0$, it must be such that there is an element $x' in L$ such that $x' != x$ and $x' in V_(epsilon.alt)(x)$.
+
+    Let $epsilon.alt' = 1/2min{abs(x - x'), abs(x + epsilon.alt - x'), abs(x' - x + epsilon.alt)}$.
+
+    $x'$ itself is a limit point of $A$, so choose $a in A$ such that $a != x'$ and $a in V_(epsilon.alt')(x')$.
+
+    By construction, we have chosen $V_epsilon.alt'(x') subset.eq V_epsilon.alt (x)$, as well as ensuring that $a != x$.
+    Therefore, $x$ is also a limit point of $A$, and must be in $L$ as well.
+
+    This shows that $L$ contains all its limit points and is therefore closed.
+
+  +
+    If $x$ is a limit point of $A union L$, then we know that for any $epsilon.alt$-neighborhood of $x$, it must contain some $x' in A union L$ such that $x' != x$.
+
+    Either $x' in A$, or $x' in L$.
+    In the case that $x' in L$, we can use part (a) to see that there must be some additional element $a != x$ in a $epsilon.alt'$-neighborhood of $x'$ contained within the original $epsilon.alt$-neighborhood, and thus we can choose $a in A$ instead.
+
+    Therefore, every limit point $x$ of $A union L$ is also a limit point of $A$ itself.
+
+    This shows that $A union L$ contains all its limit points and is therefore closed.
 
 ]
 
@@ -326,25 +347,134 @@ No exercises in this section.
 
 #solution[
   +
+    Since $A, B subset.eq A union B$, any limit points of $A$ and $B$ must also be limit points of $A union B$.
+    So therefore $overline(A) subset.eq overline(A union B)$, and $overline(B) subset.eq overline(A union B)$, so $overline(A) union overline(B) subset.eq overline(A union B)$.
 
+    Now, we know that $overline(A union B)$ is the smallest closed set containing $A union B$.
+
+    This is because, if any other closed set C contains $A union B$, it must contain the limit points of $A union B$ as well, so therefore $overline(A union B) subset.eq C$.
+
+    Clearly, $A union B subset.eq overline(A) union overline(B)$, and finite union of closed sets is closed, so it must be the case that $overline(A union B) subset.eq overline(A) union overline(B)$.
+
+    Putting the two parts together, we have that $overline(A union B) = overline(A) union overline(B)$.
+
+  +
+    This does not necessarily extend to infinite unions of sets, since we can no longer have the property that the infinite union is closed.
+
+    Consider $A_n = {1 slash n}$.
+    
+    Clearly, the closure of each is simply ${1 slash n}$, since there are no limit points.
+
+    However, the infinite union has a single limit point of $0$, which is not present in the infinite union of the closures.
 ]
 
-#exercise[3.2.12][
+#exercise[3.2.12\*][
   Let $A$ be an uncountable set and let $B$ be the set of real numbers that divides $A$ into two uncountable sets;
   that is, $s in B$ if both ${x mid(:) x in A "and" x < s}$ and ${x mid(:) x in A "and" x > s}$ are uncountable.
   Show $B$ is nonempty and open.
 ]
 
 #solution[
+  I produce two sets, $B_l$ and $B_r$.
+
+  $
+    B_l = {s in RR mid(:) thin (s, oo) inter A "is uncountable"}
+    quad "and" quad
+    B_r = {s in RR mid(:) thin (-oo, s) inter A "is uncountable"}
+  $
+
+  Clearly, $B_l inter B_r$ gives us $B$.
   
+  Neither of them can be empty, since otherwise, we could produce the contradiction that $A$ is countable by constructing it from the countably infinite union of countable sets:
+  $
+    A = union.big_(n=1)^oo ((-oo, n) inter A) quad ==> quad A "is countable" #emoji.crossmark,\
+    "or"\
+    A = union.big_(n=1)^oo ((n, oo) inter A) quad ==> quad A "is countable" #emoji.crossmark.
+  $
+  Moreover, it must be that $B_l union B_r = RR$.
+  Otherwise, there would exist some $x in RR$ such that $(x, oo) inter A$ and $(oo, x) inter A$ are both countable, giving us the contradiction that
+  $
+    A = ((x, oo) inter A) union ((-oo, x) inter A) union ({x} inter A) quad ==> quad A "is countable" #emoji.crossmark.
+  $
+
+  Note that if $l in B_l$, then any $l' < l$ is also in $B_l$.
+  Similarly, any $r' > r in B_r ==> r' in B_r$.
+
+  I claim both $B_l$ and $B_r$ are both open.
+
+  For each, there are two cases.
+  Either the set is unbounded and is therefore the entire set $RR$, or they are upper and lower bounded respectively.
+
+  Let's focus on $B_l$.
+  If it is upper bounded, then select $b_l = sup B_l$.
+  I claim $b_l in.not B_l$.
+  Otherwise, we could have the countably infinite union as follows:
+  $
+    union.big_(n=1)^oo ((b_l + 1/n, oo) inter A) = (b_l, oo) "is countable" #emoji.crossmark.
+  $
+  This is a contradiction since $b_l in B_l$ implies that $(b_l, oo)$ is uncountable.
+
+  Similar logic applies for $B_r$.
+
+  This shows that $B_l$ is an open interval of the form $(-oo, b_l)$, where $b_l$ can be $oo$, and $B_r$ is of the form $(b_r, oo)$.
+
+  Since $B_l union B_r = RR$, we must have that $b_l > b_r$, else we would have a gap.
+
+  Thus, $B = (b_r, b_l)$ and must be nonempty, and open as well, since it is a finite intersection of two open sets.
 ]
 
-#exercise[3.2.13][
+#exercise[3.2.13\*][
   Prove that the only sets that are both open and closed are $RR$ and the empty set $emptyset$.
 ]
 
 #solution[
+  It is easy to show that $emptyset$ and $RR$ are closed and open.
 
+  #proof[
+    Clearly, $emptyset$ has no limit points so it is closed.
+    There are also no points that need to have $epsilon.alt$-neighborhoods around, so it is open.
+    Since $RR$ is $emptyset^complement$, we have that $RR$ is also open and closed.
+  ]
+
+  For the other direction, I show that if $A$ is a nonempty set such that it is closed and open, then it must contain every real number.
+
+  First, I show that $A$ can be neither upper nor lower bounded.
+
+  #proof[
+    AFSOC $A$ is upper bounded.
+    Then we can find $s = sup A$ (since $A$ is nonempty).
+    If $s in A$, then no $epsilon.alt$-neighborhood of $A$ will be contained in $A$.
+    However, for any $epsilon.alt > 0$, we also know that there must be an $a in A$ such that $a > s - epsilon.alt$.
+    Additionally, since $s in.not A$, we have that $a != s$, and therefore $s$ qualifies as a limit point of $A$.
+    This is a *contradiction*, since we have now found a limit point such that it is not in $A$, so $A$ cannot be closed.
+
+    Similar logic applies to show that $A$ cannot be lower bounded.
+
+    Thus, $A$ is unbounded.
+  ]
+
+  Now, I show that if $x in RR$, then $x$ is a limit point of $A$.
+
+  #proof[
+    AFSOC that $x$ is not a limit point of $A$.
+    Then there must exist some $epsilon.alt > 0$ where $V_epsilon.alt (x)$ does not intersect with $A$ other than at $x$.
+
+    Clearly, $x in.not A$, since otherwise we could choose the same $epsilon.alt$ as a counterexample to $A$ being open.
+
+    Now, observe that $V_epsilon.alt (x) subset.eq (l, r)$, where if $x' in (l, r)$ then $x' in.not A$.
+
+    The largest such interval must be bounded, otherwise, this would imply that $A$ itself is bounded.
+    Assume that $r$ is the infimum of all such upper bounds for the RHS of the interval.
+
+    If $r in A$, then we can see that no $epsilon.alt$-neighorhood around $r$ is contained in $A$.
+
+    If $r in.not A$, then we can see that $r$ is a limit point of $A$, which is a contradiction.
+
+    Therefore, we have our overall contradiction, and it must be that $x$ is a limit point of $A$
+  ]
+  Thus, for arbitrary $x in RR$, $x$ is a limit point of $A$, and since $A$ is closed, $x in A$.
+
+  This shows that any nonempty $A = RR$.
 ]
 
 #exercise[3.2.14][
@@ -364,7 +494,65 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    Clearly, if $overline(E) = E$, then $E$ is closed since the closure is always closed.
 
+    If $E$ is closed, then it contains all its limit points $L$, such that $L subset.eq E$.
+    Thus, $overline(E) = L union E = E$.
+
+    Now, clearly, if $E^circle.small = E$, then $E$ is open, since every point in $E$ has an $epsilon.alt$-neighorhood contained in $E$.
+
+    Now, if $E$ is open, then $E^circle.small$ contains every point in $E$, so $E subset.eq E^circle.small$.
+    On the other hand, since $E^circle.small$ can only take points from $E$, then $E supset.eq E^circle.small$, so we have that $E^circle.small = E$.
+  
+  +
+    Claim: $overline(E)^complement subset.eq (E^complement)^circle.small$
+    #proof[
+      First, assume that $x in overline(E)^complement$.
+      This implies that $x in.not overline(E)$, or that $x in.not E union L$, where $L$ is the set of limit points of $E$.
+      From this, we see that $x in E^complement inter L^complement$.
+      If $x in L^complement$, then $x$ is not a limit point of $E$.
+      This means that either is an interior point of $E$, or that there is an $epsilon.alt$-neighborhood of $x$ such that it is fully not in $E$.
+      Alternatively, we can say that:
+      $
+        x in E "or there exists" epsilon.alt "such that" V_epsilon.alt (x) subset.eq E^complement. 
+      $
+      From this, we can see that it must be that $x in E^complement$, and there exists $V_epsilon.alt (x) subset.eq E^complement$.
+      This is the definition of $(E^complement)^circle.small$.
+
+      Therefore, $overline(E)^complement subset.eq (E^complement)^circle.small$.
+    ]
+    Claim: $overline(E)^complement supset.eq (E^complement)^circle.small$
+    #proof[
+      Assume $x in (E^complement)^circle.small$.
+      Then, it must be in $E^complement$, and there exists $V_epsilon.alt (x) subset.eq E^c$.
+
+      This implies that $x$ is not a limit point of $E$, so now we have that $x in.not L ==> x in L^complement$.
+
+      Thus, we have $x in E^c inter L^c = (E union L)^complement = overline(E)^complement$.
+    ]
+  Thus, $overline(E)^complement = (E^complement)^circle.small$.
+
+  Now, I claim that $(E^circle.small)^complement = overline(E^complement)$.
+
+  Claim: $(E^circle.small)^complement subset.eq overline(E^complement)$
+  #proof[
+    Assume $x in (E^circle.small)^complement$.
+    Then, $x in.not E^circle.small$.
+    This implies that either $x in.not E$, or $x in E$ and for all $epsilon.alt$, $V_epsilon.alt (x) inter E^complement != emptyset$.
+    This is the definition of a limit point of $E^complement$, so now we have that either $x in.not E ==> x in E^c$, or $x in L'$, where $L'$ is the set of limit points of $E^complement$.
+
+    Thus, $x in E^complement union L' = overline(E^complement)$.
+  ]
+  Claim: $(E^circle.small)^complement supset.eq overline(E^complement)$
+  #proof[
+    Assume $x in overline(E^complement)$.
+    Then $x in E^complement union L'$.
+    If $x in L'$, then it cannot be in the interior of $E$, since there is no $epsilon.alt$ contained completely in $E$.
+
+    Thus, we have that $x in.not E^circle.small$, so $overline(E^complement) subset.eq (E^circle.small)^complement$.
+  ]
+  Thus $(E^circle.small)^complement = overline(E^complement)$.
 ]
 
 #exercise[3.2.15][
