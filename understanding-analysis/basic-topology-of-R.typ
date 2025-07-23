@@ -570,7 +570,25 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    Consider the collection of sets $A_1, A_2, A_3, dots$, where $A_i = (a - 1/i, b + 1/i)$.
 
+    Then, $[a,b]$ is clearly a subset of every set, so it will be in their intersection.
+    In addition, no number outside of $[a,b]$ will be present in the intersection.
+
+  +
+    For the union of closed sets, consider the collection with $A_i = [a + 1/i, b]$.
+
+    For the intersection of open sets, consider the collection with $A_i = (a, b + 1/i)$.
+
+  +
+    Consider the enumeration of rationals.
+    Now, let each rational be enclosed in its own set.
+    Each is a closed set, and the union of all of them gives us exactly the rationals and nothing else.
+
+    Now, consider a set containing just a rational, and now take the complement.
+    This is an open set.
+    The intersection of all such complements gives us the irrationals, as it will give us all real numbers except the rationals.
 ]
 
 == Compact Sets
