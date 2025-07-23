@@ -598,7 +598,12 @@ No exercises in this section.
 ]
 
 #solution[
+  If $K$ is compact and nonempty, then it must be bounded.
+  Since it is bounded, it must be upper and lower bounded.
+  This means that $sup K$ and $inf K$ both exist.
 
+  We also know that $K$ is closed.
+  Thus, we know from properties of supremum and infimum that they must be limit points of $K$, and therefore must be contained within $K$.
 ]
 
 #exercise[3.3.2][
