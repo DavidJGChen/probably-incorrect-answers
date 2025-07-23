@@ -622,7 +622,40 @@ No exercises in this section.
 ]
 
 #solution[
+  + Not compact, consider the natural enumeration of natural numbers.
 
+  + Not compact, consider any sequence converging to $sqrt(2) / 2$.
+
+  +
+    Compact.
+    I can't think of a proof that relies on the sequence definition, but it is clearly bounded, and also closed, since it is the infinite intersection of closed sets.
+
+  +
+    Not compact, consider the natural enumeration as a sequence, and we see that it is strictly monotonically increasing and bounded by our results on series.
+    Therefore, the limit cannot exist in the set, as otherwise we would find an element strictly greater than the limit.
+
+
+  +
+    By Bolzano--Weierstrass any sequence with elements from this set should have a convergent subsequence.
+
+    I claim that any subsequence that converges must converge to an element in this set.
+
+    #proof[
+      AFSOC that we have a subsequence that converges to an $x$ not in our set.
+
+      Clearly, our $x$ must be be in the interval $[1 slash 2, 1]$.
+
+      We find the closest two elements in our set, let's call it $n/(n+1)$ and $(n+1)/(n+2)$.
+      (If $x$ were to be $1$ or greater, then this would not be possible.
+      This is a result using the Archimedean property, and if $x > 1$, then we would end up either trying to find a natural number greater than infinity, or a natural number smaller than a negative number.)
+
+
+      Set $epsilon.alt$ to be $1/2 min{x - n/(n+1), (n+1)/(n+2) - x}$, and now notice that there can be no element in our set within that $epsilon.alt$-neighborhood of $x$.
+      
+      This contradicts the definition of convergence.
+
+      Therefore, every subsequence must converge to a value within the set.
+    ]
 ]
 
 #exercise[3.3.3][
@@ -630,7 +663,19 @@ No exercises in this section.
 ]
 
 #solution[
+  Take any sequence $(x_n)$ with elements from the set $K$.
 
+  Since our set is bounded, we can apply Bolzano--Weierstrass to find a convergent $(x_n_k)$ with elements from $K$.
+
+  Now, there are two cases.
+
+  *Case 1:* The subsequence converges to a limit $x$ already present in our sequence, and we get that $x in K$ for free.
+
+  *Case 2:* The subsequence converges to a limit $x$ not in our original sequence.
+  Now, notice, that $x$ satisfies the definition for a limit point.
+  Since our set is closed, we then get the result that $x in K$.
+
+  So, in either case, we get that any $(x_n)$ has a subsequence that converges to a point $x in K$, which is exactly the definition for a compact set.
 ]
 
 #exercise[3.3.4][
@@ -647,7 +692,19 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    *Definitely compact* and closed, since the intersection will stay bounded, and the intersection of closed sets is still closed.
 
+  +
+    $F^complement union K^complement$ will be unbounded (since it is the complement of a bounded set).
+    Thus, it is not compact, but the closure is still *definitely closed*.
+
+  +
+    We have *no guarantees*, other than boundedness.
+    As an example, consider $K = [-1, 2]$, and $F = (0, 1)^complement$.
+    Then $K setdiff F = (0,1)$, which is open, not closed, and thus not compact.
+
+  + This is definitely closed, and also bounded, so it must be *compact*.
 ]
 
 #exercise[3.3.5][
@@ -668,7 +725,26 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    True.
+    The intersection of bounded sets cannot be unbounded, and will be bounded (or empty).
+    We also know that the arbitrary intersection of closed sets is closed.
+    So the resulting set is either empty (and thus compact), or nonempty and compact.
 
+  +
+    False, consider the collection of compact sets of the form:
+    $
+      {[1 slash n, 1 - 1 slash n] mid(:) n in NN, n >= 2}.
+    $
+    The countable union gives us $(0,1)$, which is clearly not closed and therefore not compact.
+
+  +
+    False, consider $A = (0, 1)$, $K = [0, 1]$.
+    Then the intersection is $(0,1)$.
+
+  +
+    False, since the closed set could be unbounded, for example, ${[n, oo] mid(:) n in NN}$.
+    The countable intersection here is the empty set.
 ]
 
 #exercise[3.3.6][
@@ -687,7 +763,35 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    True, since the compact set is bounded, then it must have a supremum.
+    It must also contain the supremum, since we can produce a sequence that converges to the supremum.
+    Thus, the supremum must be contained in the set and is therefore a maximum.
 
+    This is not true if it is just closed, since we can have two closed sets that are not upper bounded.
+
+  +
+    True, $A + B$ will stay bounded, and for every sequence in $A + B$, by Bolzano--Weierstrass it will have a convergent subsequence.
+    For the subsequence, we can split it into the addition of two sequences from $A$ and $B$ respectively.
+    Each will converge to $a$ and $b$, which exist in $A$ and $B$ respectively, so by ALT the limit of our original subsequence is $a + b$, which we know must exist in $A + B$.
+
+    This is not true if we have closed, since we can then have two unbounded but closed sets:
+    $
+      A = NN, quad B = {-n + 1 slash n mid(:) n in NN}.
+    $
+    We can produce a sequence in $A + B$ where $(x_n) = 1 slash n$, which we know to converge to $0$.
+    However, $0$ is clearly not an element of $A + B$, as it would require $m - n + 1 slash n = 0$ which cannot be true for $m, n in NN$.
+  
+  +
+    For finite sets, this must be true, as we can show by induction that every $A_n$ has a shared common element.
+    Therefore, the infinite intersection should also have that shared common element.
+
+    For compact sets, this must also be true.
+    We can invoke the Nested Compact Set property, by iteratively constructing $K_n = inter.big_(i=1)^n A_i$, and noting that we now have a nested sequence of nonempty compact sets.
+
+    The infinite intersection of this nested sequence is thus nonempty.
+
+    For closed sets, this is not necessarily true, just take $A_n = [n, oo]$.
 ]
 
 #exercise[3.3.7][
@@ -706,7 +810,7 @@ No exercises in this section.
 ]
 
 #solution[
-
+  
 ]
 
 #exercise[3.3.8][
