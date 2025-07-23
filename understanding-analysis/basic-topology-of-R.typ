@@ -175,8 +175,7 @@ No exercises in this section.
 
   +
     False.
-    The empty set is a closed set.
-    If the empty set is ignored, then this is still not true, as we can see that the collection of sets ${k >= n mid(:) k in NN}_(n in NN)$ are all clearly closed, yet there cannot be any element in the infinite intersection.
+    We can see that the collection of sets ${k >= n mid(:) k in NN}_(n in NN)$ are all clearly closed, yet there cannot be any element in the infinite intersection.
 
   +
     True.
