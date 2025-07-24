@@ -810,7 +810,62 @@ No exercises in this section.
 ]
 
 #solution[
-  
+  +
+    If $s in C_1$, then clearly we can just take $x_1 = 0$, and $y_1 = s$.
+    If $s in [1, 4 slash 3] union [5 slash 3, 2]$, then we can take $x_1 = 1$ and $y_1 = s - 1$.
+
+    Now, notice that $[1 slash 3, 2 slash 3]$ can be covered by $x_1 = 1 slash 3$ and $y_1$ from $[0, 1 slash 3]$.
+    Likewise, $[4 slash 3, 5 slash 3]$, can be covered by $x_1 = 2 slash 3$ and $y_1 in [2 slash 3, 1]$.
+
+    To show that arbitrary $x_n, y_n$ from $C_n$ can cover $s$, I use an inductive argument.
+
+    Assume that we can find $x_n, y_n$ such that $x_n + y_n = s in [0,2]$.
+
+    Now, we note the property that if $x in C_n$, then $x slash 3 in C_(n+1)$, as well as $(x + 2) / 3 in C_(n+1)$.
+
+    Assume we have arbitrary $s in [0,2]$.
+    Now, we have three cases:
+    $
+      s = cases(
+        s' slash 3 &quad "for" s in [0, 2 slash 3],
+        (s' + 2) slash 3 &quad "for" s in (2 slash 3, 4 slash 3],
+        (s' + 4) slash 3 &quad "for" s in (4 slash 3, 2].
+      ),
+      quad "where" s' in [0,2].
+    $
+    Now, we can see that there must exist $x_n, y_n in C_n$ such that $x_n + y_n = s'$.
+
+    From our three cases, we can now see that we will have:
+    $
+      s = cases(
+        x_n / 3 + y_n / 3 &quad "for" s in [0, 2 slash 3],
+        (x_n + 2) / 3 + y_n / 3 &quad "for" s in (2 slash 3, 4 slash 3],
+        (x_n + 2) / 3 + (y_n + 2) / 3 &quad "for" s in (4 slash 3, 2].
+      ).
+    $
+    In all cases, both terms are members of $C_(n+1)$.
+
+    Thus by induction, we can always find $x_n, y_n$ such that $x_n + y_n = s in [0,2]$.
+
+  +
+    $(x_n)$ is bounded, so it possesses a convergent subsequence.
+
+    Looking at the convergent subsequence, let's say that $(x_n_k) -> x$.
+
+    Since $C_1$ is closed, it must be that $x in C_1$.
+    I claim that $x in C_n$ for every $n in NN$.
+
+    To see this, just consider the tail of the same subsequence such that $n_k >= n$, and note that it must share the same $x$ as its limit.
+
+    Since every $C_n$ is compact, it must be that $x in C_n$ for all $n in NN$.
+
+    Thus, since $C = inter.big_(n=1)^oo C_n$, it must be that $x in C$.
+
+    If we define $y_n = s - x_n$, then for the subsequence $(x_n_k)$, the analogous subsequence $(y_n_k) -> y = s - x$ by ALT.
+
+    By similar reasoning to above, we see that $y in C$ as well.
+
+    Therefore, we have produced $x, y in C$ such that $x + y = s$.
 ]
 
 #exercise[3.3.8][
