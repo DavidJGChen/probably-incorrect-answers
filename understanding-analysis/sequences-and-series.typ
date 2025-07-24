@@ -1,4 +1,4 @@
-#import "@local/david:1.0.1": *
+#import "imports.typ": *
 
 #let ex-counter = counter("ex-counter")
 #let ex-count = {
