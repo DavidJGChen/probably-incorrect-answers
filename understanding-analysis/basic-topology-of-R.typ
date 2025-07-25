@@ -883,7 +883,34 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    I claim that absolute value of a closed set gives a closed set.
+    #proof[
+      Let $X$ be closed.
+      Let $X' = {abs(x) mid(:) x in X}$.
 
+      Observe arbitrary limit point $abs(a)$ of $X'$.
+      Now, there must be an $(abs(a_n)) -> abs(a)$.
+
+      The original sequence in $abs(a_n)$ in $X$ must either have infinite negative terms, infinite non-negative terms, or both.
+
+      In any case, we can pick out a subsequence of that sequence to see that it will approach $a$ or $-a$, which indicates that $a$, $-a$, or both are in $X$.
+
+      This implies that $abs(x) in X'$, so all limit points of $X'$ are contained within it, and $X'$ is closed.
+    ]
+
+    Clearly, the negation of a compact set is compact, and by Exercise 3.3.6, the addition of two compact sets is compact.
+
+    Finally, the absolute value (as just proved) of a compact set must be closed and bounded and therefore still compact.
+
+    This immediately gives us the result that it must contain its infimum.
+
+    So, if $K$ and $L$ are disjoint, then $d != 0$, since that would imply there are two elements $x = y$, which contradicts the disjointness of the two sets.
+
+  +
+    Consider the closed but unbounded sets $K = NN$ and $L = {n + 1 slash n mid(:) n in NN, n >= 2}$.
+
+    The distance between any two elements approaches $0$, but there are no elements in common.
 ]
 
 #exercise[3.3.9][
@@ -904,6 +931,39 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    Let $I_0$ be the proposed closed interval, such that $K subset.eq I_0$.
+    Note that due to our assumption, $I_0 inter K$ covered by ${O_lambda mid(:) lambda in Lambda}$ does not have a finite subcover.
+    
+    Now, select $I_(i+1)$ in the following way:
+    
+    Bisect $I_i$ into two closed intervals, and call the left half $L_i$, and the right half $R_i$.
+    Both have $abs(L_i) = abs(R_i) = abs(I_i) slash 2$, and at least one of the two must be such that $L_i inter K$ and $R_i inter K$ cannot be covered by a finite subcover from ${O_lambda mid(:) lambda in Lambda}$.
+    (Otherwise, we could find a finite subcover for $I_i$.)
+
+    Select any one of the half intervals that does not have a finite subcover as described above.
+
+    Continue in this manner.
+    Notice that no matter the initial length of $I_0$, we will eventually find an interval smaller than any positive value.
+    Therefore $lim_(n->oo)abs(I_n) = 0$.
+  
+  +
+    This follows directly from the Nested Interval Property.
+    We should also note that at any point, $I_n inter K$ cannot be empty, otherwise we would have the trivial finite subcover.
+
+    So the countable intersection is both nonempty and shares an element with $K$.
+
+  +
+    Since $x in K$ and also $x in I_n$ for all $n$, it must be the case that some $O_lambda_0$ from our open cover contains $x$.
+
+    This implies that for some $epsilon.alt > 0$, we have that $V_epsilon.alt (x) subset.eq O_(lambda_0)$.
+
+    However, we can also find an interval $I_n$ such that $abs(I_n) < epsilon.alt$, such that $x in I_n$ and also $x in I_n inter K$.
+    This implies that $I_n subset.eq V_(epsilon.alt) (x) subset O_lambda_0$.
+
+    This is a *contradiction*, since $O_lambda_0$ itself functions as a finite subcover for $I_n inter K$, but we chose $I_n$ so that this wouldn't happen.
+
+    This means our original assumption that there could be no finite subcover is incorrect.
 
 ]
 
@@ -921,7 +981,60 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    Clearly, we can see that $a in S$, since the single point $a$ would need to be covered by some open set in the cover.
 
+    $S$ is also clearly bounded, since it is a subset of a bounded interval.
+
+    Therefore, we can select $s = sup S$.
+
+  +
+    Note that the largest $s$ can be is $b$.
+
+    Now, we check if $s$ is contained in $S$.
+
+    Clearly, $s$ must be covered by some open set in the cover.
+    It is also the case that this open set must cover some points in a small $epsilon.alt$-neighborhood around $s$.
+
+    We already know that any point less than $s$ must be able to be covered with a finite subcover.
+    So, we can just add our open set covering $s$ to our finite subcover and see that $s in S$.
+
+    Within that small $epsilon.alt$-neighborhood, it must be that points greater than $s$ should also be covered by that same open set.
+
+    However, if there were points greater than $s$ covered by the open set, then $s$ would no longer be the supremum.
+
+    Therefore, there cannot be any points greater than $s$ within $[a, b]$, implying that $s = b$.
+
+  +
+    Since $K$ is closed and bounded, we can find its upper and lower bounds $a$ and $b$.
+
+    Note further, that these points must be contained within $K$.
+
+    Form the interval $[a,b]$, and define $S$ as the set of all $x in [a,b] inter K$ such that $[a, x] inter K$ has a finite subcover from ${O_lambda mid(:) lambda in Lambda}$.
+
+    By similar argument from part (a), $a in S$, so $s = sup S$ must exist.
+    
+    AFSOC $s < b$.
+
+    If there exists a small $epsilon.alt$-neighborhood around $s$ such that it is fully contained in $K$, then we can use the argument from part (b).
+
+    If it is instead the case that there is some $(s, r)$ such that $(s, r) inter K$ is empty, then we can proceed in the following manner:
+
+    We observe $[r, b] inter K$.
+    This is a compact set, thus it contains its infimum.
+
+    Call the infimum $y$, and note that $s < y <= b$.
+
+    We then work with the following interval:
+    $
+      [a, y] inter K &= ([a, s] union (s, y) union {y}) inter K\
+      &= [a, s] inter K union {y}.
+    $
+    We know that $y$ must be covered by some $O_lambda$.
+
+    Let's just add that $O_lambda$ to the finite subcover for $[a,s] inter K$, and we arrive at our *contradiction*.
+
+    Therefore, it must be the case that $s = b$, so therefore, we have a finite subcover for our entire compact set.
 ]
 
 #exercise[3.3.11][
@@ -930,7 +1043,23 @@ No exercises in this section.
 ]
 
 #solution[
+  +
+    $NN$: Consider the open cover where there is simply an interval $(n - 1/2, n + 1/2)$ around each natural number
 
+  +
+    $QQ inter [0,1]$:
+
+    Consider $(sqrt(2) / 2, 2)$, and the set of open intervals ${(-1, sqrt(2) / 2 - 1/n) mid(:) n in NN}$
+
+  + The Cantor set: compact.
+
+  +
+    ${1 + 1 slash 2^2 + 1 slash 3^2 + dots.c + 1 slash n^2 mid(:) n in NN}$:
+
+    Consider the set of open sets ${(0, s_n) mid(:) s_n in S}$, where $S$ is the set of partial sums as seen above and $s_n$ is the natural enumeration.
+
+  +
+    ${1, 1 slash 2, 2 slash 3, 3 slash 4, 4 slash 5, dots}$: compact.
 ]
 
 #exercise[3.3.12][
@@ -942,8 +1071,8 @@ No exercises in this section.
 ]
 
 #exercise[3.3.13][
-  Let's call a set _clompact_ if it has the property that every _closed_ cover (i.e., a cover consisting of closed sets) admists a finite subcover
-  Describe all of the   clompact subsets of $RR$.
+  Let's call a set _clompact_ if it has the property that every _closed_ cover (i.e., a cover consisting of closed sets) admits a finite subcover.
+  Describe all of the clompact subsets of $RR$.
 ]
 
 #solution[
