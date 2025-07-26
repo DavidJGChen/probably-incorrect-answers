@@ -1067,7 +1067,21 @@ No exercises in this section.
 ]
 
 #solution[
+  AFSOC that there are no limit points in our set $S$.
 
+  Then, since we know that a closed set is one that contains all its limit points, we see that our set is closed.
+
+  Therefore, since it is closed and bounded, our set is compact.
+
+  Now, since there are no limit points, we know that for every point in our set $x$, there exists an $epsilon.alt$-neighborhood for which the intersection with $S$ gives us ${x}$.
+
+  Choose all the $epsilon.alt$-neighborhoods centered at individual points as our open cover.
+
+  Clearly, this covers all points, but any finite subcover will always be missing infinitely many points.
+
+  This is a *contradiction*, since we determined that any open cover of a compact set will have a finite subcover.
+
+  Thus, it must be that $S$ has at least one limit point.
 ]
 
 #exercise[3.3.13][
@@ -1076,7 +1090,16 @@ No exercises in this section.
 ]
 
 #solution[
+  A set is clompact if and only if it is finite.
 
+  ($=>$)
+
+  Pick the closed cover such that every point $x$ in our set is covered by the closed set ${x}$.
+  Now, we choose our finite subcover, and we immediately get that our set can only contain finitely many points.
+
+  ($arrow.double.l$)
+
+  For every point $x$, simply select a closed set covering it, and in the end we will have finitely many closed sets.
 ]
 
 == Perfect Sets and Connected Sets
