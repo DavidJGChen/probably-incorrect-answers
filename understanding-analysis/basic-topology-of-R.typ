@@ -1110,7 +1110,12 @@ No exercises in this section.
 ]
 
 #solution[
+   The intersection is always compact, since a perfect set is closed.
+   Thus the intersection will still be closed and bounded and therefore compact.
 
+   The set will not always be perfect.
+   As an example, consider $P = [0,1]$, and $K = {1}$.
+   The intersection is an isolated point and thus not perfect.
 ]
 
 #exercise[3.4.2][
@@ -1118,7 +1123,7 @@ No exercises in this section.
 ]
 
 #solution[
-
+  No, since a perfect set must be uncountable.
 ]
 
 #exercise[3.4.3][
@@ -1132,7 +1137,14 @@ No exercises in this section.
 ]
 
 #solution[
+  + 
+    Just choose the closest end-point of the intervals that make up $C_1$ (that isn't $x$ itself).
+    The furthest away it can be is thus $1/6 < 1/3$, or exactly $1 slash 3$ if $x$ is an endpoint.
+    We also know that $C$ contains all such endpoints.
 
+  +
+    The same logic using endpoints can be applied for all $n$, and this gives us a sequence for any $x$ such that the distance $abs(x_n - x) <= 1 slash 3^n$.
+    This proves that $x$ is a limit point, and thus not isolated.
 ]
 
 #exercise[3.4.4][
@@ -1148,7 +1160,7 @@ No exercises in this section.
 ]
 
 #solution[
-
+  #TODO[skipped]
 ]
 
 #exercise[3.4.5][
@@ -1157,7 +1169,14 @@ No exercises in this section.
 ]
 
 #solution[
+  If $U$ and $V$ are disjoint open sets, then the limit point of one set cannot exist in the other set.
+  WLOG, AFSOC assume $U$ had a limit point $x$ in $V$.
 
+  Now there exists a ball around $x$ fully contained in $V$, but also from the definition of limit point, there will always be a point $x' != x$ in $U$ within any ball around $x$, contradicting the initial condition that $U$ and $V$ are disjoint.
+
+  Thus, the closure of any one set and the original second set will still be disjoint.
+
+  The closure of any subset of the original set will be a subset of the original set, so $A$ and $B$ must also be separated.
 ]
 
 #exercise[3.4.6][
@@ -1165,7 +1184,20 @@ No exercises in this section.
 ]
 
 #solution[
+  ($=>$)
+  I prove the contrapositive.
+  Assume that there exists a non-trivial partition $A union B = E$, with the property that all convergent sequences with all elements in $A$ have a limit that cannot be in $B$, and vice-versa.
 
+  Thus, all limit points of $A$ also cannot be in $B$, and $overline(A) inter B = emptyset$.
+  Similar logic applies for all convergent sequences fully contained in $B$.
+
+  Thus, $A$ and $B$ must be separated, which implies that $E$ is disconnected.
+
+  ($arrow.double.l$)
+  Assume that for all non-trivial partitions $A union B = E$, there always exists a convergent sequence fully contained in one set with a limit in the other.
+
+  The limit must be a limit point, and thus, the closure of the set containing the convergent sequence contains said limit point.
+  The intersection must be non-empty, which implies that all partitions cannot be separated, and thus, $E$ must be connected.
 ]
 
 #exercise[3.4.7][
@@ -1177,7 +1209,12 @@ No exercises in this section.
 ]
 
 #solution[
-
+  +
+    There will always exist an irrational number $x$ between any two distinct rationals, just partition $QQ$ based on rationals greater and lesser than $x$.
+  
+  +
+    There will always exist a rational number $x$ between any two distinct irrationals.
+    Partition the irrationals based on those greater and lesser than $x$.
 ]
 
 #exercise[3.4.8][
@@ -1194,7 +1231,14 @@ No exercises in this section.
 ]
 
 #solution[
-
+  +
+    The length of the intervals in $C_n$ is exactly $1 slash 3^n$.
+    So just find $N$ large enough such that #box[$1 slash 3^N < epsilon.alt$].
+  
+  +
+    Since it must be the case that there is a $C_N$ after which $y-x$ cannot exist in the same interval, then it must be the case that there is a $z in.not C_N$ such that $x < z < y$.
+    Thus in $z in.not C$ as well.
+    We can then partition $C$ into all those that are greater or less than $z$.
 ]
 
 #exercise[3.4.9][
@@ -1212,6 +1256,60 @@ No exercises in this section.
   +
     Is it possible to know whether $F$ is perfect?
     If not, can we modify the construction to produce a nonempty perfect set of irrational numbers?
+]
+
+#solution[
+  +
+    Clearly $F$ must be closed, since $O$ is the countable union of open sets and thus must be open itself.
+
+    $F$ must also not contain any rational numbers by construction, so if there are any elements, it must be irrational.
+
+    To prove $F$ is non-empty, we should use the Nested Compact Set Property.
+
+    First, using De Morgan's Law, we see that $F = inter.big_(n=1)^oo V_(epsilon.alt_n) (r_n)^complement$.
+
+    Let $C_n = inter.big_(m=1)^n V_(epsilon.alt_m) (r_m)^complement inter [0, 2]$.
+    This is clearly compact, since $V_(epsilon.alt_n) (r_n)^complement$ is closed, and nested.
+
+    To argue that it is nonempty, consider the compact set of points:
+    $
+      A_n = {i slash 2^n mid(:) i in ZZ_+, 0 <= i <= 2^(n+1)}.
+    $
+    This is a subset of $[0,2]$, and has $2^(n+1) + 1$ elements.
+
+    Since every $V_(epsilon.alt_m) (r_m)$ has a length of $1 slash 2^(m-1)$ max, it can contain at most $2^(n - m + 1)$ elements of $A_n$.
+
+    Thus, the number of elements in the union is as follows:
+    $
+      abs(A_n inter union.big_(m=1)^n V_(epsilon.alt_m) (r_m)) <= sum_(m=1)^n 2^(n - m + 1) = sum_(i=1)^n 2^i = 2^(n+1) - 2.
+    $
+    Thus, we can see the following relationship:
+    $
+      C_n &= inter.big_(m=1)^n V_(epsilon.alt_m) (r_m)^complement inter [0, 2] supset.eq inter.big_(m=1)^n V_(epsilon.alt_m) (r_m)^complement inter A_n\
+      &supset.eq A_n inter (union.big_(m=1)^n V_(epsilon.alt_m) (r_m))^complement = (A_n inter A_n^complement) union (A_n inter (union.big_(m=1)^n V_(epsilon.alt_m) (r_m))^complement)\
+      &= A_n inter (A_n^complement union (union.big_(m=1)^n V_(epsilon.alt_m) (r_m))^complement) = A_n inter (A_n inter (union.big_(m=1)^n V_(epsilon.alt_m) (r_m)))^complement\
+      &= A_n setdiff (A_n inter (union.big_(m=1)^n V_(epsilon.alt_m) (r_m))).
+    $
+    From our previous result, we know that this has at least $3$ elements in it, so therefore, for any $C_n$, it has at least $3$ elements in it and is therefore non-empty.
+
+    Thus, we have our sequence of nested, compact, and non-empty sets, so their intersection must be non-empty.
+    Their intersection is a subset of $F$, so $F$ must also be non-empty.
+  
+  +
+    $F$ does not contain any nonempty open intervals, since between any endpoints of any interval there is a rational number, which cannot be in the interval.
+
+    $F$ must therefore be totally disconnected as well.
+
+  +
+    It is possible that $F$ is not perfect.
+    To see this, we can order the rationals in such a way that for any rational close to $sqrt(2)$, it is far enough down the list such that the $epsilon.alt$-neighborhood is small enough to not include $sqrt(2)$.
+    I don't rigorously justify this enumeration, but it should be possible.
+
+    Thus, $sqrt(2) in F$, but there is no other irrational close to it and it is an isolated point.
+
+    To modify the construction such that $F$ is perfect, we must do the following
+
+    #TODO[not finished]
 ]
 
 == Baire's Theorem
