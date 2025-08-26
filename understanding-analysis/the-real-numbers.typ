@@ -48,18 +48,40 @@ No exercises in this section.
   For any that are false, provide a specific example where the statement in question does not hold.
   +
     If $A_1 supset.eq A_2 supset.eq A_3 supset.eq A_4 dots$ are all sets containing an infinite number of elements, then the interesection $inter.big_(n=1)^oo A_n$ is infinite as well.
+
   +
     If $A_1 supset.eq A_2 supset.eq A_3 supset.eq A_4 dots$ are all finite, nonempty sets of real numbers, then the intersection $inter.big_(n=1)^oo A_n$ is finite and nonempty.
+
   +
     $A inter (B union C) = (A inter B) union C$.
+
   +
     $A inter (B inter C) = (A inter B) inter C$.
+
   +
     $A inter (B union C) = (A inter B) union (A inter C)$.
 ]
 
 #solution[
-  #TODO[skipped]
+  +
+    False.
+    Consider $A_i = {n in NN mid(:) n >= i}$.
+    Then the infinite intersection is empty.
+  
+  +
+    True.
+    Assume that $abs(A_1) = N$.
+    Then note that we can have at most $N - 1$ subsequent sets that decrease in size, otherwise we would end up with an empty set.
+    Past the finite number of decreases, we end up with a fixed set size greater than 0.
+    We can see that all sets after this are the same, and thus it is contained in the infinite intersection.
+
+  +
+    False.
+    Let $A = B = emptyset$, and $C = {1}$.
+
+  + True.
+
+  + True.
 ]
 
 #exercise[1.2.4][
@@ -102,18 +124,25 @@ No exercises in this section.
 #exercise[1.2.6][
   +
     Verify the triangle inequality in the special case where $a$ and $b$ have the same sign.
+
   +
     Find an efficient proof for all the cases at once by first demonstrating $(a+b)^2 <= (abs(a) + abs(b))^2$.
+
   +
     Prove $abs(a - b) <= abs(a - c) + abs(c - d) + abs(d - b)$ for all $a$, $b$, $c$, and $d$.
+
   +
     Prove $abs(abs(a) - abs(b)) <= abs(a - b)$. (The unremarkable identity $a = a - b + b$ may be useful.)
 ]
 
 #solution[
   + #TODO[part skipped]
+
+  + 
+    Clearly $a b <= abs(a) abs(b)$ in all cases.
+  
   + #TODO[part skipped]
-  + #TODO[part skipped]
+  
   +
     Using the "unremarkable identity", for any $a$ and $b$,
     $
@@ -170,7 +199,7 @@ No exercises in this section.
   +
     My conjecture is that
     $
-      g(A inter B) = g(A) union g(B).
+      g(A union B) = g(A) union g(B).
     $
     To show this, I first prove that $g(A union B) subset.eq g(A) union g(B)$, then the other way around.
 
@@ -194,12 +223,18 @@ No exercises in this section.
 
   Give an example of each or state that the request is impossible:
   + $f: NN -> NN$ that is 1--1 but not onto.
+
   + $f: NN -> NN$ that is onto but not 1--1.
+
   + $f: NN -> ZZ$ that is 1--1 and onto.
 ]
 
 #solution[
-  #TODO[skipped]
+  + $f(n) = 2n.$
+
+  + $f(n) = floor(n slash 2)$.
+
+  + $f(n) = (-1)^n floor((n+1) / 2).$
 ]
 
 #exercise[1.2.9][
@@ -308,12 +343,38 @@ No exercises in this section.
 #exercise[1.3.1][
   +
     Write a formal definition in the style of Definition 1.3.2 or the _infimum_ or _greatest lower bound_ of a set.
+
   +
     Now, state and prove a version of Lemma 1.3.8 for greatest lower bounds.
 ]
 
 #solution[
-  #TODO[skipped]
+  +
+    A real number $l$ isthe _greatest lower bound_ for a set $A subset.eq RR$ if it meets the following two criteria:
+    + $l$ is a lower bound for $A$;
+
+    + if $b$ is any lower bound for $A$, then $l >= b$.
+
+  +
+    _Assume $l in RR$ is a lower bound for a set $A subset.eq RR$.
+    Then, $l = inf A$ if and only if, for every choice of $epsilon.alt > 0$, there exists an element $a in A$ satisfying $l + epsilon.alt > a$._
+
+    #proof[
+
+      ($=>$)
+
+      Assume $l = inf A$, with arbitrary $epsilon.alt > 0$.
+      Then, $l + epsilon.alt > l$, so $l + epsilon.alt$ is not a lower bound for $A$.
+      Thus, there must exist some $a in A$ such that $a < l + epsilon.alt$.
+
+      ($arrow.double.l$)
+
+      Assume that $l$ is a lower bound, and for any $epsilon.alt > 0$, there exists some $a in A$ such that $l + epsilon.alt > a$.
+
+      Now, assume that we have some $b$ that lower bounds $A$. If $b > l$, then we can see that $b = l + (b - l)$, and thus we would have a contradiction that shows $b$ cannot be a lower bound.
+
+      This implies that $b <= l$, which shows that $l$ is the greatest such lower bound.
+    ]
 ]
 
 #exercise[1.3.2][
@@ -364,6 +425,7 @@ No exercises in this section.
   Let $A_1, A_2, A_3, dots$ be a collection of nonempty sets, each of which is bounded above.
   +
     Find a formula for $sup(A_1 union A_2)$. Extend this to $sup(union.big_(k=1)^n A_k)$.
+
   +
     Consider $sup(union.big_(k=1)^oo A_k)$. Does the formula in (a) extend to the infinite case?
 ]
@@ -376,6 +438,7 @@ No exercises in this section.
     $
       sup(union.big_(k=1)^n A_k) = max_(k in [n]) (sup A_k).
     $
+
   +
     This does not extend to infinite max, since it may be possible for the infinite max to exist. For example, if we have each $A_k$ simply consist of the natural number $k$, then there is no supremum and no max.
 ]
@@ -385,14 +448,30 @@ No exercises in this section.
   This time define the set $c A = {c a : a in A}$.
   +
     If $c >= 0$, show that $sup(c A) = c sup A$.
+
   +
     Postulate a similar type of statement for $sup(c A)$ for the case $c < 0$.
 ]
 
 #solution[
-  #TODO[
-    skipped
-  ]
+  +
+    Let $s = sup A$.
+    Now note that $c s >= c a$ for any $a in A$, since $c >= 0$.
+    Furthermore, if $b$ is any upper bound for $c A$, then we have that $c a <= b$ for arbitrary $a in A$.
+
+    If $c = 0$, then all elements of $c A$ are $0$... but if $c > 0$, then we see that $a <= b slash c$, thus, $b slash c$ is an upper bound on $A$.
+    We can then see that $s <= b slash c$, which implies that $c s <= b$, which completes the proof that $c s$ is the least such upper bound for $c A$.
+  
+  +
+    I postulate that $sup(c A) = c inf A$ for $c < 0$.
+    Let $l = inf A$.
+
+    Now, since $l <= a$ for arbitrary $a$, we get that $c l >= c a$, and thus $c l$ is an upper bound on $c A$.
+
+    Next, assume that $b$ is an upper bound on $c A$, such that $c a <= b$.
+    Now, we can see that $a >= b slash c$, which implies that $b slash c$ is a lower bound for $A$.
+    Thus we get that $l >= b slash c ==> c l <= b$, showing that $c l$ is the least such upper bound on $c A$.
+
 ]
 
 #exercise[1.3.6][
@@ -400,12 +479,13 @@ No exercises in this section.
   Follow these steps to prove that if $A$ and $B$ are nonempty and bounded above then $sup (A + B) = sup A + sup B$.
   +
     Let $s = sup A$ and $t = sup B$. Show $s + t$ is an pper bound for $A + B$.
+
   +
     Now let $u$ be an arbitrary upper bound for $A + B$, and temporarily fix $a in A$. Show $t <= u - a$.
-  +
-    Finally, show $sup (A + B) = s + t$.
-  +
-    Construct another proof of this same fact using Lemma 1.3.8.
+
+  + Finally, show $sup (A + B) = s + t$.
+
+  + Construct another proof of this same fact using Lemma 1.3.8.
 ]
 
 #solution[
@@ -414,11 +494,13 @@ No exercises in this section.
     Then $c = a + b$, with $a in A$, and $b in B$.
 
     Now, we have that $a <= s$ and $b <= t$, so therefore, $c <= s + t$.
+
   +
     For all $b in B$, we have that $a + b <= u$.
     Thus, $u - a >= b$, so $u - a$ is an upper bound for $B$.
 
     Since $t$ is the least upper bound for $B$, we now have that $t <= u - a$.
+
   +
     Let $u$ be an arbitrary upper bound for $A + B$.
     By (b), we have that for all $a in A$, $t <= u - a$.
@@ -426,6 +508,7 @@ No exercises in this section.
     Therefore we also have that $a <= u - t$, showing that $u - t$ is an upper bound on $A$.
     Since $s$ is the least upper bound on $A$, we have $s <= u - t$, and thus have $s + t <= u$.
     This shows that $s + t$ must be the least upper bound and therefore is the supremum of $A + B$.
+
   +
     Choose arbitrary $epsilon.alt > 0$.
     For $epsilon.alt / 2$, there must exist $a in A$ and $b in B$ such that $a >= s - epsilon.alt / 2$ and $b >= t - epsilon.alt / 2$.
@@ -441,37 +524,52 @@ No exercises in this section.
 ]
 
 #solution[
-  #TODO[skipped]
+  For any $epsilon.alt > 0$, we have that $a - epsilon.alt < a in A$.
+  Thus by Lemma 1.3.8 $a = sup A$.
 ]
 
 #exercise[1.3.8][
   Compute, without proofs, the suprema and infima (if they exist) of the following sets:
   +
     ${m slash n : m, n in NN "with" m < n}$.
+
   +
     ${(-1)^m slash n : m, n in NN}$.
+
   +
     ${n slash (3n+1) : n in NN}$.
+
   +
     ${m slash (m + n) : m, n in NN}$.
 ]
 
 #solution[
   + supremum is $1$, infimum is $0$.
+
   + supremum is $1$, infimum is $-1$.
+
   + supremum is $1/3$, infimum is $1/4$.
+
   + supremum is $1$, infimum is $0$.
 ]
 
 #exercise[1.3.9][
   +
     If $sup A < sup B$, show that there exists an element $b in B$ that is an upper bound for $A$.
+
   +
     Give an example to show that this is not always the case if we only assume $sup A <= sup B$.
 ]
 
 #solution[
-  #TODO[skipped]
+  +
+    Let $s_a = sup A$, and $s_b = sup B$.
+    Now choose $epsilon.alt = s_b - s_a$.
+
+    Now we find $b > s_b - epsilon.alt = s_a$. Therefore, $b$ is an upper bound for $A$.
+
+  +
+    It could be that $s_a = s_b$, and we could have $a in A$ such that $a = s_a$, while $s_b in.not B$.
 ]
 
 #exercise[1.3.10 (Cut Property)][
@@ -671,23 +769,29 @@ No exercises in this section.
   When a request is impossible, provide a compelling argument for why this is the case.
   +
     Two sets $A$ and $B$ with $A inter B = emptyset$, $sup A = sup B$, $sup A in.not A$ and $sup B in.not B$.
+
   +
     A sequence of nested open intervals $J_1 supset.eq J_2 supset.eq J_3 supset.eq dots.c$ with $inter.big_(n=1)^oo J_n$ nonempty but containing only a finite number of elements.
+  
   +
     A sequence of nested unbounded closed intervals $L_1 supset.eq L_2 supset.eq L_3 supset.eq dots.c$ with $inter.big_(n=1)^oo L_n = emptyset$.
     (An unbounded closed interval has the form $[a, oo) = {x in RR : x >= a}$.)
+  
   +
     A sequence of closed bounded (not necessarily nested) intervals $I_1, I_2, I_3, dots$ with the property that $inter.big_(n=1)^N I_n != emptyset$ for all $N in NN$, but $inter.big_(n=1)^oo I_n = emptyset$.
 ]
 #solution[
   +
     Let $A = {q in QQ mid(bar) q < 0}$, and $B = {r in RR setdiff QQ mid(bar) r < 0}$.
+
   +
     Let $J_n = (-1/n, 1/n)$.
     Then the only element in the intersection can be $0$.
+  
   +
     Let $L_n = [n, oo)$.
     This cannot have any element.
+  
   +
     This is *impossible*, and we can prove it using the nested interval property.
 
@@ -998,12 +1102,15 @@ No exercises in this section.
   with $A inter A' = emptyset$ and $B inter B' = emptyset$, in such a way that $f$ maps $A$ onto $B$, and $g$ maps $B'$ onto $A'$.
   +
     Explain how achieving this would lead to a proof that $X ~ Y$.
+
   +
     Set $A_1 = X setdiff g(Y) = {x in X : x in.not g(Y)}$ (what happens if $A_1 = emptyset$?) and inductively define a sequence of sets by letting $A_(n+1) = g(f(A_n))$.
     Show that ${A_n : n in NN}$ is a pairwise disjoint collection of subsets of $X$, while ${f(A_n) : n in NN}$ is a similar collection in $Y$.
+
   +
     Let $A = union.big_(n=1)^oo A_n$ and $B = union.big_(n=1)^oo f(A_n)$.
     Show that $f$ maps $A$ onto $B$.
+
   +
     Let $A' = X setdiff A$ and $B' = Y setdiff B$.
     Show $g$ maps $B'$ onto $A'$.
@@ -1023,6 +1130,7 @@ No exercises in this section.
       )
     $
     This is clearly a bijection.
+
   +
     First, if $A_1 = emptyset$, then we are done. This is because $g(Y) = X$, which implies that $g$ is a bijection and we are done.
 
@@ -1042,9 +1150,11 @@ No exercises in this section.
 
       Note for completeness, if at any point any $A_i$ is empty, then we can just stop with finite $A_i$ that are all pairwise disjoint.
     ]
-    Also note that this implies that all ${f(A_n) mid(:) n in NN}$ are pairwise disjoint since $f$ is injective. 
+    Also note that this implies that all ${f(A_n) mid(:) n in NN}$ are pairwise disjoint since $f$ is injective.
+
   +
     If $b in B$, then it must exist in exactly one $f(A_i)$. This means that there must be some $a in A_i$ such that $f(a) = b$, which shows that $f$ is surjective.
+
   +
     First, let's note that $X setdiff A$ is a subset of $g(Y)$.
     This is because if $a in X setdiff A$, then $a in X setdiff A_1 = X setdiff (X setdiff g(Y)) = g(Y)$.
@@ -1073,8 +1183,10 @@ No exercises in this section.
 #exercise[1.6.2][
   +
     Explain why the real number $x = .b_1 b_2 b_3 b_4 dots$ cannot be $f(1)$.
+
   +
     Now, explain why $x != f(2)$, and in general why $x != f(n)$ for any $n in NN$.
+
   +
     Point out the contradiction that arises from these observations and conclude that $(0,1)$ is uncountable.
 ]
@@ -1082,8 +1194,10 @@ No exercises in this section.
 #solution[
   +
     It must differ from $f(1)$ at the first digit by construction.
+
   +
     It must differ from the $n$th digit of $f(n)$ by construction.
+
   +
     This shows that there must be a real number that is not in our enumeration.
     But we assumed we could enumerate them.
@@ -1095,6 +1209,7 @@ No exercises in this section.
   +
     Every rational number has a decimal expansion, so we could apply this same argument to show that the set of rational numbers between 0 and 1 is uncountable.
     However, because we know that any subset of $QQ$ must be countable, the proof of Theorem 1.6.1 must be flawed.
+
   +
     Some numbers have _two_ different decimal representations.
     Specifically, any decimal expansion that terminates can also be written with repeating 9's.
@@ -1103,8 +1218,8 @@ No exercises in this section.
 ]
 
 #solution[
-  +
-    In general, the number that is produced may not be a rational.
+  + In general, the number that is produced may not be a rational.
+
   +
     No, this is fine.
     Let's just only consider non-repeating 9's representation, and note that with our construction, we will never produce a number that runs into this issue.
@@ -1131,12 +1246,14 @@ No exercises in this section.
   +
     Let $A = {a,b,c}$. List the eight elements of $cal(P)(A)$.
     (Do not forget that $emptyset$ is considered to be a subset of every set.)
+
   +
     If $A$ is finite with $n$ elements, show that $cal(P)(A)$ has $2^n$ elements.
 ]
 
 #solution[
   + $emptyset, {a}, {a,b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c}$.
+
   +
     An element can either be in or out of a subset, which gives us two choices per element.
     Thus there are $2^n$ distinct subsets.
@@ -1145,8 +1262,10 @@ No exercises in this section.
 #exercise[1.6.6][
   +
     Using the particular set $A = {a,b,c}$, exhibit two different 1--1 mappings from $A$ into $cal(P)(A)$.
+
   +
     Letting $C = {1,2,3,4}$, produce an example of a 1--1 map $g : C -> cal(P)(C)$.
+
   +
     Explain why, in parts (a) and (b), it is impossible to construct mappings that are _onto_.
 ]
@@ -1161,10 +1280,12 @@ No exercises in this section.
     $
       a -> {a,b}, quad b -> {b}, quad c -> {c}.
     $
+
   +
     $
       1 -> {1}, quad 2 -> {2}, quad 3 -> {3}, quad 4 -> {4}.
     $
+
   +
     There are strictly more elements in the range than the domain.
 ]
@@ -1181,6 +1302,7 @@ No exercises in this section.
 #exercise[1.6.8][
   +
     First, show that the case $a' in B$ leads to a contradiction.
+
   +
     Now, finish the argument by showing that the case $a' in.not B$ is equally unacceptable.
 ]
@@ -1190,6 +1312,7 @@ No exercises in this section.
     If $a' in B$, then it must be that $a' in.not f(a')$ by definition of $B$.
 
     However, $f(a') = B$ by assumption, so we have shown that $a' in B$ and $a' in.not B$ which is a contradiction.
+
   +
     If $a' in.not B$, then it must be that $a' in.not f(a')$.
     This implies that it must be in $B$ which is again a contradiction.
@@ -1201,7 +1324,7 @@ No exercises in this section.
 
 #solution[
   First, we construct an injection from $(0,1)$ to the set of infinite binary sequences.
-  We do this by considering the decimal expansion.
+  We do this by considering the decimal expansion (without repeating $1$'s).
 
   Next, we construct an injection from the set of infinite binary sequences to $(0,1)$.
 
@@ -1218,8 +1341,10 @@ No exercises in this section.
   As a final exercise, answer each of the following by establishing a 1--1 correspondence with a set of known cardinality.
   +
     Is the set of all functions from ${0,1}$ to $NN$ countable or uncountable?
+
   +
     Is the set of all functions from $NN$ to ${0,1}$ countable or uncountable?
+
   +
     Given a set $B$, a subset $cal(A)$ of $cal(P)(B)$ is called an _antichain_ if no element of $cal(A)$ is a subset of any other element of $cal(A)$.
     Does $cal(P)(NN)$ contain an uncountable antichain?
@@ -1229,9 +1354,11 @@ No exercises in this section.
   +
     This is countable, since there only needs to be two natural numbers to specify the function fully.
     This essentially reduces to the set with $(n,m) in NN^2$.
+
   +
     This is uncountable.
     This is equivalent to the set of infinite sequences of $0$'s and $1$'s, which is shown to be uncountable due to a diagonalization argument.
+    
   +
     There exists an uncountable antichain.
     Consider the following bijection between an infinite binary sequence and a subset of the natural numbers:

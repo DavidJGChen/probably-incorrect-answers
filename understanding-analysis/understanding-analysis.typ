@@ -1,7 +1,7 @@
 #import "imports.typ": *
 
 #show: david.with(
-  class: "Summer 2025",
+  class: "Summer 2025 Indepedent Study",
   title: [Understanding Analysis Solutions],
   student: "David J Chen",
   date: datetime.today(),
