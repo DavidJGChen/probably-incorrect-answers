@@ -10,6 +10,7 @@ No exercises in this section.
   +
     Prove that $sqrt(3)$ is irrational.
     Does a similar argument work to show $sqrt(6)$ is irrational?
+
   +
     Where does the proof of Theorem 1.1.1 break down if we try to use it to prove $sqrt(4)$ is irrational?
 ]
@@ -27,6 +28,7 @@ No exercises in this section.
     This implies that $q^2$ and thus $q$ is also divisible by $3$, which is a contradiction.
 
     A similar proof does not quite work for $sqrt(6)$ and needs to be adjusted, since $6$ is not prime and thus we cannot directly say that $6$ divides $p^2$ implies $6$ divides $p$.
+
   +
     It is exactly the step where we try to show that $4$ divides $q^2$ implies that $4$ divides $q$.
     In fact, if we have just that $2$ (and not $4$) divides $q$, then clearly $4$ still divides $q^2$.
@@ -111,8 +113,10 @@ No exercises in this section.
   +
     If $x in (A inter B)^complement$, explain why $x in A^complement union B^complement$.
     This shows that $(A inter B)^complement subset.eq A^complement union B^complement$.
+
   +
     Prove the reverse inclusion $(A inter B)^complement supset.eq A^complement union B^complement$, and conclude that $(A inter B)^complement = A^complement union B^complement$.
+
   +
     Show $(A union B)^complement = A^complement inter B^complement$ by demonstrating inclusion both ways.
 ]
@@ -163,10 +167,13 @@ No exercises in this section.
   +
     Let $f(x) = x^2$. If $A = [0,2]$ (the closed interval ${x in RR: 0 <= x <= 2}$) and $B = [1,4]$, find $f(A)$ and $f(B)$.
     Does $f(A inter B) = f(A) inter f(B)$ in this case? Does $f(A union B) = f(A) union f(B)$?
+
   +
     Find two sets $A$ and $B$ for which $f(A inter B) != f(A) inter f(B)$.
+
   +
     Show that, for an arbitrary function $g : RR -> RR$, it is always true that $g(A inter B) subset.eq g(A) inter g(B)$ for all sets $A, B subset.eq RR$.
+
   +
     Form and prove a conjecture about the relationship between $g(A union B)$ and $g(A) union g(B)$ for an arbitrary function $g$.
 ]
@@ -182,10 +189,12 @@ No exercises in this section.
     $A union B = [0, 4]$, so $f(A union B) = [0, 16] = f(A) union f(B)$. 
     
     Therefore equality holds in both cases.
+
   +
     Let $A = {1}$, and $B = {-1}$.
 
     Then $A inter B = emptyset$, but $f(A) = {1} = f(B)$, so $f(A) inter f(B) = {1} != emptyset$.
+
   +
     For arbitrary $y in g(A inter B)$, we have that $y = g(x)$, where $x in A inter B$.
 
@@ -196,6 +205,7 @@ No exercises in this section.
     Thus we have that $g(A inter B) subset.eq g(A) inter g(B)$.
 
     This doesn't work the other way around, since we could have some $y = g(x) = g(z)$, where $x != z$, and $x in A$ and $z in B$, and neither exists in the other set.
+
   +
     My conjecture is that
     $
@@ -244,6 +254,7 @@ No exercises in this section.
     Let $f(x) = x^2$. If $A$ is the closed interval $[0,4]$ and $B$ is the closed interval $[-1,1]$, find $f^(-1)(A)$ and $f^(-1)(B)$.
     Does $f^(-1)(A inter B) = f^(-1)(A) inter f^(-1)(B)$ in this case?
     Does $f^(-1)(A union B) = f^(-1)(A) union f^(-1)(B)$?
+
   +
     The good behavior of preimages demonstrated in (a) is completely general.
     Show that for an arbitrary function $g: RR -> RR$, it is always true that $g^(-1)(A inter B) = g^(-1)(A) inter g^(-1)(B)$ and $g^(-1)(A union B) = g^(-1)(A) union g^(-1)(B)$ for all sets $A, B subset.eq RR$.
@@ -251,6 +262,7 @@ No exercises in this section.
 
 #solution[
   + #TODO[part skipped]
+
   +
     Let $x in g^(-1)(A inter B)$.
     This implies that $g(x) in A inter B$, which implies that $x in g^(-1)(A)$ and $x in g^(-1)(B)$.
@@ -269,8 +281,10 @@ No exercises in this section.
   Decide which of the following are true statements. Provide a short justification for those that are valid and a counterexample for those that are not:
   +
     Two real numbers satisfy $a < b$ if and only if $a < b + epsilon.alt$ for every $epsilon.alt > 0$.
+
   +
     Two real numbers satisfy $a < b$ if $a < b + epsilon.alt$ for every $epsilon.alt > 0$.
+
   +
     Two real numbers satisfy $a <= b$ if and only if $a < b + epsilon.alt$ for every $epsilon.alt > 0$.
 ]
@@ -281,10 +295,11 @@ No exercises in this section.
   To make this interesting, fashion the negation into a positive statement that avoids using the word "not" altogether. In each case, make an intuitive guess as to whether the claim or its negation is the true statement.
   +
     For all real numbers satisfying $a < b$, there exists an $n in NN$ such that $a + 1 slash n < b$.
+
   +
     There exists a real number $x > 0$ such that $x < 1 slash n$ for all $n in NN$.
-  +
-    Between every two distinct real numbers there is a rational number.
+
+  + Between every two distinct real numbers there is a rational number.
 ]
 
 #solution[
@@ -295,6 +310,7 @@ No exercises in this section.
   Let $y_1 = 6$, and for each $n in NN$ define $y_(n+1) = (2y_n - 6) slash 3$.
   +
     Use induction to prove that the sequence satisfies $y_n > -6$ for all $n in NN$.
+
   +
     Use another induction argument to show the sequence $(y_1, y_2, y_3,dots)$ is decreasing.
 ]
@@ -311,6 +327,7 @@ No exercises in this section.
       (A_1 union A_2 union dots.c union A_n)^complement = A_1^complement inter A_2^complement inter dots.c inter A_n^complement
     $
     for any finite $n in NN$.
+
   +
     It is tempting to appeal to induction to conclude
     $
@@ -319,15 +336,18 @@ No exercises in this section.
     but induction does not apply here.
     Induction is used to prove that a particular statement holds for every value of $n in NN$, but this does not imply the validity of the infinite case.
     To illustrate this point, find an example of a collection of sets $B_1, B_2, B_3, dots$ where $inter.big_(i=1)^n B_i != emptyset$ is true for every $n in NN$, but $inter.big_(i=1)^oo B_i != emptyset$ fails.
+
   +
     Nevertheless, the infinite version of De Morgan's Law stated in (b) is a valid statement. Provide a proof that does not use induction.
 ]
 
 #solution[
   + #TODO[part skipped]
+
   +
     Let $B_i = NN setdiff {i}$.
     Any finite intersection will still have infinitely many elements, but the entire infinite intersection cannot have any elements.
+
   +
     Let $x in (union.big_(i=1)^oo A_i)^complement$.
     Then we know that for all $i$, $x != A_i$.
@@ -379,19 +399,20 @@ No exercises in this section.
 
 #exercise[1.3.2][
   Give an example of each of the following, or state that the request is impossible.
-  +
-    A set $B$ with $inf B >= sup B$.
-  +
-    A finite set that contains its infimum but not its supremum.
-  +
-    A bounded subset of $QQ$ that contains its supremum but not its infimum.
+  + A set $B$ with $inf B >= sup B$.
+  
+  + A finite set that contains its infimum but not its supremum.
+  
+  + A bounded subset of $QQ$ that contains its supremum but not its infimum.
 ]
 
 #solution[
   + Let $B = {1}$, hmm...
+  
   +
     This cannot be possible.
     Since there are finite elements, there is necessarily a maximum and minimum, so the set must contain both of them.
+  
   +
     Let $A = {1/n : n in NN}$.
     The supremum is $1$, which is contained.
@@ -401,6 +422,7 @@ No exercises in this section.
 #exercise[1.3.3][
   +
     Let $A$ be nonempty and bounded below, and define $B = {b in RR : b "is a lower bound for" A}$. Show that $sup B = inf A$.
+  
   +
     Use (a) to explain why there is no need to assert that greatest lower bounds exist as part of the Axiom of Completeness.
 ]
@@ -417,6 +439,7 @@ No exercises in this section.
 
     Therefore, we have shown that $b'$ is a lower bound for $A$, and since it is a supremum of $B$, it must be the greatest such lower bound.
     This is exactly the definition of infimum of $A$.
+  
   +
     For any set bounded from below, we can take the set of all lower bounds, and use part (a) to show that the greatest lower bound is the smallest upper bound of the set of lower bounds.
 ]
@@ -577,11 +600,12 @@ No exercises in this section.
 
   If $A$ and $B$ are nonempty, disjoint sets with $A union B = RR$ and $a < b$ for all $a in A$ and $b in B$, then there exists $c in RR$ such that $x <= c$ whenever $x in A$ and $x >= c$ whenever $x in B$.
 
-  +
-    Use the Axiom of Completeness to prove the Cut Property.
+  + Use the Axiom of Completeness to prove the Cut Property.
+  
   +
     Show that the implication goes the other way; that is, assume $RR$ possesses the Cut Property and let $E$ be a nonempty set that is bounded above.
     Prove $sup E$ exists.
+  
   +
     The punchline of parts (a) and (b) is that the Cut Property could be used in place of the Axiom of Completeness as the fundamental axiom that distinguishes the real numbers from the rational numbers.
     To drive this point home, give a concrete example showing that the Cut Property is not a valid statement when $RR$ is replaced by $QQ$.
@@ -595,6 +619,7 @@ No exercises in this section.
     By definition, $c >= x$ for all $x in A$.
 
     By 1.3.3, $c$ is the infimum of $B$, so for all $x in B$, we have that $b >= c$.
+  
   +
     Assume the Cut Property.
 
@@ -617,6 +642,7 @@ No exercises in this section.
     Contradiction!
 
     Thus, since $c$ is an upper bound and is less than or equal to all upper bounds of $E$, we have that $c$ exists and is the supremum of $E$.
+  
   +
     Let $A$ be ${x in QQ : x^2 <= 2}$, and $B := {x in QQ : x^2 > 2}$.
 
@@ -631,8 +657,10 @@ No exercises in this section.
   For any that are false, supply an example where the claim in question does not appear to hold.
   +
     If $A$ and $B$ are nonempty, bounded, and satisfy $A subset.eq B$, then $sup A <= sup B$.
+  
   +
     If $sup A < inf B$ for sets $A$ and $B$, then there exists a $c in RR$ satisfying $a < c < b$ for all $a in A$ and $b in B$.
+  
   +
     If there exists a $c in RR$ satisfying $a < c < b$ for all $a in A$ and $b in B$, then $sup A < inf B$.
 ]
@@ -644,8 +672,10 @@ No exercises in this section.
     Then there must exist some $a in A$ such that it is greater than $sup B$ but less than or equal to $sup A$.
 
     But since $A subset.eq B$, it must be an element of $B$ as well, which leads us to a contradiction since we assumed it would be greater than $sup B$.
+  
   +
     True. #TODO[skipped]
+  
   +
     False. #TODO[skipped]
 ]
@@ -656,8 +686,10 @@ No exercises in this section.
   Recall that $II$ stands for the set of irrational numbers.
   +
     Show that if $a, b in QQ$, then $a b$ and $a + b$ are elements of $QQ$ as well.
+  
   +
     Show that if $a in QQ$ and $t in II$, then $a + t in II$ and $a t in II$ as long as $a != 0$.
+  
   +
     Part (a) can be summarized by saying that $QQ$ is closed under addition and multiplication.
     Is $II$ closed under addition and multiplication?
@@ -672,7 +704,9 @@ No exercises in this section.
     Therefore $a b = (m p) / (n q) in QQ$.
 
     $m q in ZZ$, and $n p in ZZ$, so therefore $a + b = (m q + n p) / (n q) in QQ$.
+ 
   + #TODO[skipped]
+  
   + #TODO[skipped]
 ]
 
@@ -736,7 +770,9 @@ No exercises in this section.
   Which of the following sets are dense in $RR$?
   Take $p in ZZ$ and $q in NN$ in every case.
   + The set of all rational numbers $p slash q$ with $q <= 10$.
+  
   + The set of all rational numbers $p slash q$ with $q$ a power of $2$.
+  
   + The set of all rational numbers $p slash q$ with $10 abs(p) >= q$.
 ]
 
@@ -860,6 +896,7 @@ No exercises in this section.
     Now, explain how the more general statement in (i) follows.
   +
     Explain why induction _cannot_ be used to prove part (ii) of Theorem 1.5.8 from part (i).
+  
   +
     Show how arranging $NN$ into the two-dimensional array
     $
@@ -884,16 +921,20 @@ No exercises in this section.
     If $B_2$ is finite, after all elements are enumerated, continue enumerating from $A_1$.
 
     Now, continue this enumeration strategy all the way to $A_m$ by doing this same alternating enumeration strategy for $union.big_(i=1)^n A_i$ and $A_(n+1)$.
+  
   +
     Induction may not work, since induction only makes it hold for finite unions, not infinite unions.
+  
   +
     If we arrange the countable sets in rows, then we can visit by zig-zag pattern.
 ]
 
 #exercise[1.5.4][
   + Show $(a,b) ~ RR$ for any interval $(a,b)$.
+  
   +
     Show that an unbounded interval like $(a, oo) = {x : x > a}$ has the same cardinality as $RR$ as well.
+  
   +
     Using open intervals makes it more convenient to produce the required 1--1, onto functions, but it is not really necesssary.
     Show that $[0,1) ~ (0,1)$ by exhibiting a 1--1 onto function between the two sets.
@@ -907,8 +948,9 @@ No exercises in this section.
     $
       f(x) = tan(((x-a)/(b-a) - 1/2)pi).
     $
-  +
-    Choose the function $ln(x-a)$.
+  
+  + Choose the function $ln(x-a)$.
+  
   +
     Let $f : [0,1) -> (0,1)$ be defined the following way:
     $
@@ -922,8 +964,10 @@ No exercises in this section.
 
 #exercise[1.5.5][
   + Why is $A ~ A$ for every set $A$?
+
   +
     Given sets $A$ and $B$, explain why $A ~ B$ is equivalent to asserting $B ~ A$.
+
   +
     For three sets $A$, $B$, and $C$, show that $A ~ B$ and $B ~ C$ implies $A ~ C$.
     These three properties are what is meant by saying that $~$ is an _equivalence relation_.
@@ -931,8 +975,9 @@ No exercises in this section.
 
 #solution[
   + Use identity bijection.
-  +
-    Bijection has bijection inverse.
+  
+  + Bijection has bijection inverse.
+  
   +
     Let $f: A -> B$ be a bijection, and $g: B -> C$ be another.
     Then $g compose f$ is also a bijection.
@@ -949,8 +994,8 @@ No exercises in this section.
 ]
 
 #exercise[1.5.6][
-  +
-    Give an example of a countable collection of disjoint open intervals.
+  + Give an example of a countable collection of disjoint open intervals.
+  
   +
     Give an example of an uncountable collection of disjoint open intervals, or argue that no such collection exists.
 ]
@@ -959,6 +1004,7 @@ No exercises in this section.
   +
     Let $I_n = (n, n+1)$.
     Clearly disjoint, and open intervals.
+  
   +
     This cannot exist.
     If it did, then consider by density of rational numbers that there would exist a distinct rational in each interval, thus implying there would be uncountable rationals.
@@ -969,6 +1015,7 @@ No exercises in this section.
   +
     Find a 1--1 function that maps $(0,1)$ into, but not necessarily onto, $S$.
     (This is easy.)
+  
   +
     Use the fact that every real number has a decimal expansion to produce a 1--1 function that maps $S$ into $(0,1)$.
     Discuss whether the formulated function is onto.
@@ -977,8 +1024,8 @@ No exercises in this section.
 ]
 
 #solution[
-  +
-    Consider $f(x) = (x/2, x)$.
+  + Consider $f(x) = (x/2, x)$.
+  
   +
     For $(x,y) in S$, consider the (potentially countable) decimal expansion of each.
     Let's label the expansion of $x$ as $0.d_1 d_2 d_3 d_4 dots$, and the second as $0.d'_1 d'_2 d'_3 d'_4 dots$.
@@ -1026,9 +1073,11 @@ No exercises in this section.
   Real numbers that are not algebraic are called _transcendental_ numbers. Reread the last paragraph of Section 1.1.
   The final question posed here is closely related to the question of whether or not transcendental numbers exist.
   + Show that $sqrt(2)$, $root(3, 2)$, and $sqrt(3) + sqrt(2)$ are algebraic.
+  
   +
     Fix $n in NN$, and let $A_n$ be the algebraic numbers obtained as roots of polynomials with integer coefficients that have degree $n$.
     Using the fact that every polynomial has a finite number of roots, show that $A_n$ is countable.
+  
   +
     Now, argue that the set of all algebraic numbers is countable.
     What may we conclude about the set of transcendental numbers?
@@ -1042,10 +1091,12 @@ No exercises in this section.
         $x^2 - 2 = 0, quad x^3 - 2 = 0, quad x^4 - 10 x^2 + 1 = 0.$
       ]
     $
+  
   +
     There are a countable number of integer polynomials of degree $n$, since it can be defined uniquely with a finite product of countable sets.
 
     Since each has finite solutions, the total number of solutions and thus elements of $A_n$ is a countable union of finite sets and is countable.
+  
   +
     We simply take the countable union of all $A_n$ for all $n$.
     
@@ -1058,9 +1109,11 @@ No exercises in this section.
   +
     Let $C subset.eq [0,1]$ be uncountable.
     Show that there exists $a in (0,1)$ such that $C inter [a,1]$ is uncountable.
+  
   +
     Now let $A$ be the set of all $a in (0,1)$ such that $C inter [a,1]$ is uncountable, and set $alpha = sup A$.
     Is $C inter [alpha, 1]$ an uncountable set?
+  
   +
     Does the statement in (a) remain true if "uncountable" is replaced by "infinite"?
 ]
@@ -1080,11 +1133,13 @@ No exercises in this section.
     *Contradiction!*
 
     Therefore there must exist some $a in (0,1)$ such that $C inter [a,1]$ is uncountable.
+  
   +
     Not necessarily.
     Consider if $C = [0,1]$.
     Then any $a in (0,1)$ will produce an uncountable set $[a,1]$.
     The supremum of $A$ is $1$. But $C inter [1,1] = {1}$, which is finite.
+  
   +
     No.
     Let $C = {1/n mid(bar) n in NN}$.
@@ -1181,8 +1236,7 @@ No exercises in this section.
 ]
 
 #exercise[1.6.2][
-  +
-    Explain why the real number $x = .b_1 b_2 b_3 b_4 dots$ cannot be $f(1)$.
+  + Explain why the real number $x = .b_1 b_2 b_3 b_4 dots$ cannot be $f(1)$.
 
   +
     Now, explain why $x != f(2)$, and in general why $x != f(n)$ for any $n in NN$.
@@ -1192,11 +1246,9 @@ No exercises in this section.
 ]
 
 #solution[
-  +
-    It must differ from $f(1)$ at the first digit by construction.
+  + It must differ from $f(1)$ at the first digit by construction.
 
-  +
-    It must differ from the $n$th digit of $f(n)$ by construction.
+  + It must differ from the $n$th digit of $f(n)$ by construction.
 
   +
     This shows that there must be a real number that is not in our enumeration.
@@ -1300,8 +1352,7 @@ No exercises in this section.
 ]
 
 #exercise[1.6.8][
-  +
-    First, show that the case $a' in B$ leads to a contradiction.
+  + First, show that the case $a' in B$ leads to a contradiction.
 
   +
     Now, finish the argument by showing that the case $a' in.not B$ is equally unacceptable.
@@ -1339,11 +1390,9 @@ No exercises in this section.
 
 #exercise[1.6.10][
   As a final exercise, answer each of the following by establishing a 1--1 correspondence with a set of known cardinality.
-  +
-    Is the set of all functions from ${0,1}$ to $NN$ countable or uncountable?
+  + Is the set of all functions from ${0,1}$ to $NN$ countable or uncountable?
 
-  +
-    Is the set of all functions from $NN$ to ${0,1}$ countable or uncountable?
+  + Is the set of all functions from $NN$ to ${0,1}$ countable or uncountable?
 
   +
     Given a set $B$, a subset $cal(A)$ of $cal(P)(B)$ is called an _antichain_ if no element of $cal(A)$ is a subset of any other element of $cal(A)$.
@@ -1358,7 +1407,7 @@ No exercises in this section.
   +
     This is uncountable.
     This is equivalent to the set of infinite sequences of $0$'s and $1$'s, which is shown to be uncountable due to a diagonalization argument.
-    
+
   +
     There exists an uncountable antichain.
     Consider the following bijection between an infinite binary sequence and a subset of the natural numbers:
