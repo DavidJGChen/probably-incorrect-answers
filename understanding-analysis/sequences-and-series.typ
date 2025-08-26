@@ -562,8 +562,10 @@ No exercises in this section.
   Try to produce a counterexample for any that are false.
   +
     If every $a_n$ is an upper bound for a set $B$, then $a$ is also an upper bound for $B$.
+
   +
     If every $a_n$ is in the complement of the interval $(0,1)$, then $a$ is also in the complement of $(0,1)$.
+  
   +
     If every $a_n$ is rational, then $a$ is rational.
 ]
@@ -596,17 +598,21 @@ No exercises in this section.
       ]
     $
     Define $lim_(m,n) a_(m n) = a$ to mean that for all $epsilon.alt > 0$ there exists an $N in NN$ such that if both $m, n >= N$, then $abs(a_(m n) - a) < epsilon.alt$.
+
   +
     Let $a_(m n) = 1 slash (m + n)$.
     Does $lim_(m, n -> oo) a_(m n)$ exist in this case?
     Do the two iterated limits exist?
     How do these three values compare?
     Answer these same questions for $a_(m n) = m n slash (m^2 + n^2)$.
+
   +
     Produce an example where $lim_(m, n -> oo) a_(m n)$ exists but where neither iterated limit can be computed.
+
   +
     Assume $lim_(m, n -> oo) = a$, and assume that for each fixed $m in NN$, $lim_(n -> oo) (a_(m n)) -> b_m$.
     Show $lim_(m -> oo) b_m = a$.
+
   +
     Prove that if $lim_(m, n -> oo) a_(m n)$ exists and the iterated limits both exist, then all three limits must be equal.
 ]
@@ -2320,6 +2326,7 @@ No exercises in this section.
       abs(t_(n n) - t_(m m)) < epsilon.alt.
     $
     Let's expand out the terms and see what we can deduce:
+    #show math.equation: set block(breakable: true)
     $
       &abs(t_(n n) - t_(m m))\
       &= abs(sum_(i=1)^n sum_(j=1)^n abs(a_(i j)) - sum_(i=1)^m sum_(j=1)^m abs(a_(i j)))\
