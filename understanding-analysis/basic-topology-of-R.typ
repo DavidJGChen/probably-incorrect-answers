@@ -1307,9 +1307,15 @@ No exercises in this section.
 
     Thus, $sqrt(2) in F$, but there is no other irrational close to it and it is an isolated point.
 
-    To modify the construction such that $F$ is perfect, we must do the following
+    To modify the construction such that $F$ is perfect, we simply consider the following iterated construction.
 
-    #TODO[not finished]
+    When subtracting an open interval, if it overlaps with a current closed interval, only subtract it if its length is less than $1/4$ of the closed interval length.
+    
+    Otherwise, select some other rational such that it is completely contained within another open interval, or such that it is far enough away from all other selected rationals.
+
+    This makes it such that at any stage, the closed interval intersected with the final set cannot have length 0 and thus have only one isolated irrational.
+
+    This is a very loose argument based on length which I don't make rigorous, but with the concept of measure this becomes rigorous.
 ]
 
 == Baire's Theorem
