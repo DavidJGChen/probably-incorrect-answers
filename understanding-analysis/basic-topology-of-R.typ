@@ -409,9 +409,9 @@ No exercises in this section.
   I claim $b_l in.not B_l$.
   Otherwise, we could have the countably infinite union as follows:
   $
-    union.big_(n=1)^oo ((b_l + 1/n, oo) inter A) = (b_l, oo) "is countable" #emoji.crossmark.
+    union.big_(n=1)^oo ((b_l + 1/n, oo) inter A) = (b_l, oo) inter A "is countable" #emoji.crossmark.
   $
-  This is a contradiction since $b_l in B_l$ implies that $(b_l, oo)$ is uncountable.
+  This is a contradiction since $b_l in B_l$ implies that $(b_l, oo) inter A$ is uncountable.
 
   Similar logic applies for $B_r$.
 
