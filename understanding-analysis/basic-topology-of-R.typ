@@ -1325,7 +1325,7 @@ No exercises in this section.
 ]
 
 #solution[
-
+  This follows immediately from De Morgan's Laws.
 ]
 
 #exercise[3.5.2][
@@ -1341,13 +1341,20 @@ No exercises in this section.
 ]
 
 #solution[
+  + *Countable*, since a countable product of countable sets is countable.
 
+  +
+    *Finite*. I don't have a good proof for this off the top of my head.
+
+  + Also *finite*.
+
+  + *Countable*.
 ]
 
 #exercise[3.5.3][
   (This exercise has already appeared as Exercise 3.2.15.)
 
-  + Show that a clsoed interval $[a,b]$ is a $G_delta$ set.
+  + Show that a closed interval $[a,b]$ is a $G_delta$ set.
 
   +
     Show that the half-open interval $(a,b]$ is both a $G_delta$ and an $F_sigma$ set.
@@ -1357,7 +1364,17 @@ No exercises in this section.
 ]
 
 #solution[
+  + Choose open intervals of the form $(a - 1/n, b + 1/n)$.
 
+  +
+    $F_sigma$: choose closed intervals of the form $[a + 1/n, b]$.
+
+    $G_delta$: choose open intervals of the form $(a, b + 1/n)$.
+
+  +
+    For $QQ$, choose the countable closed sets containing just a single rational, enumerating through all rationals.
+
+    For $II$, we can now just rely on Exercise 3.5.1.
 ]
 
 #exercise[3.5.4][
