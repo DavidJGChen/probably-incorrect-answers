@@ -1373,7 +1373,6 @@ No exercises in this section.
 
   +
     For $QQ$, choose the countable closed sets containing just a single rational, enumerating through all rationals.
-
     For $II$, we can now just rely on Exercise 3.5.1.
 ]
 
@@ -1384,7 +1383,7 @@ No exercises in this section.
 ]
 
 #solution[
-
+  
 ]
 
 #exercise[3.5.5][
